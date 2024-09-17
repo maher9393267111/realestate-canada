@@ -16,7 +16,7 @@ import { useLanguageContext } from "@/context/languageContext";
 import ProjectCard from '@/components/Site/ProjectCard'
 import useProducts from "@/hooks/useProducts";
 
-const Home2ThrillingTour = () => {
+const  ProjectsOfferSlider = () => {
 
   const router = useRouter;
   const { query } = router;
@@ -114,9 +114,9 @@ const Home2ThrillingTour = () => {
                       <i className="bi bi-arrow-left" />
                       <span>PREV</span>
                     </div>
-                    <Link href="/package" className="secondary-btn2">
+                    {/* <Link href="/package" className="secondary-btn2">
                       View All Package
-                    </Link>
+                    </Link> */}
                     <div className="slider-btn package-card-slider-next">
                       <span>NEXT</span>
                       <i className="bi bi-arrow-right" />
@@ -132,4 +132,4 @@ const Home2ThrillingTour = () => {
   );
 };
 
-export default Home2ThrillingTour;
+export default ProjectsOfferSlider;

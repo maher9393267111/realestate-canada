@@ -15,7 +15,7 @@ import Home2VideoSection from "../components/components/videoSection/Home2VideoS
 import Home2WhyChoose from "../components/components/whyChoose/Home2WhyChoose";
 
 import CountriesSlider from '@/components/Site/CountriesSlider'
-
+import ProjectsOfferSlider from "@/components/Site/ProjectsOfferSlider"
 
 
 
@@ -34,8 +34,11 @@ const page = () => {
     <Header />
       <Home2Banner />
       <CountriesSlider/>
-      <Home2ThrillingTour />
+    <ProjectsOfferSlider/>
+
+     
       <Home2About />
+
       <Home2Activities />
       <Home2WhyChoose />
       <Home2Testimonial />
