@@ -1,6 +1,6 @@
 
 
-import Message from "@/models/message";
+import Message from "@/models/Message";
 
 import auth from "@/utils/auth";
 
