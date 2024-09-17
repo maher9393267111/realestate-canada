@@ -85,7 +85,9 @@ const Projects = ({
                       city,
                       area,
                       features,
+                      details,
                       price,
+                     
 
                       // read_time,
                     } = blog;
@@ -134,7 +136,11 @@ const Projects = ({
                                   ${price}
                                   {/* <del>$3000</del> */}
                                 </span>
-                                {/* <p>TAXES INCL/PERS</p> */}
+                                <p>Beds {details?.beds}</p>
+                                <p>Rooms {details?.rooms}</p>
+
+                                <p>baths {details?.baths}</p>
+
                               </div>
                               <Link
                                 href={`/projects/${_id}`}

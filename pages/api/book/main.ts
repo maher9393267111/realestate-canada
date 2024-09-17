@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const {
           page = 1,
-          sort,
+          sort=1,
          country = "",
           city="",
           limit = 4,
@@ -42,7 +42,7 @@ if (parseInt(baths) !== 0) {
 
 
 if (parseInt(beds) !== 0) {
-  where['details.beds'] = { $gte: parseInt(baths) }  // baths
+  where['details.beds'] = { $gte: parseInt(beds) }  // baths
 }
 
 

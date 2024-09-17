@@ -70,7 +70,7 @@ schema.statics.paginate = async function ({
   const books = await this.find({ ...where })
     .limit(limit)
     .skip(skip)
-    .sort({ createdAt: sort })
+    .sort({ createdAt: 1 })
     // .populate({
     //   path: "category",
     //   select: "name nametr",

@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const {
           page = 1,
-          sort,
+          sort=1,
         
           limit = 4,
           search = "",
