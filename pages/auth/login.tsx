@@ -201,13 +201,14 @@ const handleChange = (e) => {
             onChange={handleChange}
         />
         <Button 
-        className=" !font-estedad"
+        className=" !font-estedad  !bg-primary"
             // icon="signup"
             type="submit"
             content=  {t.send}
             color="green"
             disabled={disabled || loading}
         />
+        <button type="submit"> login</button>
     </Segment>
 </Form>
 <Message attached="bottom" warning>

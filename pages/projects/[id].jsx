@@ -16,8 +16,9 @@ import { useRouter } from "next/router";
 import { ImageEndpoint } from "../../utils/global";
 
 import { useLanguageContext } from "@/context/languageContext";
-import { format, formatDistanceToNow, parseISO } from "date-fns";
+
 import moment from "moment/moment";
+import ProjectForm from "../../components/Site/ProjectForm";
 
 const ProjectDetails = () => {
   const [isOpenimg, setOpenimg] = useState({
@@ -69,8 +70,7 @@ const ProjectDetails = () => {
 
   return (
     <div dir="ltr">
-
-<Header/>
+      <Header />
 
       <Breadcrumb
         pagename="Destination Details"
@@ -256,7 +256,12 @@ const ProjectDetails = () => {
                   <div className="single-info">
                     <span>Condition: {data?.book?.condition}</span>
                   </div>
+
+                  <div className="mt-3">
+                    <ProjectForm />
+                  </div>
                 </div>
+
                 <div className="banner2-card four">
                   <img src="/assets/img/home1/banner2-card-img2.png" alt="" />
                   <div className="banner2-content-wrap">

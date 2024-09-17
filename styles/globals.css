@@ -41,3 +41,8 @@ body {
 }
 
 
+
+
+.border-primary {
+  @apply !border-primary !border
+}
