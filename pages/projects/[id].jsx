@@ -69,13 +69,16 @@ const ProjectDetails = () => {
 
   return (
     <div dir="ltr">
+
+<Header/>
+
       <Breadcrumb
         pagename="Destination Details"
         pagetitle="Destination Details"
       />
       <div className="destination-details-wrap mb-120 pt-120">
         <div className="container">
-          <div className="row g-lg-4 gy-5">
+          <div className="row  flex-col-reverse md:!flex-row g-lg-4 gy-5">
             <div className="col-lg-8">
               <h2>Welcome To Egypt</h2>
               <p>
@@ -165,14 +168,14 @@ const ProjectDetails = () => {
                   </div> */}
                 </div>
               </div>
-             
+
               <p
                 dangerouslySetInnerHTML={{
                   __html:
                     language === "en" ? data?.book?.story : data?.book?.storyfr,
                 }}
               ></p>
-               <h2>Features</h2>
+              <h2>Features</h2>
               <ul>
                 {data?.book?.services &&
                   Object.keys(data?.book?.services)?.map((feature, index) => {
