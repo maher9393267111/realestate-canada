@@ -7269,6 +7269,14 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   line-height: 1;
   position: relative;
   transition: 0.5s;
+  color: #888;
+  font-family: var(--font-rubik);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: 0.5s;
 }
 .package-card .package-card-content .card-content-top .location-area .location-list li a {
   color: #888;

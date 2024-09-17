@@ -34,6 +34,7 @@ const Projects = ({
   const [page, setPage] = useState(1);
 
   const { mutate, data } = useProducts({
+    page,
     country,
     baths,
     rooms,
@@ -44,24 +45,18 @@ const Projects = ({
     beds,
   });
 
-
-
-
-  
   const handlePageChange = (event, value) => {
     if (value === page) return;
     setPage(value);
     window.scrollTo(0, 0);
   };
 
-
-
   return (
     <div dir="ltr" className="">
       <Topbar />
       <Header />
       <Breadcrumb pagename="Package Grid" pagetitle="Package Grid" />
-      PRODUCTS : {country}: {data?.books?.length}
+
       <FilterForm />
       <div className="package-grid-with-sidebar-section pt-120 mb-120">
         <div className="container">
@@ -87,7 +82,6 @@ const Projects = ({
                       features,
                       details,
                       price,
-                     
 
                       // read_time,
                     } = blog;
@@ -99,10 +93,7 @@ const Projects = ({
                               href={`/projects/${_id}`}
                               className="card-img"
                             >
-                              <img
-                                src={`${ImageEndpoint}/${image[0]}`}
-                                alt=""
-                              />
+                              <img src={`${ImageEndpoint}/${cover}`} alt="" />
 
                               {/* <img
                              src="/assets/img/home1/package-card-img1.png"
@@ -116,7 +107,7 @@ const Projects = ({
                                 <Link href={`/projects/${_id}`}>{title}</Link>
                               </h5>
                               <div className="location-area">
-                                <ul className="location-list scrollTextAni">
+                                <ul className="location-list scrollTextAnimation">
                                   <li>
                                     <Link href="/package">{country}</Link>
                                   </li>
@@ -129,19 +120,27 @@ const Projects = ({
                                 </ul>
                               </div>
                             </div>
-                            <div className="card-content-bottom">
-                              <div className="price-area">
-                                {/* <h6>Starting Form:</h6> */}
-                                <span>
-                                  ${price}
-                                  {/* <del>$3000</del> */}
-                                </span>
-                                <p>Beds {details?.beds}</p>
+
+                            {/* <div className=" flex gap-2">
+<p>Beds {details?.beds}</p>
                                 <p>Rooms {details?.rooms}</p>
 
                                 <p>baths {details?.baths}</p>
+</div> */}
 
+                            <div className="location-area ">
+                              <ul className="!flex w-2/3  text-[#888] !gap-3 !justify-between containe ">
+                                <li>Rooms {details?.rooms}</li>
+                                <li>Beds {details?.beds}</li>
+                                <li>Baths {details?.baths}</li>
+                              </ul>
+                            </div>
+
+                            <div className="card-content-bottom">
+                              <div className="price-area ">
+                                <span>${price}</span>
                               </div>
+
                               <Link
                                 href={`/projects/${_id}`}
                                 className="primary-btn2"
@@ -158,28 +157,26 @@ const Projects = ({
               </div>
 
               <div className="row">
-            <div className="col-lg-12">
-              <nav className="inner-pagination-area !text-center  !flex !justify-center">
-                <Pagination
-                  dir="rtl"
-                  className=""
-                  onChange={(e, i) => {
-                    handlePageChange(e, i);
-                  }}
-                  count={data?.pages}
-                  defaultPage={page}
-                  page={page}
-                  siblingCount={0}
-                  shape="rounded"
-                  color="primary"
-                  showFirstButton
-                  showLastButton
-                />
-              </nav>
-            </div>
-          </div>
-
-
+                <div className="col-lg-12">
+                  <nav className="inner-pagination-area !text-center  !flex !justify-center">
+                    <Pagination
+                      dir="rtl"
+                      className=""
+                      onChange={(e, i) => {
+                        handlePageChange(e, i);
+                      }}
+                      count={data?.pages}
+                      defaultPage={page}
+                      page={page}
+                      siblingCount={0}
+                      shape="rounded"
+                      color="primary"
+                      showFirstButton
+                      showLastButton
+                    />
+                  </nav>
+                </div>
+              </div>
 
               {/* <div className="row">
                 <div className="col-lg-12">
@@ -218,8 +215,6 @@ const Projects = ({
                   </nav>
                 </div>
               </div> */}
-
-
             </div>
           </div>
         </div>

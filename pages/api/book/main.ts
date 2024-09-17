@@ -33,6 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
        
 
 if (parseInt(rooms) !== 0) {
+  //$gte: parseInt(rooms)  , $eq: parseInt(rooms) 
   where['details.rooms'] =  { $gte: parseInt(rooms) } //rooms
 }
 
@@ -42,7 +43,7 @@ if (parseInt(baths) !== 0) {
 
 
 if (parseInt(beds) !== 0) {
-  where['details.beds'] = { $gte: parseInt(beds) }  // baths
+  where['details.beds'] = { $gte: parseInt(beds)  }  // baths
 }
 
 

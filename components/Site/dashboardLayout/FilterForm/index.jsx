@@ -75,9 +75,21 @@ export default function FilterForm({home=false}) {
     city: { value: "", label: "" },
     minPrice: { value: 0, label: "" },
     maxPrice: { value: 10000000, label: "" },
+    Furnished : null,
+    roomservice:null,
+
   };
   
   const [formData, setFormData] = useState(initialState);
+
+
+  const handleCheckboxChange = event => {
+    const chechboxName = event.target.name
+    const chechboxValue = event.target.checked
+    setFormData({ ...formData, [chechboxName]: chechboxValue })
+    console.log(formData)
+  }
+
 
   const handleReset = useCallback(() => {
     setFormData(initialState);
@@ -97,7 +109,7 @@ export default function FilterForm({home=false}) {
   const handleSearch = (e) => {
     e.preventDefault();
     router.push(
-      `/projects/?country=${formData?.country?.value}&city=${formData.city.value}&baths=${formData.baths?.value}&beds=${formData.beds?.value}&minPrice=${formData.minPrice?.value}&maxPrice=${formData.maxPrice?.value}&type=${formData.type?.value}&rooms=${formData.rooms.value}&beds=${formData.beds.value}`
+      `/projects/?country=${formData?.country?.value}&city=${formData.city.value}&baths=${formData.baths?.value}&beds=${formData.beds?.value}&minPrice=${formData.minPrice?.value}&maxPrice=${formData.maxPrice?.value}&type=${formData.type?.value}&rooms=${formData.rooms.value}&beds=${formData.beds.value}&page=${1}`
     );
   };
 
@@ -152,11 +164,11 @@ export default function FilterForm({home=false}) {
 }
 
                         <div className="col-lg-3 col-md-6 col-12">
-                          <div className="mb-3">
+                          <div className="mb-3 w-full">
                             <label className="form-label fs-6">
                               Select Country :
                             </label>
-                            <div className="filter-search-form position-relative filter-border bg-light">
+                            <div className="filter-search-form w-full position-relative filter-border bg-light">
                               
                               <Select
                                 onChange={(newValue) => {
@@ -165,12 +177,13 @@ export default function FilterForm({home=false}) {
                                     country: newValue,
                                   }));
                                 }}
-                                className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                className="form-input     hover:!border-none !w-full filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={countries}
                               />
                             </div>
                           </div>
                         </div>
+
 
 
 {home !== true &&
@@ -259,6 +272,11 @@ export default function FilterForm({home=false}) {
                           </div>
                         </div>
 
+
+
+
+
+
                         {home !== true &&
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
@@ -319,6 +337,69 @@ export default function FilterForm({home=false}) {
                             </div>
                           </div>
                         </div>
+
+
+
+
+{/* CHECKBOXES */}
+
+{/* {home  !== true && 
+
+<div className="flex gap-4 pb-3">
+
+
+<div className="custom-control custom-radio custom-control-inline">
+                                            <div className="form-check mb-0">
+                                                <input
+                                                   type="checkbox" name="Furnished" id="" checked={formData.Furnished} onChange={handleCheckboxChange}
+                                                
+                                                className="form-check-input"  />
+                                                <label className="form-check-label" htmlFor="rent">Furnitured</label>
+                                                
+
+                                            </div>
+                                        </div>
+
+
+                                        <div className="custom-control custom-radio custom-control-inline">
+                                            <div className="form-check mb-0">
+                                                <input
+                                                   type="checkbox" name="Furnished" id="" checked={formData.Furnished} onChange={handleCheckboxChange}
+                                                
+                                                className="form-check-input"  />
+                                                <label className="form-check-label" htmlFor="rent">Furnitured</label>
+                                                
+
+                                            </div>
+                                        </div>
+
+                                        <div className="custom-control custom-radio custom-control-inline">
+                                            <div className="form-check mb-0">
+                                                <input
+                                                   type="checkbox" name="Furnished" id="" checked={formData.Furnished} onChange={handleCheckboxChange}
+                                                
+                                                className="form-check-input"  />
+                                                <label className="form-check-label" htmlFor="rent">Furnitured</label>
+                                                
+
+                                            </div>
+                                        </div>
+
+
+                                
+
+
+
+
+</div>
+
+
+} */}
+
+
+
+
+
 
 
 

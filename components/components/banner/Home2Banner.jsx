@@ -134,9 +134,9 @@ const Home2Banner = () => {
               </div>
             </div>
             <div className="home1-banner-bottom style-2">
-              <div className="container-md container-fluid">
-                <div className="filter-wrapper">
-                  <div className="filter-group">
+              <div className="container-md container-flui">
+                <div className="filter-wrappe">
+                  <div className="filter-grou">
                     <div className="tab-content" id="pills-tab2Content">
                       <div
                         className="tab-pane fade show active"

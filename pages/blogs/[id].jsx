@@ -117,7 +117,8 @@ const page = () => {
 
               </div> 
               <p className="first-para1 !text-[#63ab45]">
-              <div className='bg-whit !text-[#100c08]' dangerouslySetInnerHTML={{ __html: language === 'en' ?  data?.book?.story : data?.book?.storyfr}} />
+              <div className='bg-whit !text-[#100c08]' 
+              dangerouslySetInnerHTML={{ __html: language === 'en' ?  data?.book?.story : data?.book?.storyfr}} />
               </p>
             </div>
 
