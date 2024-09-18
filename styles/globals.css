@@ -53,4 +53,7 @@ body {
 }
 
 
+.login-form-page  input {
 
+  @apply !border-primary !border-none
+}

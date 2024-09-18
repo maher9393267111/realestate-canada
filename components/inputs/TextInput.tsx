@@ -54,6 +54,7 @@ export default function TextInput({
   return (
     <FormControl fullWidth className={classes.root}>
       <StyledTextField
+      className=" !border-primary"
         required={required || false}
         variant={variant}
         type={type || "text"}

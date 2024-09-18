@@ -5217,11 +5217,11 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
     padding: 30px 20px;
   }
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-title {
+.login-registration-form .form-title {
   text-align: center;
   margin-bottom: 20px;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-title h2 {
+ .login-registration-form .form-title h2 {
   color: var(--title-color);
   font-family: var(--font-rubik);
   font-size: 35px;
@@ -5231,11 +5231,11 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   margin-bottom: 15px;
 }
 @media (max-width: 576px) {
-  .login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-title h2 {
+ .login-registration-form .form-title h2 {
     font-size: 30px;
   }
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-title p {
+ .login-registration-form .form-title p {
   color: var(--text-color);
   font-family: var(--font-jost);
   font-size: 15px;
@@ -5243,10 +5243,10 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   line-height: 1.4;
   margin-bottom: 0;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-inner {
+ .login-registration-form .form-inner {
   position: relative;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-inner input {
+ .login-registration-form .form-inner input {
   border: 1px solid var(--title-color);
   border-radius: 200px;
   background-color: transparent;
@@ -5257,10 +5257,10 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   font-size: 13px;
   padding: 15px 20px;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-inner input:focus {
+ .login-registration-form .form-inner input:focus {
   border: 1px solid var(--primary-color1);
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-inner input::-moz-placeholder {
+ .login-registration-form .form-inner input::-moz-placeholder {
   color: var(--text-color);
   font-family: var(--font-jost);
   font-size: 13px;
@@ -5268,7 +5268,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   letter-spacing: 0.3px;
   text-transform: capitalize;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-inner input::placeholder {
+ .login-registration-form .form-inner input::placeholder {
   color: var(--text-color);
   font-family: var(--font-jost);
   font-size: 13px;
@@ -5276,30 +5276,30 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   letter-spacing: 0.3px;
   text-transform: capitalize;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-remember-forget {
+ .login-registration-form .form-remember-forget {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 30px;
   margin-bottom: 30px;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-remember-forget .remember .custom-check-box {
+ .login-registration-form .form-remember-forget .remember .custom-check-box {
   opacity: 0;
   display: none;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-remember-forget .remember .custom-check-box + label {
+ .login-registration-form .form-remember-forget .remember .custom-check-box + label {
   position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-remember-forget .remember .custom-check-box + label::before {
+ .login-registration-form .form-remember-forget .remember .custom-check-box + label::before {
   content: "";
   width: 15px;
   height: 15px;
   border: 1px solid var(--primary-color1);
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-remember-forget .remember .custom-check-box:checked + label::before {
+ .login-registration-form .form-remember-forget .remember .custom-check-box:checked + label::before {
   content: "\f26e";
   color: var(--white-color);
   font-family: "bootstrap-icons";
@@ -5309,7 +5309,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   align-items: center;
   justify-content: center;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-remember-forget .remember label {
+.login-registration-form .form-remember-forget .remember label {
   color: var(--primary-color1);
   font-family: var(--font-jost);
   font-size: 15px;
@@ -5317,7 +5317,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   letter-spacing: 0.3px;
   text-transform: capitalize;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .form-remember-forget .forget-pass {
+ .login-registration-form .form-remember-forget .forget-pass {
   color: var(--primary-color1);
   font-family: var(--font-jost);
   font-size: 15px;
@@ -5325,7 +5325,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   letter-spacing: 0.3px;
   text-transform: capitalize;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .login-btn {
+ .login-registration-form .login-btn {
   border-radius: 35px;
   background-color: var(--title-color);
   font-family: var(--font-rubik);
@@ -5347,11 +5347,11 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   width: 100%;
 }
 @media (max-width: 576px) {
-  .login-modal .modal-dialog .modal-content .modal-body .login-registration-form .login-btn {
+   .login-registration-form .login-btn {
     font-size: 15px;
   }
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .login-btn::after {
+ .login-registration-form .login-btn::after {
   position: absolute;
   content: "";
   border-radius: 30px;
@@ -5365,19 +5365,19 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   z-index: -1;
   transition: transform 0.7s;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .login-btn:hover {
+ .login-registration-form .login-btn:hover {
   color: var(--title-color);
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .login-btn:hover::after {
+ .login-registration-form .login-btn:hover::after {
   transform: scalex(1);
   transform-origin: left;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .divider {
+ .login-registration-form .divider {
   position: relative;
   text-align: center;
   margin-bottom: 20px;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .divider span {
+ .login-registration-form .divider span {
   color: #DBDBDB;
   text-align: center;
   font-family: var(--font-rubik);
@@ -5390,7 +5390,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   position: relative;
   z-index: 1;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .divider::before {
+ .login-registration-form .divider::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -5400,7 +5400,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   width: 100%;
   height: 1px;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .google-login-btn {
+ .login-registration-form .google-login-btn {
   border-radius: 35px;
   background-color: var(--white-color);
   border: 1px solid var(--title-color);
@@ -5424,11 +5424,11 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   width: 100%;
 }
 @media (max-width: 576px) {
-  .login-modal .modal-dialog .modal-content .modal-body .login-registration-form .google-login-btn {
+   .login-registration-form .google-login-btn {
     font-size: 15px;
   }
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .google-login-btn::after {
+ .login-registration-form .google-login-btn::after {
   position: absolute;
   content: "";
   border-radius: 30px;
@@ -5442,10 +5442,10 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   z-index: -1;
   transition: transform 0.7s;
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .google-login-btn:hover {
+ .login-registration-form .google-login-btn:hover {
   color: var(--white-color);
 }
-.login-modal .modal-dialog .modal-content .modal-body .login-registration-form .google-login-btn:hover::after {
+ .login-registration-form .google-login-btn:hover::after {
   transform: scalex(1);
   transform-origin: left;
 }

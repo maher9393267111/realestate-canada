@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import navData from "../../../data/nav.json";
 import destinaiton_sidebar_data from "../../../data/destination-_idebar.json";
@@ -148,6 +149,18 @@ const Header = () => {
   const t = useMemo(() => translation ?? {}, [translation]);
   // console.log("HEADER", t);
 
+  let [isOpen, setIsOpen] = useState(true)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+
+
   const selectLanguage = useCallback(
     (language) => {
       switch (language) {
@@ -215,7 +228,7 @@ const Header = () => {
 
   return (
     <>
-      <LoginModal />
+      {/* <LoginModal isOpen={isOpen} closeModal={closeModal} /> */}
       <header
         ref={headerRef}
         className={`header-area style-1 ${state.scrollY > 10 ? "sticky" : ""}`}
@@ -441,7 +454,7 @@ const Header = () => {
         </div>
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list">
-            {/* <li className="d-lg-flex d-none">
+            <li    onClick={openModal} className="d-lg-flex d-none">
               <a href="#" data-bs-toggle="modal" data-bs-target="#user-login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -470,7 +483,7 @@ const Header = () => {
                   />
                 </svg>
               </a>
-            </li> */}
+            </li>
 
             {/* LANGUAGE switch */}
 
