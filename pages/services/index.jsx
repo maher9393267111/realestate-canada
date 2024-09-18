@@ -6,9 +6,9 @@ import Footer from "@/components/components/footer/Footer";
 import Topbar from "@/components/components/topbar/Topbar";
 import Header from "@/components/components/header/Header";
 import useBlogs from "@/hooks/useServices";
-import {ImageEndpoint} from '../../utils/global'
+import { ImageEndpoint } from "../../utils/global";
 import { useState } from "react";
-import {  Pagination } from "@material-ui/lab";
+import { Pagination } from "@material-ui/lab";
 import { useLanguageContext } from "@/context/languageContext";
 
 export const metadata = {
@@ -21,23 +21,20 @@ export const metadata = {
 };
 
 const BlogsMainpage = () => {
-
   const { language } = useLanguageContext();
   const [page, setPage] = useState(1);
 
-    const { data, isLoading, error, mutate } = useBlogs({
-        page,
-    
-        search:"",
-      });
+  const { data, isLoading, error, mutate } = useBlogs({
+    page,
 
+    search: "",
+  });
 
-      const handlePageChange = (event, value) => {
-        if (value === page) return;
-        setPage(value);
-        window.scrollTo(0, 0);
-      };
-
+  const handlePageChange = (event, value) => {
+    if (value === page) return;
+    setPage(value);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div dir="ltr" className="">
@@ -46,15 +43,13 @@ const BlogsMainpage = () => {
       <Breadcrumb pagename="Service Grid" pagetitle="Service Grid" />
       <div className="blod-grid-section pt-120 mb-120">
         <div className="container">
-
           <div className="row g-md-4 gy-5 mb-70">
             {data?.books?.map((blog) => {
               const {
                 _id,
-                
+
                 createdAt,
-                
-                
+
                 image,
                 title,
                 titlefr,
@@ -90,13 +85,16 @@ const BlogsMainpage = () => {
                         </ul> */}
                       </div>
                       <h5>
-                        <Link  href={`/services/${_id}`} >{language === 'en' ?  title : titlefr}</Link>
+                        <Link href={`/services/${_id}`}>
+                          {language === "en" ? title : titlefr}
+                        </Link>
                       </h5>
                       <div className="bottom-area">
                         <Link href={`/services/${_id}`}>
-                        
-                        {language === 'en' ? "Learn More" : "Apprendre encore plus"}
-                        {/* Découvrir davantage */}
+                          {language === "en"
+                            ? "Learn More"
+                            : "Découvrir davantage"}
+                          {/* Découvrir davantage */}
                           <span>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -135,28 +133,26 @@ const BlogsMainpage = () => {
             })}
           </div>
 
-
-
           <div className="row">
-            <div   className="col-lg-12">
+            <div className="col-lg-12">
               <nav className="inner-pagination-area">
-              <nav className="inner-pagination-area !text-center  !flex !justify-center">
-              <Pagination
-              dir="rtl"
-              className=""
-                          onChange={(e, i) => {
-                            handlePageChange(e, i);
-                          }}
-                          count={data?.pages}
-                          defaultPage={page}
-                          page={page}
-                          siblingCount={0}
-                          shape="rounded"
-                          color="primary"
-                          showFirstButton
-                          showLastButton
-                        />
-              </nav>
+                <nav className="inner-pagination-area !text-center  !flex !justify-center">
+                  <Pagination
+                    dir="rtl"
+                    className=""
+                    onChange={(e, i) => {
+                      handlePageChange(e, i);
+                    }}
+                    count={data?.pages}
+                    defaultPage={page}
+                    page={page}
+                    siblingCount={0}
+                    shape="rounded"
+                    color="primary"
+                    showFirstButton
+                    showLastButton
+                  />
+                </nav>
               </nav>
             </div>
           </div>

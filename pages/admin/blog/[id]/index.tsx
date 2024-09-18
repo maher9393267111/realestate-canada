@@ -36,6 +36,9 @@ import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 
+
+
+
 const modules = {
   toolbar: [
     [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -55,6 +58,25 @@ const modules = {
 
 
 export default function BookUpdatePage() {
+
+
+  const countries = [
+    { value: "", label: "All countries" },
+  
+    { value: "Mexico", label: language === 'en' ? 'Mexico' :"Mexique" },
+    { value: "North Cyprus", label: language === 'en' ? "North Cyprus" :"Chypre du Nord"   },
+    { value: "Spain", label: language === 'en' ? "Spain" : "Espagne" },
+    { value: "Republic Dominica", label:language === 'en' ? "Republic Dominica"  : "République Dominique"},
+  
+  // { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
+  
+  // { value: "Canada", label: language === 'en' ? "Canada" : "Canada"},
+  
+    { value: "United Arab Emirates", label: language === 'en' ? "United Arab Emirates" : ""},
+  ];
+  
+
+
   const { user } = useAuth({
     redirectTo: "/auth/login",
     redirectIfFound: false,

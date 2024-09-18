@@ -11,11 +11,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const {
           page = 1,
-          sort=1,
+          sort = 1,
 
           limit = 4,
           search = "",
-          country="",
+          country = "",
         } = req.query;
         const where = {};
 
@@ -24,10 +24,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         if (country && country !== "") {
-          where["category"] = country;
+          where["category"] = { $regex: country, $options: "i" };
+          // where["category"] = country;
         }
-
-
 
         const { books, pages } = await Blog.paginate({
           page,
@@ -36,9 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           where,
         });
 
-        console.log('where' , where ,req.query)
-
-
+        console.log("where", where, req.query);
 
         res.status(200).json({ books, pages });
       } catch (error) {
