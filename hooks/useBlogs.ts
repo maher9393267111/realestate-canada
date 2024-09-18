@@ -8,6 +8,7 @@ interface Query {
   page?: string | number;
 
   search?: string;
+  country?:string
 }
 
 interface BookDetails {
@@ -24,12 +25,13 @@ const fetcher = (url: string) => axios.get(url).then(({ data }: any) => data);
 export default function useBlogs({
   page = 1,
   search="",
+  country="",
 
 }: Query = {}) {
   // console.log(">C<>" , category)
   const { data, isLoading, error, mutate } = useSWR(
 
-    `/api/blog/main/?page=${page}&search=${search}`,
+    `/api/blog/main/?page=${page}&search=${search}&country=${country}`,
     fetcher
     
     ,

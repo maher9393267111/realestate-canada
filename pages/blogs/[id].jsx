@@ -48,8 +48,8 @@ const page = () => {
       <Breadcrumb pagename="BLog Details" pagetitle="BLog Details" />
       <div className="blog-details-section pt-120 mb-120">
         <div className="container">
-          <div className="row g-lg-4 gy-5 justify-content-center">
-            {/* -----Blog Details---- */}
+          <div className="row g-lg-4 gy-5 justify-content-center flex-col-reverse md:!flex-row ">
+            
             <div className="col-lg-8">
               <div className="post-thumb mb-30">
                 <img

@@ -46,3 +46,11 @@ body {
 .border-primary {
   @apply !border-primary !border
 }
+
+
+.css-13cymwt-control {
+  @apply !border-primary !border-none
+}
+
+
+

@@ -68,7 +68,7 @@ export default function BookUpdatePage() {
   const [files, setFiles] = useState([]);
   const [images, setImages] = useState([]);
   const [rootImages, setRootImages] = useState([]);
-  const { mutate, data } = useProducts({page:1});
+  const { mutate, data } = useProducts({ page: 1 });
   const { mutate: mutatesingle } = useProductDetails({ id });
   const [form, setForm] = useState({
     sizes: [],
@@ -78,7 +78,7 @@ export default function BookUpdatePage() {
   const [propertyDetails, setPropertyDetails] = useState({
     title: "",
     titlefr: "",
-    category:"",
+    category: "",
     story: "",
     storyfr: "",
 
@@ -239,7 +239,7 @@ export default function BookUpdatePage() {
               <Grid item xs={12} md={12}>
                 English Description
                 <ReactQuill
-                   modules={modules}
+                  modules={modules}
                   value={propertyDetails.story}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({
@@ -254,7 +254,7 @@ export default function BookUpdatePage() {
               <Grid item xs={12} md={12}>
                 French Description
                 <ReactQuill
-                   modules={modules}
+                  modules={modules}
                   value={propertyDetails.storyfr}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({
