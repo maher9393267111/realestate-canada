@@ -63,16 +63,16 @@ export default function BookUpdatePage() {
   const countries = [
     { value: "", label: "All countries" },
   
-    { value: "Mexico", label: language === 'en' ? 'Mexico' :"Mexique" },
-    { value: "North Cyprus", label: language === 'en' ? "North Cyprus" :"Chypre du Nord"   },
-    { value: "Spain", label: language === 'en' ? "Spain" : "Espagne" },
-    { value: "Republic Dominica", label:language === 'en' ? "Republic Dominica"  : "République Dominique"},
+    { value: "Mexico", label: 'Mexico' },
+    { value: "North Cyprus", label: "North Cyprus"  },
+    { value: "Spain", label:  "Spain"  },
+    { value: "Republic Dominica", label: "Republic Dominica"  },
   
-  // { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
+  { value: "Portugal", label:  "Portugal" },
   
-  // { value: "Canada", label: language === 'en' ? "Canada" : "Canada"},
+  { value: "Canada", label: "Canada" },
   
-    { value: "United Arab Emirates", label: language === 'en' ? "United Arab Emirates" : ""},
+    { value: "United Arab Emirates", label:"United Arab Emirates" },
   ];
   
 
@@ -110,6 +110,10 @@ export default function BookUpdatePage() {
     author: "admin",
   });
 
+
+  const [selectedCountry, setSelectedCountry] = useState({});
+
+
   useEffect(() => {
     if (!id) return;
     axios.get(`/api/blog/${id}`).then((res) => {
@@ -121,8 +125,22 @@ export default function BookUpdatePage() {
 
       setImages(book?.image);
       setRootImages(book?.image);
+      setSelectedCountry({ label: book?.country, value: book?.country });
     });
   }, [id]);
+  
+  useEffect(() => {
+    if (selectedCountry?.value) {
+      setPropertyDetails((prev) => ({
+        ...prev,
+        category: selectedCountry?.value,
+      
+      }));
+    }
+  }, [selectedCountry]);
+
+
+
 
   // Handle input changes for the form
   const handleInputChange = (name, value) => {
@@ -252,6 +270,16 @@ export default function BookUpdatePage() {
                   // required
                   value={propertyDetails.category}
                   onChange={(value) => handleInputChange("category", value)}
+                />
+              </Grid>
+
+
+              <Grid item xs={12} md={6}>
+                <SelectInput
+                  placeholder="Select Country"
+                  options={countries}
+                  selected={selectedCountry}
+                  setSelected={setSelectedCountry}
                 />
               </Grid>
 

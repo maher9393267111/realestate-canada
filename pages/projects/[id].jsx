@@ -33,7 +33,7 @@ const ProjectDetails = () => {
   const { id } = router.query;
   const { data } = useProduct({ id });
   const { data:blogs } = useBlogs({ 
-    //country:data?.book?.country 
+    country:data?.book?.country 
    });
 
 
@@ -285,6 +285,7 @@ const ProjectDetails = () => {
                       story,
                       storyfr,
                       category,
+                      
                       // read_time,
                     } = blog;
                     return (
@@ -300,7 +301,11 @@ const ProjectDetails = () => {
                         </div>
 
                         <div className="recent-post-content">
-                          <Link href={`/blogs/${_id}`}>20 July, 2023</Link>
+                          <Link className=" px-2" href={`/blogs/${_id}`}>20 July, 2023</Link>
+                          <Link href={`/blogs?country=${category}`}>{category}</Link>
+
+                          
+
                           <h6>
                             <Link href={`/blogs/${_id}`}>
                               {language === "en" ? title?.slice(0,30) : titlefr?.slice(0,30)}....
@@ -311,7 +316,7 @@ const ProjectDetails = () => {
                     );
                   })}
 
-<div className="w-full h-full inline-flex items-center !bg-primary justify-center font-medium text-white hover:backdrop-brightness-95 py-2 px-4">
+{/* <div className="w-full h-full inline-flex items-center !bg-primary justify-center font-medium text-white hover:backdrop-brightness-95 py-2 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -328,10 +333,12 @@ const ProjectDetails = () => {
             </svg>
 
         
-              <span className="block">See all blogs</span>
+              <span  className="block">See all blogs</span>
           
            
-          </div>
+          </div> */}
+
+
                 </div>
 
 

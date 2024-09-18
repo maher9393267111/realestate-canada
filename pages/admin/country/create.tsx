@@ -37,7 +37,7 @@ export default function CreateCountry() {
 
       const endpoint = logo
         ? `${uploadApi}/file/upload?size=650&&hieghtsize=800`
-        : `${uploadApi}/file/upload`;
+        : `${uploadApi}/file/upload?size=650&&hieghtsize=800`;
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
       const response = await axios.post(endpoint, formData, {
         headers: {
