@@ -19,9 +19,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         } = req.query;
         const where = {};
 
+        // if (search && search !== "") {
+        //   where["title"] = { $regex: search, $options: "i" };
+        // }
+
+
         if (search && search !== "") {
-          where["title"] = { $regex: search, $options: "i" };
+          where["$or"] = [
+            { title: { $regex: search, $options: "i" } },
+            { titlefr: { $regex: search, $options: "i" } }
+          ];
         }
+
 
         if (country && country !== "") {
           where["category"] = { $regex: country, $options: "i" };

@@ -101,6 +101,8 @@ export default function BookUpdatePage() {
       bathtub: false,
     },
     services: {
+      isfeatrued:false,
+
       security: false,
       cctv: false,
       elevator: false,

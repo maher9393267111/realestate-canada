@@ -105,7 +105,7 @@ export default function CreateCountry() {
   return (
     <div className="cart-area !bg-white">
       <Head>
-        <title>إنشاء تصنيف - Outlet Turkey</title>
+        <title>Add country</title>
       </Head>
       <AdminMainLayout>
         <PageLayout title="اضافة قسم جديد">

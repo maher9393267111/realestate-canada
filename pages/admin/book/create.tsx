@@ -125,6 +125,7 @@ export default function BookCreatePage() {
       bathtub: false,
     },
     services: {
+      isfeatrued:false,
       security: false,
       cctv: false,
       elevator: false,
