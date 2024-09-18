@@ -126,7 +126,7 @@ export default function FilterForm({home=false}) {
               >
                 <li className="nav-item m-1">
                   <div
-                    className={`${"active"} nav-link py-2 px-4  rounded-3 fw-medium`}
+                    className={`${"active"} nav-link py-2 px-4 !bg-primary  rounded-3 fw-medium`}
                     to="#"
                     // onClick={() => setActiveIndex(0)}
                   >
@@ -409,7 +409,7 @@ export default function FilterForm({home=false}) {
                             id="search"
                             name="search"
                             style={{ height: "48px" }}
-                            className="btn btn-primary searchbtn w-100"
+                            className="btn !bg-primary !text-white searchbtn w-100"
                             value="Search"
                           />
 
@@ -419,7 +419,7 @@ export default function FilterForm({home=false}) {
                             id="search"
                             name="search"
                             style={{ height: "48px" }}
-                            className="btn btn-primary searchbtn w-100"
+                            className="btn !bg-primary !text-white searchbtn w-100"
                             value="Reset"
                           />
                         </div>

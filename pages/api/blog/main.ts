@@ -15,12 +15,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
           limit = 4,
           search = "",
+          country="",
         } = req.query;
         const where = {};
 
         if (search && search !== "") {
           where["title"] = { $regex: search, $options: "i" };
         }
+
+        if (country && country !== "") {
+          where["category"] = country;
+        }
+
+
 
         const { books, pages } = await Blog.paginate({
           page,

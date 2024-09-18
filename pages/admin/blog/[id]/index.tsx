@@ -78,6 +78,7 @@ export default function BookUpdatePage() {
   const [propertyDetails, setPropertyDetails] = useState({
     title: "",
     titlefr: "",
+    category:"",
     story: "",
     storyfr: "",
 
@@ -222,6 +223,18 @@ export default function BookUpdatePage() {
                   onChange={(value) => handleInputChange("title", value)}
                 />
               </Grid>
+              <Grid item xs={12} md={6}>
+                <TextInput
+                  name="category"
+                  label="Category"
+                  // required
+                  value={propertyDetails.category}
+                  onChange={(value) => handleInputChange("category", value)}
+                />
+              </Grid>
+
+
+
 
               <Grid item xs={12} md={12}>
                 English Description
