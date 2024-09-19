@@ -19,6 +19,8 @@ module.exports = {
       },
       colors: {
         primary: "#63AB45",
+        primary2: "#63AB45",
+
         // primary: '#131424',
         secondary: '#393A47',
         accent: '#F13024',
@@ -50,6 +52,8 @@ module.exports = {
 
       fontFamily: {
         estedad: ["var(--font-estedad)"],
+        rubik: ["Rubik", "sans-serif"],
+
       },
 
       keyframes: {

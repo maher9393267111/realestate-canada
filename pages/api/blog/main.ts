@@ -37,6 +37,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           // where["category"] = country;
         }
 
+
+        console.log("WHEREE BLOGS" , where)
+
+
+
         const { books, pages } = await Blog.paginate({
           page,
           limit,
