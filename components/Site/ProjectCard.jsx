@@ -7,7 +7,7 @@ export default function ProjectCard({
   language,
   isProjectsPage = false,
   isfeaturepage = false,
-  hieght
+  openModal
 }) {
   const {
     _id,
@@ -160,9 +160,9 @@ export default function ProjectCard({
                 Project Details
               </Link>
             ) : (
-              <Link href={`/projects/${_id}`} className="primary-btn2">
+              <button onClick={openModal} className="primary-btn2">
                 Book Now
-              </Link>
+              </button>
             )}
           </div>
         </div>

@@ -27480,6 +27480,78 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   transform: skewX(45deg) scale(1, 1);
 }
 
+
+/* -------NORMA_ SEARCH BOXXXXX---- */
+ .search-box {
+  display: flex;
+  align-items: center;
+}
+ .search-box input {
+  width: 100%;
+  padding: 8px 20px;
+  font-family: var(--font-jost);
+  font-size: 14px;
+  height: 50px;
+  border: 1px solid rgba(var(--primary-color1-opc), 0.3) !important;
+}
+.search-box input:focus {
+  border: 1px solid #ddd;
+}
+
+.search-box textarea {
+  width: 100%;
+  padding: 8px 20px;
+  font-family: var(--font-jost);
+  font-size: 14px;
+  height: 50px;
+  border: 1px solid rgba(var(--primary-color1-opc), 0.3) !important;
+}
+.search-box textarea:focus {
+  border: 1px solid #ddd;
+}
+ .search-box button {
+  background-color: var(--primary-color1);
+  min-width: 90px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+ .search-box button::after {
+  position: absolute;
+  content: "";
+  display: block;
+  left: 15%;
+  right: -20%;
+  top: -4%;
+  height: 150%;
+  width: 150%;
+  bottom: 0;
+  border-radius: 2px;
+  background-color: var(--title-color);
+  transform: skewX(45deg) scale(0, 1);
+  z-index: -1;
+  transition: all 0.5s ease-out 0s;
+}
+ .search-box button i {
+  color: var(--white-color);
+  font-size: 22px;
+}
+@media (max-width: 576px) {
+  .search-box button {
+    min-width: 70px;
+  }
+}
+ .search-box button:hover {
+  color: var(--white-color);
+}
+ .search-box button:hover::after {
+  transform: skewX(45deg) scale(1, 1);
+}
+/* ------------------ */
 /*=======================================
  Range Slider
 =======================================*/

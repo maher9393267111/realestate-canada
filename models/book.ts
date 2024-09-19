@@ -133,6 +133,9 @@ const schema = new mongoose.Schema(
     },
     services: {
       isfeatured:{ type: Boolean, default: false },
+      resale :{ type: Boolean, default: false },
+      lockoff :{ type: Boolean, default: false },
+
       security: { type: Boolean, default: false },
       cctv: { type: Boolean, default: false },
       elevator: { type: Boolean, default: false },

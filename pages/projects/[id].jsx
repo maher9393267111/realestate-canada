@@ -13,7 +13,7 @@ import Topbar from "@/components/components/topbar/Topbar";
 import useProduct from "../../hooks/useProductDetails";
 import useBlogs from "../../hooks/useBlogs";
 import useProducts from "../../hooks/useProducts";
-import ProjectCard from '@/components/Site/ProjectCard'
+import ProjectCard from "@/components/Site/ProjectCard";
 
 import { useRouter } from "next/router";
 import { ImageEndpoint } from "../../utils/global";
@@ -22,6 +22,7 @@ import { useLanguageContext } from "@/context/languageContext";
 
 import moment from "moment/moment";
 import ProjectForm from "../../components/Site/ProjectForm";
+import ContactModal from "../../components/Site/ContactModal";
 
 const ProjectDetails = () => {
   const [isOpenimg, setOpenimg] = useState({
@@ -33,19 +34,24 @@ const ProjectDetails = () => {
   const { language } = useLanguageContext();
   const { id } = router.query;
   const { data } = useProduct({ id });
-  const { data:blogs } = useBlogs({ 
-    country:data?.book?.country 
-   });
-
-
-   const {  data:products } = useProducts({
-    page:1,
-    isfeatured:true
- 
+  const { data: blogs } = useBlogs({
+    country: data?.book?.country,
   });
 
+  const { data: products } = useProducts({
+    page: 1,
+    isfeatured: true,
+  });
 
+  let [isOpen, setIsOpen] = useState(false);
 
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   const images2 = [
     {
@@ -240,6 +246,19 @@ const ProjectDetails = () => {
                     <span>City: {data?.book?.city}</span>
                     {/* <h5>{data?.book?.city}</h5> */}
                   </div>
+
+                  <div className="single-info">
+                    <span>
+                      Resale: {data?.book?.services?.resale ? "True" : "False"}
+                    </span>
+                    {/* <h5>{data?.book?.city}</h5> */}
+                  </div>
+                  <div className="single-info">
+                    <span>
+                      Lock off: {data?.book?.services ? "True" : "False"}
+                    </span>
+                    {/* <h5>{data?.book?.city}</h5> */}
+                  </div>
                   <div className="single-info">
                     <span>Bathrooms: {data?.book?.details?.baths}</span>
                     {/* <h5>{data?.book?.details?.baths}</h5> */}
@@ -275,60 +294,63 @@ const ProjectDetails = () => {
 
                   <div className="mt-3">
                     <ProjectForm />
-
-
                   </div>
 
-{/* ---recent posts-- */}
+                  {/* ---recent posts-- */}
                   <div className="single-widget mb-30">
-                  <h5 className="widget-title">
-                    {language === "en" ? "Recent Post" : "Article récent"}
-                  </h5>
+                    <h5 className="widget-title">
+                      {language === "en" ? "Recent Post" : "Article récent"}
+                    </h5>
 
-                  {blogs?.books?.map((blog) => {
-                    const {
-                      _id,
+                    {blogs?.books?.map((blog) => {
+                      const {
+                        _id,
 
-                      createdAt,
+                        createdAt,
 
-                      image,
-                      title,
-                      titlefr,
-                      story,
-                      storyfr,
-                      category,
-                      
-                      // read_time,
-                    } = blog;
-                    return (
-                      <div className="recent-post-widget mb-20">
-                        <div className="recent-post-img">
-                          <Link href={`/blogs/${_id}`}>
-                            <img
-                              src={`${ImageEndpoint}/${image[0]}`}
-                              // src="/assets/img/innerpage/recent-post-img1.png"
-                              alt=""
-                            />
-                          </Link>
-                        </div>
+                        image,
+                        title,
+                        titlefr,
+                        story,
+                        storyfr,
+                        category,
 
-                        <div className="recent-post-content">
-                          <Link className=" px-2" href={`/blogs/${_id}`}>20 July, 2023</Link>
-                          <Link href={`/blogs?country=${category}`}>{category}</Link>
-
-                          
-
-                          <h6>
+                        // read_time,
+                      } = blog;
+                      return (
+                        <div className="recent-post-widget mb-20">
+                          <div className="recent-post-img">
                             <Link href={`/blogs/${_id}`}>
-                              {language === "en" ? title?.slice(0,30) : titlefr?.slice(0,30)}....
+                              <img
+                                src={`${ImageEndpoint}/${image[0]}`}
+                                // src="/assets/img/innerpage/recent-post-img1.png"
+                                alt=""
+                              />
                             </Link>
-                          </h6>
-                        </div>
-                      </div>
-                    );
-                  })}
+                          </div>
 
-{/* <div className="w-full h-full inline-flex items-center !bg-primary justify-center font-medium text-white hover:backdrop-brightness-95 py-2 px-4">
+                          <div className="recent-post-content">
+                            <Link className=" px-2" href={`/blogs/${_id}`}>
+                              20 July, 2023
+                            </Link>
+                            <Link href={`/blogs?country=${category}`}>
+                              {category}
+                            </Link>
+
+                            <h6>
+                              <Link href={`/blogs/${_id}`}>
+                                {language === "en"
+                                  ? title?.slice(0, 30)
+                                  : titlefr?.slice(0, 30)}
+                                ....
+                              </Link>
+                            </h6>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {/* <div className="w-full h-full inline-flex items-center !bg-primary justify-center font-medium text-white hover:backdrop-brightness-95 py-2 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -349,15 +371,7 @@ const ProjectDetails = () => {
           
            
           </div> */}
-
-
-
-
-
-                </div>
-
-
-
+                  </div>
                 </div>
 
                 <div className="banner2-car fou">
@@ -372,24 +386,21 @@ const ProjectDetails = () => {
                       Book Now
                     </Link>
                   </div> */}
-
-
-
                 </div>
 
-                
-
-              
-
-
-
-
+                <ContactModal isOpen={isOpen} closeModal={closeModal} />
               </div>
-<section className="projectcard">
-              {products?.books && products?.books[0] && (
-   <ProjectCard isfeaturepage={true} hieght={300} blog={products?.books[0]} language={language}/> 
-)}
-  </section>
+              <section className="projectcard">
+                {products?.books && products?.books[0] && (
+                  <ProjectCard
+                    openModal={openModal}
+                    isfeaturepage={true}
+                    hieght={300}
+                    blog={products?.books[0]}
+                    language={language}
+                  />
+                )}
+              </section>
             </div>
           </div>
         </div>

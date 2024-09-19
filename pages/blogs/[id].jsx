@@ -12,7 +12,9 @@ import { useState } from "react";
 import { useLanguageContext } from "@/context/languageContext";
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 import useProducts from "@/hooks/useProducts";
-import ProjectCard from "@/components/Site/ProjectCard";
+import ProjectForm from "../../components/Site/ProjectForm";
+import ContactModal from "../../components/Site/ContactModal";
+import ProjectCard from "../../components/Site/ProjectCard";
 import moment from "moment/moment";
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -64,6 +66,18 @@ const page = () => {
   const handleSearchInputChange = (e) => {
     setSearch(e.target.value);
   };
+
+
+
+  let [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   return (
     <div dir="ltr" className="">
@@ -215,8 +229,13 @@ const page = () => {
                     );
                   })}
                 </div>
+
+
+                <ContactModal isOpen={isOpen} closeModal={closeModal} />
+
+
 {products?.books && products?.books[0] && (
-   <ProjectCard isfeaturepage={true} hieght={300} blog={products?.books[0]} language={language}/> 
+   <ProjectCard openModal={openModal}  isfeaturepage={true} hieght={300} blog={products?.books[0]} language={language}/> 
 )}
 
               </div>

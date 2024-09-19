@@ -102,6 +102,8 @@ export default function BookUpdatePage() {
     },
     services: {
       isfeatrued:false,
+      lockoff:false,
+      resale:false,
 
       security: false,
       cctv: false,

@@ -126,6 +126,8 @@ export default function BookCreatePage() {
     },
     services: {
       isfeatrued:false,
+      lockoff:false,
+      resale:false,
       security: false,
       cctv: false,
       elevator: false,
