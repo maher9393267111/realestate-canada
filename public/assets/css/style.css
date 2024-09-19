@@ -11494,9 +11494,9 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 .package-card3 .package-card-content .rating-area {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 3px;
   line-height: 1;
-  margin-bottom: 15px;
+  /* margin-bottom: 6px; */
 }
 .package-card3 .package-card-content .rating-area .rating {
   display: flex;
@@ -22404,7 +22404,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   line-height: 35px;
   letter-spacing: 0.48px;
 }
-.destination-details-wrap ul {
+.destination-details-wrap  ul {
   -moz-columns: 2;
        columns: 2;
   margin-bottom: 40px;
@@ -22415,7 +22415,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
          columns: 1;
   }
 }
-.destination-details-wrap ul li {
+.destination-details-wrap ul  li:not(.projectcard) {
   color: var(--title-color);
   font-family: var(--font-jost);
   font-size: 17px;
@@ -22426,7 +22426,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   padding-left: 17px;
   position: relative;
 }
-.destination-details-wrap ul li::before {
+.destination-details-wrap ul > li:not(.projectcard)::before {
   content: "";
   height: 9px;
   width: 9px;

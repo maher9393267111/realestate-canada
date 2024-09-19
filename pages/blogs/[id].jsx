@@ -11,6 +11,8 @@ import { ImageEndpoint } from "../../utils/global";
 import { useState } from "react";
 import { useLanguageContext } from "@/context/languageContext";
 import { format, formatDistanceToNow, parseISO } from "date-fns";
+import useProducts from "@/hooks/useProducts";
+import ProjectCard from "@/components/Site/ProjectCard";
 import moment from "moment/moment";
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -42,6 +44,15 @@ const page = () => {
   const { id } = router.query;
   const { data } = useBlog({ id });
   const { data: blogs } = useBlogs({ page: 1 });
+  const {  data:products } = useProducts({
+    page:1,
+    isfeatured:true
+ 
+  });
+
+
+
+  console.log("SSSS"  ,products)
 
   const [search, setSearch] = useState();
 
@@ -204,6 +215,10 @@ const page = () => {
                     );
                   })}
                 </div>
+{products?.books && products?.books[0] && (
+   <ProjectCard isfeaturepage={true} hieght={300} blog={products?.books[0]} language={language}/> 
+)}
+
               </div>
             </div>
           </div>

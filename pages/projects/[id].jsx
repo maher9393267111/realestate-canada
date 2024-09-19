@@ -12,7 +12,8 @@ import Header from "@/components/components/header/Header";
 import Topbar from "@/components/components/topbar/Topbar";
 import useProduct from "../../hooks/useProductDetails";
 import useBlogs from "../../hooks/useBlogs";
-
+import useProducts from "../../hooks/useProducts";
+import ProjectCard from '@/components/Site/ProjectCard'
 
 import { useRouter } from "next/router";
 import { ImageEndpoint } from "../../utils/global";
@@ -35,6 +36,15 @@ const ProjectDetails = () => {
   const { data:blogs } = useBlogs({ 
     country:data?.book?.country 
    });
+
+
+   const {  data:products } = useProducts({
+    page:1,
+    isfeatured:true
+ 
+  });
+
+
 
 
   const images2 = [
@@ -85,7 +95,7 @@ const ProjectDetails = () => {
       <div className="destination-details-wrap mb-120 pt-120">
         <div className="container">
           <div className="row  flex-col-reverse md:!flex-row g-lg-4 gy-5">
-            <div className="col-lg-8">
+            <div className="col-lg-7">
               <h2>Welcome To Egypt</h2>
               <p>
                 {/* {  <img */}
@@ -219,7 +229,7 @@ const ProjectDetails = () => {
                 </div>
               </div> */}
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-5">
               <div className="destination-sidebar sidebar-area">
                 <div className="destination-info mb-30">
                   <div className="single-info">
@@ -265,6 +275,8 @@ const ProjectDetails = () => {
 
                   <div className="mt-3">
                     <ProjectForm />
+
+
                   </div>
 
 {/* ---recent posts-- */}
@@ -339,14 +351,17 @@ const ProjectDetails = () => {
           </div> */}
 
 
-                </div>
 
 
 
                 </div>
 
-                <div className="banner2-card four">
-                  <img src="/assets/img/home1/banner2-card-img2.png" alt="" />
+
+
+                </div>
+
+                <div className="banner2-car fou">
+                  {/* <img src="/assets/img/home1/banner2-card-img2.png" alt="" />
                   <div className="banner2-content-wrap">
                     <div className="banner2-content">
                       <span>Savings worldwide</span>
@@ -356,9 +371,25 @@ const ProjectDetails = () => {
                     <Link href="/package" className="primary-btn1">
                       Book Now
                     </Link>
-                  </div>
+                  </div> */}
+
+
+
                 </div>
+
+                
+
+              
+
+
+
+
               </div>
+<section className="projectcard">
+              {products?.books && products?.books[0] && (
+   <ProjectCard isfeaturepage={true} hieght={300} blog={products?.books[0]} language={language}/> 
+)}
+  </section>
             </div>
           </div>
         </div>

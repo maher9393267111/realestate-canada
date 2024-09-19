@@ -37,10 +37,11 @@ export default function useProducts({
   baths = 0,
   beds=0,
   type = "",
+  isfeatured="",
   maxPrice = 10000000,
 }) {
   const { data, isLoading, error, mutate } = useSWR(
-    `/api/book/main/?page=${page}&country=${country}&city=${city}&search=${search}&rooms=${rooms}&baths=${baths}&beds=${beds}&type=${type}&maxPrice=${maxPrice}&minPrice=${minPrice}`,
+    `/api/book/main/?page=${page}&country=${country}&city=${city}&search=${search}&rooms=${rooms}&baths=${baths}&beds=${beds}&type=${type}&maxPrice=${maxPrice}&minPrice=${minPrice}&isfeatured=${isfeatured}`,
     fetcher,
 
     {
