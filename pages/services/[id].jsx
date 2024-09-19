@@ -44,16 +44,18 @@ const BlogDetailsPage = () => {
                 />
               </div>
               <div className="post-title mb-40">
-                <h1>
+
+              {/* style={{fontFamily:'Jost, sans-serif'}} */}
+                <h2 className=" !text-[23px] sm:!text-[30px] md:!text-[35px]">
                 {language === 'en' ? data?.book?.title : data?.book?.titlefr}
 
-                </h1>
-                <h2 className="!text-[#63ab45]">
+                </h2>
+                <h3 className="!text-[#63ab45]">
                   
                   
                   
                   {language === 'en' ? data?.book?.subtitle : data?.book?.subtitlefr}
-                   </h2>
+                   </h3>
               </div>
 
               <div className="blog-meta two mb-50 ">
