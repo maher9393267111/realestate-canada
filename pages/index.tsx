@@ -16,7 +16,9 @@ import Home2WhyChoose from "../components/components/whyChoose/Home2WhyChoose";
 
 import CountriesSlider from '@/components/Site/CountriesSlider'
 import ProjectsOfferSlider from "@/components/Site/ProjectsOfferSlider"
-
+import useBlogs from "../hooks/useBlogs";
+import AboutBlogs from "@/components/Site/AboutBlogs";
+import { useLanguageContext } from "@/context/languageContext";
 
 
 import React from "react";
@@ -29,13 +31,18 @@ export const metadata = {
   },
 };
 const page = () => {
+
+  const { data, isLoading, error, mutate } = useBlogs({page:1});
+  const { language } = useLanguageContext();
+
+
   return (
     <div dir="ltr">
     <Header />
       <Home2Banner />
       <CountriesSlider/>
     <ProjectsOfferSlider/>
-
+    <AboutBlogs language={language} blogs={data?.books} />
      
       <Home2About />
 
@@ -44,7 +51,7 @@ const page = () => {
       <Home2Testimonial />
       <Home2Team />
       <Home2VideoSection />
-      <Home2Blog />
+    
       <Home2Banner2 />
       <Footer style="style-2" />
     </div>
