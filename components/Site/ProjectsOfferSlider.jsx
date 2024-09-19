@@ -82,9 +82,9 @@ const  ProjectsOfferSlider = () => {
             <div className="col-lg-12">
               <div className="section-title2 text-center">
                 <div className="eg-section-tag two">
-                  <span>Tour Package</span>
+                  <span>Projects Package</span>
                 </div>
-                <h2 className="text-white">Thrilling Tour Plans</h2>
+                <h2 className="text-white">Featured Projects</h2>
               </div>
             </div>
           </div>

@@ -112,7 +112,7 @@ const BlogsMainpage = ({ search, country }) => {
                   // read_time,
                 } = blog;
                 return (
-                  <div key={_id} className="col-lg-6 col-md-6">
+                  <div key={_id} className="col-lg-6 col-md-6 mb-4">
                     <div className="blog-card">
                       <div className="blog-card-img-wrap">
                         <Link href={`/blogs/${_id}`} className="card-img">
@@ -141,7 +141,7 @@ const BlogsMainpage = ({ search, country }) => {
                         </div>
                         <h5>
                           <Link href={`/blogs/${_id}`}>
-                            {language === "en" ? title : titlefr}
+                            {language === "en" ? title?.slice(0,30) : titlefr?.slice(0,30) }....
                           </Link>
                         </h5>
                         <div className="bottom-area">

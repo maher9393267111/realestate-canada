@@ -1,12 +1,20 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import ProjectForm from './ProjectForm'
+// import {
+//   Card,
+//   Grid,
+//   CardHeader,
+//   IconButton,
+//   Slide,
+//   Dialog,
+// } from "@mui/material";
 
 export default function ContactModal({isOpen ,closeModal}) {
 
   return (
     <>
-      <div dir='' className="fixed inset-0 flex items-center justify-center">
+      <div dir='' className="">
        
       </div>
 
@@ -41,6 +49,7 @@ export default function ContactModal({isOpen ,closeModal}) {
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
                 Contact form
+
                   </Dialog.Title>
                   <div className="mt-2">
                 <ProjectForm/>
