@@ -4,7 +4,7 @@ import ModalVideo from "react-modal-video";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useServices from "@/hooks/useServices";
 import { useLanguageContext } from "@/context/languageContext";
-import { ImageEndpoint } from "../../../utils/global";
+import { ImageEndpoint } from "../../utils/global";
 
 import SwiperCore, {
   Autoplay,
@@ -15,7 +15,7 @@ import SwiperCore, {
 import Link from "next/link";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
-const Home2Activities = () => {
+const ServicesTabs = () => {
   const [isOpen, setOpen] = useState(false);
 
   const { language } = useLanguageContext();
@@ -321,4 +321,4 @@ const Home2Activities = () => {
   );
 };
 
-export default Home2Activities;
+export default ServicesTabs;

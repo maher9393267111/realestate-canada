@@ -1,7 +1,7 @@
 
 
 import Home2About from "../components/components/about/Home2About";
-import Home2Activities from "../components/components/activities/Home2Activities";
+// import Home2Activities from "../components/components/activities/Home2Activities";
 import Home2Banner from "../components/components/banner/Home2Banner";
 import Home2Banner2 from "../components/components/banner/Home2Banner2";
 import Home2Blog from "../components/components/blog/Home2Blog";
@@ -16,6 +16,7 @@ import Home2WhyChoose from "../components/components/whyChoose/Home2WhyChoose";
 
 import CountriesSlider from '@/components/Site/CountriesSlider'
 import ProjectsOfferSlider from "@/components/Site/ProjectsOfferSlider"
+import ServicesTabs from '@/components/Site/ServicesTabs'
 import useBlogs from "../hooks/useBlogs";
 import AboutBlogs from "@/components/Site/AboutBlogs";
 import { useLanguageContext } from "@/context/languageContext";
@@ -43,10 +44,11 @@ const page = () => {
       <CountriesSlider/>
     <ProjectsOfferSlider/>
     <AboutBlogs language={language} blogs={data?.books} />
+    <ServicesTabs/>
      
       <Home2About />
 
-      <Home2Activities />
+      {/* <Home2Activities /> */}
       <Home2WhyChoose />
       <Home2Testimonial />
       <Home2Team />
