@@ -1,7 +1,15 @@
 import Link from "next/link";
 import React from "react";
+import { useLanguageContext } from "@/context/languageContext";
 
 const Breadcrumb = ({ pagename, pagetitle }) => {
+
+
+
+  const { language } = useLanguageContext();
+
+
+
   return (
     <div
       className="breadcrumb-section"
@@ -17,7 +25,9 @@ const Breadcrumb = ({ pagename, pagetitle }) => {
               <h1>{pagename}</h1>
               <ul className="breadcrumb-list">
                 <li>
-                  <Link href="/">Home</Link>
+                  {language === "en" ? <Link href="/">Home</Link> :
+                  <Link href="/">Maison</Link>
+                }
                 </li>
                 <li>{pagetitle}</li>
               </ul>

@@ -2,6 +2,7 @@
 import { useLanguageContext } from "@/context/languageContext";
 
 import useBlogs from "../hooks/useBlogs";
+import AboutBlogs from "@/components/Site/AboutBlogs";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
@@ -9,7 +10,7 @@ import Header from "@/components/components/header/Header";
 import Topbar from "@/components/components/topbar/Topbar";
 import Home2Activities from "@/components/components/activities/Home2Activities";
 import Home2Team from "@/components/components/team/Home2Team";
-import AboutBlogs from "@/components/Site/AboutBlogs";
+
 import Home2WhyChoose from "@/components/components/whyChoose/Home2WhyChoose";
 import Home2About from "@/components/components/about/Home2About";
 

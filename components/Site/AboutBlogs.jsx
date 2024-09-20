@@ -5,7 +5,7 @@ import { ImageEndpoint } from "../../utils/global";
 
 
 
-const Home2Blog = ({ blogs ,language }) => {
+const BlogsComponent = ({ blogs ,language }) => {
   return (
     <>
       <div className="home2-blog-section mb-120">
@@ -114,4 +114,4 @@ const Home2Blog = ({ blogs ,language }) => {
   );
 };
 
-export default Home2Blog;
+export default BlogsComponent;

@@ -101,230 +101,13 @@ const ProjectDetails = () => {
         pagename="Destination Details"
         pagetitle="Destination Details"
       />
-      {/* <div className="destination-details-wrap mb-120 pt-120">
-        <div className="container">
-          <div className="row  flex-col-reverse md:!flex-row g-lg-4 gy-5">
-            <div className="col-lg-7">
-              <h2>Welcome To Egypt</h2>
-              <p>
-
-                {language === "en" ? data?.book?.title : data?.book?.titlefr}
-              </p>
-              <div className="destination-gallery mb-40 mt-40">
-                <div className="row g-4">
-                  {images?.map((img, index) => {
-                    return (
-                      <div key={index} className="col-lg-5 col-sm-6">
-                        <div className="gallery-img-wrap">
-                          <img src={img?.imageBig} alt="" />
-                          <a
-                            data-fancybox="gallery-01"
-                            onClick={() =>
-                              setOpenimg({
-                                openingState: true,
-                                openingIndex: 1,
-                              })
-                            }
-                          >
-                            <i className="bi bi-eye" /> Discover Island
-                          </a>
-                        </div>
-                      </div>
-                    );
-                  })}
-
-                  <div className="col-lg-3 col-sm-6">
-                    <div className="gallery-img-wrap">
-                      <img src="/assets/img/innerpage/gallery-02.jpg" alt="" />
-                      <a
-                        data-fancybox="gallery-01"
-                        onClick={() =>
-                          setOpenimg({ openingState: true, openingIndex: 2 })
-                        }
-                      >
-                        <i className="bi bi-eye" /> Discover Island
-                      </a>
-                    </div>
-                  </div>
-
-
-            
-                </div>
-              </div>
-
-              <p
-                dangerouslySetInnerHTML={{
-                  __html:
-                    language === "en" ? data?.book?.story : data?.book?.storyfr,
-                }}
-              ></p>
-              <h2>Features</h2>
-              <ul>
-                {data?.book?.services &&
-                  Object.keys(data?.book?.services)?.map((feature, index) => {
-                    if (data?.book?.services[feature]) {
-                      return <li key={index}>{feature}</li>;
-                    }
-                  })}
-              </ul>
-
-              <ul>
-                {data?.book?.features &&
-                  Object.keys(data?.book?.features)?.map((feature, index) => {
-                    if (data?.book?.features[feature]) {
-                      return <li key={index}>{feature}</li>;
-                    }
-                  })}
-              </ul>
-
-        
-            </div>
-            <div className="col-lg-5">
-              <div className="destination-sidebar sidebar-area">
-                <div className="destination-info mb-30">
-                  <div className="single-info">
-                    <span>Destination: {data?.book?.country}</span>
-                  
-                  </div>
-                  <div className="single-info">
-                    <span>City: {data?.book?.city}</span>
-                   
-                  </div>
-
-                  <div className="single-info">
-                    <span>
-                      Resale: {data?.book?.services?.resale ? "True" : "False"}
-                    </span>
-                   
-                  </div>
-                  <div className="single-info">
-                    <span>
-                      Lock off: {data?.book?.services ? "True" : "False"}
-                    </span>
-                
-                  </div>
-                  <div className="single-info">
-                    <span>Bathrooms: {data?.book?.details?.baths}</span>
-                 
-                  </div>
-                  <div className="single-info">
-                    <span>Rooms: {data?.book?.details?.rooms}</span>
-                   
-                  </div>
-                  <div className="single-info">
-                    <span>Beds: {data?.book?.details?.beds}</span>
-                    
-                  </div>
-
-                  <div className="single-info">
-                    <span>
-                      Furnished:{" "}
-                      {data?.book?.services?.Furnished ? "True" : "False"}
-                    </span>
-                  
-                  </div>
-
-                  <div className="single-info">
-                    <span>Parking Lots: {data?.book?.details?.parkings}</span>
-                  </div>
-
-                  <div className="single-info">
-                    <span>Reference: {data?.book?.reference}</span>
-                  </div>
-
-                  <div className="single-info">
-                    <span>Condition: {data?.book?.condition}</span>
-                  </div>
-
-                  <div className="mt-3">
-                    <ProjectForm />
-                  </div>
-
-              
-                  <div className="single-widget mb-30">
-                    <h5 className="widget-title">
-                      {language === "en" ? "Recent Post" : "Article récent"}
-                    </h5>
-
-                    {blogs?.books?.map((blog) => {
-                      const {
-                        _id,
-
-                        createdAt,
-
-                        image,
-                        title,
-                        titlefr,
-                        story,
-                        storyfr,
-                        category,
-
-                        // read_time,
-                      } = blog;
-                      return (
-                        <div className="recent-post-widget mb-20">
-                          <div className="recent-post-img">
-                            <Link href={`/blogs/${_id}`}>
-                              <img
-                                src={`${ImageEndpoint}/${image[0]}`}
-                                // src="/assets/img/innerpage/recent-post-img1.png"
-                                alt=""
-                              />
-                            </Link>
-                          </div>
-
-                          <div className="recent-post-content">
-                            <Link className=" px-2" href={`/blogs/${_id}`}>
-                              20 July, 2023
-                            </Link>
-                            <Link href={`/blogs?country=${category}`}>
-                              {category}
-                            </Link>
-
-                            <h6>
-                              <Link href={`/blogs/${_id}`}>
-                                {language === "en"
-                                  ? title?.slice(0, 30)
-                                  : titlefr?.slice(0, 30)}
-                                ....
-                              </Link>
-                            </h6>
-                          </div>
-                        </div>
-                      );
-                    })}
-
-   
-                  </div>
-                </div>
-
-                <div className="banner2-car fou">
-           
-                </div>
-
-                <ContactModal isOpen={isOpen} closeModal={closeModal} />
-              </div>
-              <section className="projectcard">
-                {products?.books && products?.books[0] && (
-                  <ProjectCard
-                    openModal={openModal}
-                    isfeaturepage={true}
-                    hieght={300}
-                    blog={products?.books[0]}
-                    language={language}
-                  />
-                )}
-              </section>
-            </div>
-          </div>
-        </div>
-      </div> */}
+    
 
 <div className="destination-details-wrap mb-120 pt-120">
         <div className="container">
           <div className="row g-lg-4 gy-5">
             <div className="col-lg-7">
-            <h2>Welcome To Egypt</h2>
+            <h2>Welcome To Our project</h2>
               <p>
 
                 {language === "en" ? data?.book?.title : data?.book?.titlefr}
@@ -337,7 +120,7 @@ const ProjectDetails = () => {
                     return (
                       <div key={index} className="col-lg-5 col-sm-6">
                         <div className="gallery-img-wrap">
-                          <img className=" h-[700px] w-[900px] md:w-[300px] object-cover md:h-[300px]" src={img?.imageBig} alt="" />
+                          <img className="h-[400px] w-full md:w-[500px] object-cover md:h-[300px]" src={img?.imageBig} alt="" />
                           <a
                             data-fancybox="gallery-01"
                             onClick={() =>
@@ -385,7 +168,7 @@ const ProjectDetails = () => {
              
             </div>
             <div className="col-lg-5">
-              <div className="destination-sidebar">
+            <div className="destination-sidebar sidebar-area">
               <div className="destination-info mb-30">
                 <div className="single-info">
                   <span>Destination: {data?.book?.country}</span>
@@ -503,9 +286,13 @@ const ProjectDetails = () => {
                 </div>
               </div>
 
-             
+              <div className="banner2-car fou">
+         
               </div>
-              <section className="projectcard">
+
+              <ContactModal isOpen={isOpen} closeModal={closeModal} />
+            </div>
+            <section className="projectcard">
               {products?.books && products?.books[0] && (
                 <ProjectCard
                   openModal={openModal}
@@ -516,19 +303,12 @@ const ProjectDetails = () => {
                 />
               )}
             </section>
-
-            </div>
+          </div>
 
             
- <ContactModal isOpen={isOpen} closeModal={closeModal} />
-
 
 
           </div>
-
-
-
-
         </div>
       </div>
 
