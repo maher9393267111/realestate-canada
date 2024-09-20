@@ -1,4 +1,5 @@
 import React, { useMemo, useEffect, useState } from "react";
+
 import "@/styles/globals.css";
 // import '../public/semantic.min.css';
 
@@ -13,15 +14,12 @@ import "../public/assets/css/slick-theme.css";
 import "../public/assets/css/slick.css";
 import "../public/assets/css/bootstrap-datetimepicker.min.css";
 import "react-datepicker/dist/react-datepicker.css";
-import "../public/assets/css/bootstrap.min.css";
+ import "../public/assets/css/bootstrap.min.css";
 import "yet-another-react-lightbox/styles.css";
 import "../public/assets/css/style.css";
 import "../public/assets/sass/main.scss";
-import "bootstrap/dist/css/bootstrap.min.css"; 
 
-
-
- import "../public/assets/css/dashboard.css";
+import "../public/assets/css/dashboard.css";
 
 import type { AppProps } from "next/app";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -30,7 +28,7 @@ import theme from "@/site-settings/theme";
 import RTL from "@/site-settings/RTL";
 import { IntlProvider } from "react-intl";
 import msgs from "@/site-settings/site-translations";
-import Head from 'next/head';
+import Head from "next/head";
 
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
@@ -60,24 +58,20 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-   
     <>
+      <Head>
 
-<Head>
-          
-         
-        
-        </Head>
+      {/* <Script id="1"  strategy='lazyOnload' src={`https://code.jquery.com/jquery-3.3.1.slim.min.js`}  />
+    <Script id="1"  strategy='lazyOnload' src={`https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js`}  />
+    <Script id="1"  strategy='lazyOnload' src={`https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js`}  />
+    <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></Script> */}
 
+
+      </Head>
 
       {!isSSR && (
-       
-        
-
-          
-
-          <ThemeProvider theme={theme}>
-            <LanguageProvider>
+        <ThemeProvider theme={theme}>
+          <LanguageProvider>
             <IntlProvider locale="en" messages={msgs["en"]}>
               {/* <RTL> */}
               <CssBaseline />
@@ -90,20 +84,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
               {/* </RTL> */}
             </IntlProvider>
-            </LanguageProvider>
-            <NextNProgress
-              color="#a38579"
-              startPosition={0.2}
-              stopDelayMs={200}
-              height={3}
-              showOnShallow={true}
-            />
-          </ThemeProvider>
-          
-       
+          </LanguageProvider>
+          <NextNProgress
+            color="#a38579"
+            startPosition={0.2}
+            stopDelayMs={200}
+            height={3}
+            showOnShallow={true}
+          />
+        </ThemeProvider>
       )}
     </>
- 
   );
 }
 

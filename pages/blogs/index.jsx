@@ -35,11 +35,25 @@ const BlogsMainpage = ({ search, country }) => {
   const countries = [
     { value: "", label: "All countries" },
 
-    { value: "mexico", label: "Mexico" },
-    { value: "canada", label: "Canada" },
-    { value: "office", label: "Offices" },
-    { value: "town", label: "Townhome" },
-    { value: "villa", label: "Villa" },
+    { value: "Mexico", label: language === "en" ? "Mexico" : "Mexique" },
+    {
+      value: "North Cyprus",
+      label: language === "en" ? "North Cyprus" : "Chypre du Nord",
+    },
+    { value: "Spain", label: language === "en" ? "Spain" : "Espagne" },
+    {
+      value: "Republic Dominica",
+      label: language === "en" ? "Republic Dominica" : "République Dominique",
+    },
+
+    // { value: "Portugal", label: language === 'en' ? " Portugal" : "Portugal"},
+
+    // { value: "Canada", label: language === 'en' ? "Canada" : "Canada"},
+
+    {
+      value: "United Arab Emirates",
+      label: language === "en" ? "United Arab Emirates" : "",
+    },
   ];
 
   const { data, isLoading, error, mutate } = useBlogs({
@@ -64,16 +78,13 @@ const BlogsMainpage = ({ search, country }) => {
     setSearch(e.target.value);
   };
 
-
   const handleReset = (e) => {
     e.preventDefault();
     router.push(`/blogs`);
-    setCountry({value:'', label:''})
-    setSearch("")
-    mutate()
+    setCountry({ value: "", label: "" });
+    setSearch("");
+    mutate();
   };
-  
-
 
   return (
     <div dir="ltr" className="">
@@ -82,12 +93,9 @@ const BlogsMainpage = ({ search, country }) => {
       <Breadcrumb pagename="Blog Grid" pagetitle="Blog Grid" />
       <div className="blog-details-section pt-120 mb-120">
         <div className="container">
+          {isLoading && <Loading />}
 
-{isLoading && <Loading/>}
-
-
-
-          <div className="row g-lg-4 gy-5 justify-content-center flex-col-reverse md:!flex-row ">
+          <div className="row mb-7 g-lg-4 gy-5 justify-content-center flex-col-reverse md:!flex-row ">
             <div className=" col-lg-8 row ">
               {data?.books?.map((blog) => {
                 const {
@@ -108,13 +116,17 @@ const BlogsMainpage = ({ search, country }) => {
                     <div className="blog-card">
                       <div className="blog-card-img-wrap">
                         <Link href={`/blogs/${_id}`} className="card-img">
-                          <img src={`${ImageEndpoint}/${image[0]}`} alt="" />
+                          <img
+                            className="!h-[300px] !w-full"
+                            src={`${ImageEndpoint}/${image[0]}`}
+                            alt=""
+                          />
                         </Link>
-                        <Link href="/blogs" className="date">
+                        {/* <Link href="/blogs" className="date">
                           <span>
                             <strong>2024</strong> <br />
                           </span>
-                        </Link>
+                        </Link> */}
                       </div>
                       <div className="blog-card-content">
                         <div className="blog-card-content-top">
@@ -202,7 +214,9 @@ const BlogsMainpage = ({ search, country }) => {
                   <div className=" mt-4 !block">
                     <div className="mb-3">
                       <label className="form-label fs-6">
-                        {language === 'en' ? "Select coutry" : "sélectionner un pays"} 
+                        {language === "en"
+                          ? "Select coutry"
+                          : "sélectionner un pays"}
                       </label>
                       <div className="filte-search-fo position-relativ focus:!border-none filter-borde bg-light">
                         <Select
@@ -226,7 +240,7 @@ const BlogsMainpage = ({ search, country }) => {
                     value="Search"
                   />
 
-<input
+                  <input
                     onClick={handleReset}
                     type="submit"
                     id="search"
@@ -235,9 +249,6 @@ const BlogsMainpage = ({ search, country }) => {
                     className="btn !bg-primary my-3 !text-white searchbtn w-100"
                     value="Reset"
                   />
-
-
-
                 </div>
               </div>
             </div>

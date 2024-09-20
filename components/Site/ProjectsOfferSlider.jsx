@@ -29,6 +29,7 @@ const  ProjectsOfferSlider = () => {
 
   const {  data } = useProducts({
     page,
+    isfeatured:true
  
   });
 

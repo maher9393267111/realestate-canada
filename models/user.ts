@@ -15,6 +15,12 @@ const schema = new mongoose.Schema(
       required: true,
       maxlength: 100,
     },
+    phone: {
+      type: String,
+      trim: true,
+      // required: true,
+      maxlength: 15,
+    },
     email: {
       type: String,
       required: true,

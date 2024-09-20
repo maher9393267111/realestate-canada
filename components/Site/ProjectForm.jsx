@@ -61,41 +61,42 @@ const ProjectForm = () => {
   };
 
   return (
-    <form autoComplete="off" className="w-full grid grid-cols-3 gap-4">
-      <div className="col-span-3">
+    <form dir="ltr" autoComplete="off" className="w-full grid grid-cols-3 gap-4">
+      <div className="col-span-3 search-box">
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mt-1 p-2 block w-full rounded-md border focus:outline-none !border-primary focus:!border-primary shadow-sm md:text-base"
+          className="mt-1 p-2 block w-full rounded-md border focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
         />
       </div>
-      <div className="col-span-3">
+      <div className="col-span-3 search-box">
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 p-2 block w-full rounded-md border focus:outline-none !border-primary focus:!border-primary shadow-sm md:text-base"
+          className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
+
         />
       </div>
-      <div className="col-span-3">
+      <div className="col-span-3 search-box">
         <input
           type="tel"
           placeholder="Phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary focus:!border-primary shadow-sm md:text-base"
+          className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
         />
       </div>
-      <div className="col-span-3">
+      <div className="col-span-3 search-box">
         <textarea
           placeholder="Message"
           rows="4"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="mt-1 p-2 block w-full min-h-[42px] max-h-[210px] rounded-md border focus:outline-none !border-primary focus:!border-primary shadow-sm md:text-base"
+          className="mt-1 p-2 block w-full min-h-[42px] max-h-[210px] rounded-md border focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
         />
       </div>
       <div className="col-span-3 flex items-center justify-center gap-x-4">

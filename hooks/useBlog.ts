@@ -17,6 +17,8 @@ interface BookDetails {
   image: string;
 }
 
+
+
 const fetcher = (url: string) => axios.get(url).then(({ data }: any) => data);
 
 export default function useBlog({ id }: Query = {}) {

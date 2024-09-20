@@ -9,9 +9,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
   await dbConnect();
-  const { name, email, password } = req.body;
+  const { name, email, password ,phone } = req.body;
   try {
-    const user = await User.create({ name, email, password });
+    const user = await User.create({ name, email, password ,phone });
     const result = user.signJwt();
     res.cookie("accessToken", result.token, {
       httpOnly: true,

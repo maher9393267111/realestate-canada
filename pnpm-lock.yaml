@@ -8,7 +8,7 @@ specifiers:
   '@emotion/react': ^11.11.1
   '@emotion/styled': ^11.11.0
   '@headlessui/react': ^1.7.4
-  '@heroicons/react': ^2.0.13
+  '@heroicons/react': ^1.0.4
   '@material-ui/core': ^4.12.4
   '@material-ui/lab': ^4.0.0-alpha.61
   '@material-ui/styles': ^4.11.5
@@ -33,7 +33,7 @@ specifiers:
   autoprefixer: ^10.4.16
   axios: ^1.5.0
   bcrypt: ^5.1.1
-  bootstrap: ^5.3.2
+  bootstrap: 5.2.2
   cookie: ^0.5.0
   cookies-next: ^4.0.0
   date-fns: ^4.0.0
@@ -88,7 +88,7 @@ dependencies:
   '@emotion/react': 11.11.4_gq4reeurwxuj4hvyerswzzqthy
   '@emotion/styled': 11.11.5_3n7scv3jp6sqs4xv4iudbgejky
   '@headlessui/react': 1.7.19_biqbaboplfbrettd7655fr4n2y
-  '@heroicons/react': 2.1.4_react@18.2.0
+  '@heroicons/react': 1.0.6_react@18.2.0
   '@material-ui/core': 4.12.4_vnxzf5c44dqo4vncfl2mrh2gwm
   '@material-ui/lab': 4.0.0-alpha.61_fwbywi5hoven7rmaj7wbj2vsza
   '@material-ui/styles': 4.11.5_vnxzf5c44dqo4vncfl2mrh2gwm
@@ -105,7 +105,7 @@ dependencies:
   antd: 5.18.0_7kwxypjbmqa3vnkan4x2mrj3rm
   axios: 1.7.2
   bcrypt: 5.1.1
-  bootstrap: 5.3.3
+  bootstrap: 5.2.2
   cookie: 0.5.0
   cookies-next: 4.2.1
   date-fns: 4.0.0
@@ -3357,8 +3357,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@heroicons/react/2.1.4_react@18.2.0:
-    resolution: {integrity: sha512-ju0wj0wwrUTMQ2Yceyrma7TKuI3BpSjp+qKqV81K9KGcUHdvTMdiwfRc2cwXBp3uXtKuDZkh0v03nWOQnJFv2Q==}
+  /@heroicons/react/1.0.6_react@18.2.0:
+    resolution: {integrity: sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==}
     peerDependencies:
       react: '>= 16'
     dependencies:
@@ -5162,10 +5162,10 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  /bootstrap/5.3.3:
-    resolution: {integrity: sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==}
+  /bootstrap/5.2.2:
+    resolution: {integrity: sha512-dEtzMTV71n6Fhmbg4fYJzQsw1N29hJKO1js5ackCgIpDcGid2ETMGC6zwSYw09v05Y+oRdQ9loC54zB1La3hHQ==}
     peerDependencies:
-      '@popperjs/core': ^2.11.8
+      '@popperjs/core': ^2.11.6
     dev: false
 
   /brace-expansion/1.1.11:
