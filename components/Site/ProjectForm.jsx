@@ -20,7 +20,7 @@ const ProjectForm = () => {
 
   useEffect(() => {
     if (error) {
-      antdMessage.success("Error happend");
+      antdMessage.error (error);
       setError(null);
     }
 
