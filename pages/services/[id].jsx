@@ -67,7 +67,12 @@ const BlogDetailsPage = () => {
                   </div> */}
                   <div className="author-content !text-md !font-semibold sm:!text-lg !text-[#63ab45]">
                     {/* <h6>By, <Link href="/blog">Admin</Link></h6> */}
-                    {data?.book?.category} 
+                    
+             
+                    <div>
+                    {data?.book?.category}      
+                    </div>
+                    
                   </div>
                 </div>
                 <ul>

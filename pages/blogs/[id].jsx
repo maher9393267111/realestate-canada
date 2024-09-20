@@ -108,7 +108,18 @@ const page = () => {
                   </div> */}
                   <div className="author-content !text-md !font-semibold sm:!text-lg !text-[#63ab45] ">
                     {/* <h6>By, <Link href="/blog">Admin</Link></h6> */}
-                    {data?.book?.category}
+                    {/* {data?.book?.category} */}
+                  
+                    {data?.book?.category === "Mexico"
+                    ? <div>{language === "en" ?
+                     "Mexico" : "Mexique"}</div> : 
+                     
+                    <div>
+                    {data?.book?.category}      
+                    </div>
+                    } 
+                  
+                  
                   </div>
                 </div>
                 <ul>
@@ -170,12 +181,12 @@ const page = () => {
               <div className="sidebar-area">
                 <div className="single-widget mb-30">
                   <h5 className="widget-title">
-                    {language === "en" ? "Search Here" : "Rechercher ici"}{" "}
+                    {language === "en" ? "Search Here" : "Rechercher ici"}
                   </h5>
                   <form onSubmit={handleSearch}>
                     <div className="search-box">
                       <input
-                        placeholder="Search Here"
+                        placeholder={language === "en" ? "Search Here" : "Rechercher ici"}
                         value={search}
                         onChange={handleSearchInputChange}
                         type="text"
@@ -219,7 +230,7 @@ const page = () => {
                         </div>
 
                         <div className="recent-post-content">
-                          <Link href={`/blogs/${_id}`}>20 July, 2023</Link>
+                          <Link href={`/blogs/${_id}`}>{blog.category}</Link>
                           <h6>
                             <Link href={`/blogs/${_id}`}>
                               {language === "en" ? title : titlefr}
