@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 import { ImageEndpoint } from "../../utils/global";
 import { useLanguageContext } from "@/context/languageContext";
 import moment from "moment/moment"
+import ProjectForm from "../../components/Site/ProjectForm";
+
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -32,10 +34,25 @@ const BlogDetailsPage = () => {
       <Header />
       <Breadcrumb pagename={language === 'en' ? "Service Details" : "Détails des services"} pagetitle={language === 'en' ? "Service Details" : "Détails des services"} />
 
-      <div className="blog-details-section pt-120 mb-120">
-        <div className="container">
+      <div className="blog-details-section pt-120 mb-120 flex flex-col-reverse xl:flex1 xl:flex-row-reverse1">
+
+
+             
+          <div className="mx-auto  justify-start1 flex1 h-dvh1">
+      <div className="justify-center flex mx-auto  w-80 sm:w-[400px]   shadow-2xl p-4 rounded-xl h-[450px] text-center mb-4 font-rubik text-md ">
+        
+         
+        <ProjectForm/>
+        </div>
+        </div>
+
+        <div className="container  ">
+     
           <div className="row g-lg-4 gy-5 justify-content-center">
             <div className="col-lg-8">
+              
+
+              
               <div className="post-thumb mb-30">
                 <img
                   src={`${ImageEndpoint}/${data?.book?.image[0]}`}
@@ -43,7 +60,12 @@ const BlogDetailsPage = () => {
                   alt=""
                 />
               </div>
-              <div className="post-title mb-40">
+
+           
+
+
+
+              <div className="post-title mb-10">
 
               {/* style={{fontFamily:'Jost, sans-serif'}} */}
                 <h2 className=" !text-[23px] sm:!text-[30px] md:!text-[35px]">
@@ -58,7 +80,7 @@ const BlogDetailsPage = () => {
                    </h3>
               </div>
 
-              <div className="blog-meta two mb-50 ">
+              <div className="blog-meta two mb-6 ">
                 <div className="author-area ">
                   {/* <div className="author-img">
                     <img src={`${ImageEndpoint}/${data?.book?.image[0]}`}
@@ -116,7 +138,7 @@ const BlogDetailsPage = () => {
                 </ul>
               </div>
 
-              <p className="first-para ">
+              <p className="!first-para">
                 <div
                   dangerouslySetInnerHTML={{ __html: language === 'en' ? data?.book?.story : data?.book?.storyfr }}
                 />
@@ -253,12 +275,24 @@ const BlogDetailsPage = () => {
                     </div>
                   </div>
                 </div> */}
+                
               </p>
+              
             </div>
+            
           </div>
-        </div>
-      </div>
+          
+        
+        
+        
+   
 
+
+
+        </div>
+        
+      </div>
+                 
       <Newslatter />
       <Footer />
     </div>

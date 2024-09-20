@@ -86,7 +86,7 @@ const page = () => {
       <Breadcrumb pagename={language === 'en' ? "Blog Details" : "Détails du blog"} pagetitle={language === 'en' ? "Blog Details" : "Détails du blog"} />
       <div className="blog-details-section pt-120 mb-120">
         <div className="container">
-          <div className="row g-lg-4 gy-5 justify-content-center flex-col-reverse md:!flex-row ">
+          <div className="row g-lg-4 gy-5 justify-content-center flex-col md:!flex-row ">
             <div className="col-lg-8">
               <div className="post-thumb mb-30">
                 <img
@@ -96,7 +96,7 @@ const page = () => {
                   alt=""
                 />
               </div>
-              <div className="post-title mb-40">
+              <div className="post-title mb-10">
                 <h2 className="!text-[23px] sm:!text-[30px] md:!text-[35px]">{language === 'en' ? data?.book?.title : data?.book?.titlefr} </h2>
               </div>
               <div className="blog-meta two mb-50">
@@ -110,14 +110,12 @@ const page = () => {
                     {/* <h6>By, <Link href="/blog">Admin</Link></h6> */}
                     {/* {data?.book?.category} */}
                   
-                    {data?.book?.category === "Mexico"
-                    ? <div>{language === "en" ?
-                     "Mexico" : "Mexique"}</div> : 
+         
                      
-                    <div>
+                    <h6 className="!text-[#63ab45]">
                     {data?.book?.category}      
-                    </div>
-                    } 
+                    </h6>
+                   
                   
                   
                   </div>
