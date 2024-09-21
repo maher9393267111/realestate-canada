@@ -1,13 +1,13 @@
 [
+
     {
         "id": "1",
-        "label": "Home",
-        "labelfr": "Maison",
-
-        "link": "/",
+        "label": "Services",
+        "labelfr": "Services",
+        "link": "/services",
         "icon": false
-       
     },
+
     {
         "id": "2",
         "label": "About",
@@ -16,6 +16,7 @@
         "icon": false
     },
 
+    
     {
         "id": "3",
         "label": "Blogs",
@@ -24,18 +25,22 @@
         "icon": false
     },
 
+    
     {
         "id": "4",
-        "label": "Services",
-        "labelfr": "Services",
-        "link": "/services",
+        "label": "Collaborations",
+        "labelfr": "Collaborations",
+        "link": "/Collaborations",
         "icon": false
     },
+
+
+
   
- 
+  
   
     {
-        "id": "6",
+        "id": "5",
         "label": "Contact",
         "labelfr": "Contactez",
         "link": "/contact",
