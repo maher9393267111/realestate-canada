@@ -112,6 +112,42 @@ const Home2Banner = () => {
                   }}
                 ></div>
               </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <div
+                  className="home2-banner-wrapper"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/slide5.jpg)",
+                  }}
+                ></div>
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <div
+                  className="home2-banner-wrapper"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/slide6.jpg)",
+                  }}
+                ></div>
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <div
+                  className="home2-banner-wrapper"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/slide7.jpg)",
+                  }}
+                ></div>
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <div
+                  className="home2-banner-wrapper"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/slide8.jpg)",
+                  }}
+                ></div>
+              </SwiperSlide>
             </div>
           </Swiper>
           <div className="home2-banner-content-wrap">

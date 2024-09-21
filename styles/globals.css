@@ -37,11 +37,21 @@ body {
 
 
 
-
- /* .first-para strong {
+/* 
+ .first-para strong {
   background-color:transparent !important;
   font-family: "Rubik !important";
 } */
+
+
+.st-current strong {
+  @apply   !font-rubik 
+}
+
+
+.p strong {
+  @apply   !font-rubik 
+}
 
 
  strong {

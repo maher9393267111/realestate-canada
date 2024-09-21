@@ -63,7 +63,7 @@ export default function FilterForm({home=false}) {
     { value: "40000", label: "40000" },
     { value: "50000", label: "50000" },
     { value: "60000", label: "60000" },
-    { value: "7000", label: "70000" },
+    { value: "70000", label: "70000" },
   ];
 
   const initialState = {
@@ -114,12 +114,12 @@ export default function FilterForm({home=false}) {
   };
 
   return (
-    <div className=" mb-24 md:mb-4">
+    <div className=" mb-24 mt-20 md:mb-4">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 mt-sm-0 pt-sm-0">
             <div className="features-absolute">
-              <ul
+              {/* <ul
                 className="nav nav-pills bg-white shadow border-bottom p-3 flex-row d-md-inline-flex nav-justified mb-0 rounded-top-3 position-relative overflow-hidden"
                 id="pills-tab"
                 role="tablist"
@@ -135,9 +135,9 @@ export default function FilterForm({home=false}) {
                 </li>
 
            
-              </ul>
+              </ul> */}
 
-              <div className="tab-content bg-white rounded-bottom-3 rounded-end-3 sm-rounded-0 shadow">
+              <div className="tab-content bg-white 1rounded-bottom-3 1rounded-end-3  rounded-lg sm-rounded-0 shadow">
                 <div className="card border-0 active">
                   <form
                     onSubmit={handleSearch}
