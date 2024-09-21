@@ -13,6 +13,7 @@ import { Pagination } from "@material-ui/lab";
 import { useLanguageContext } from "@/context/languageContext";
 import { CircularLoading as Loading } from "@/components/loading";
 import Select from "react-select";
+import { handleChange } from "../../utils/handleLanguage";
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -215,7 +216,7 @@ const BlogsMainpage = ({ search, country }) => {
                             By <Link href="/blog">Admin</Link>
                           </li> */}
                             <li>
-                              <Link href="/blogs">{category}</Link>
+                              <Link href="/blogs">{language ==='en' ? category  : handleChange(category)}</Link>
                             </li>
                           </ul>
                         </div>
