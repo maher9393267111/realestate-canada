@@ -447,9 +447,11 @@ const ProjectDetails = () => {
 
             
                 <div className="single-widget mb-30">
+                  {blogs?.books?.length >0 &&
                   <h5 className="widget-title">
-                    {language === "en" ? "Recent Post" : "Article récent"}
+                 {language === "en" ? "Recent Post" : "Article récent"}
                   </h5>
+                  }
 
                   {blogs?.books?.map((blog) => {
                     const {
