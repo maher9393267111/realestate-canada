@@ -558,7 +558,7 @@ const Header = () => {
               </svg>
             </li>
           </ul>
-          <div className="hotline-area d-xl-flex d-none">
+          {/* <div className="hotline-area d-xl-flex d-none">
             <div className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -571,13 +571,13 @@ const Header = () => {
                 <path d="M15.865 10.267C17.1528 10.2686 18.1964 11.3122 18.198 12.6C18.198 12.7238 18.2472 12.8424 18.3347 12.9299C18.4222 13.0174 18.5409 13.0666 18.6646 13.0666C18.7883 13.0666 18.907 13.0174 18.9945 12.9299C19.082 12.8424 19.1312 12.7238 19.1312 12.6C19.1291 10.797 17.668 9.33589 15.865 9.33386C15.6073 9.33386 15.3984 9.54274 15.3984 9.80044C15.3984 10.0581 15.6073 10.267 15.865 10.267Z" />
               </svg>
             </div>
-            {/* <div className="content">
+            <div className="content">
               <span>To More Inquiry</span>
               <h6>
                 <a href="tel:+990737621432">+990-737 621 432</a>
               </h6>
-            </div> */}
-          </div>
+            </div>
+          </div> */}
           <div
             className="sidebar-button mobile-menu-btn"
             onClick={toggleSidebar}
