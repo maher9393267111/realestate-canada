@@ -79,9 +79,7 @@ const Header = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const headerRef = useRef(null);
 
-
-  const { data:countries, isLoading, error } = useCountries();
-
+  const { data: countries, isLoading, error } = useCountries();
 
   const {
     data: cities,
@@ -89,30 +87,34 @@ const Header = () => {
     error: errorCities,
   } = useCities();
 
-
-  const groupedData = countries?.map(country => ({
+  const groupedData = countries?.map((country) => ({
     country: country?.title,
     id: 1,
-    label: country?.title,
-    labelfr:country?.titlefr,
-    link:`/projects/?country=${country?.title}&city=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
-  
     
-    subMenu: cities?.filter(city => city?.country === country?.title).map((city, index) => ({
+    label: country?.title,
+    labelfr: country?.titlefr,
+    link: `/projects/?country=${
+      country?.title
+    }&city=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
+    countrylink:`/forsale/${country?._id}`,
+
+    subMenu: cities
+      ?.filter((city) => city?.country === country?.title)
+      .map((city, index) => ({
         id: index,
         label: city?.title,
-        labelfr:city?.labelfr,
-    link:`/projects/?city=${city?.title}&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
-  })),
-   icon:cities?.filter(city => city?.country === country?.title)?.length > 0 ? true : false
+        labelfr: city?.labelfr,
+        link: `/projects/?city=${
+          city?.title
+        }&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
+      })),
+    icon:
+      cities?.filter((city) => city?.country === country?.title)?.length > 0
+        ? true
+        : false,
   }));
 
-
-  
-
-
-  const projectslink =`/projects/?city=${""}&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`
-
+  const projectslink = `/projects/?city=${""}&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`;
 
   const handleScroll = () => {
     const { scrollY } = window;
@@ -149,17 +151,15 @@ const Header = () => {
   const t = useMemo(() => translation ?? {}, [translation]);
   // console.log("HEADER", t);
 
-  let [isOpen, setIsOpen] = useState(true)
+  let [isOpen, setIsOpen] = useState(true);
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
   }
-
-
 
   const selectLanguage = useCallback(
     (language) => {
@@ -256,14 +256,14 @@ const Header = () => {
           </div>
           <ul className="menu-list">
             {navData.map((data) => {
-              const { id, label, link, icon, subMenu , labelfr } = data;
+              const { id, label, link, icon, subMenu, labelfr } = data;
               return (
                 <li
                   key={id}
                   className={`${icon === true ? "menu-item-has-children" : ""}`}
                 >
                   <Link href={link} className="drop-down">
-                    {language === 'en' ? label : labelfr} 
+                    {language === "en" ? label : labelfr}
                   </Link>
                   {icon && (
                     <i
@@ -283,7 +283,11 @@ const Header = () => {
                       {subMenu.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <Link legacyBehavior href={subItem.link}>
-                            <a>{language === 'en' ? subItem?.label : subItem?.labelfr}    </a>
+                            <a>
+                              {language === "en"
+                                ? subItem?.label
+                                : subItem?.labelfr}{" "}
+                            </a>
                           </Link>
                           {subItem.icon && subItem.icon ? (
                             <>
@@ -312,10 +316,9 @@ const Header = () => {
                                 <li key={subItem.id}>
                                   <Link legacyBehavior href={subItem.link}>
                                     <a>
-                                    {language === 'en' ? subItem?.label : subItem?.labelfr} 
-                                      
-                                     
-
+                                      {language === "en"
+                                        ? subItem?.label
+                                        : subItem?.labelfr}
                                     </a>
                                   </Link>
                                 </li>
@@ -330,79 +333,120 @@ const Header = () => {
               );
             })}
 
+{/* -----ONLY COUNTRIES HERE----- */}
+<li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+              <Link href={'/'} className="drop-down">
+                For sale
+              </Link>
+              {groupedData?.length > 0 && (
+                <i
+                  // state.activeMenu === label ? "dash" : "plus"
+
+                  onClick={() => toggleMenu("countries")}
+                  className={`bi bi-${"plus"} dropdown-icon`}
+                />
+              )}
+
+              {groupedData?.length > 0 && (
+                <ul
+                  className={`sub-menu ${
+                    state.activeMenu === "countries" ? "d-block" : ""
+                  }`}
+                >
+                  {groupedData?.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <Link legacyBehavior href={subItem?.countrylink}>
+                        <a>{subItem?.label}</a>
+                      </Link>
+                      {/* {subItem?.icon && subItem?.icon ? (
+                        <>
+                          <i className="d-lg-flex d-none bi bi-chevron-right dropdown-icon" />
+                          <i
+                            onClick={() => toggleSubMenu(subItem?.label)}
+                            className={`d-lg-none d-flex bi bi-${
+                              state.activeSubMenu === subItem?.label
+                                ? "dash"
+                                : "plus"
+                            } dropdown-icon `}
+                          />
+                        </>
+                      ) : (
+                        ""
+                      )} */}
+                  
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
 
 
-{/* COUNTRIES HERE  */}
 
- 
- <li
-   key={3}
-   className={`${true ? "menu-item-has-children" : ""}`}
- >
-   <Link href={projectslink} className="drop-down">
-     Countries  
-   </Link>
-   {groupedData?.length >0 && (
-     <i
-     // state.activeMenu === label ? "dash" : "plus"
 
-        onClick={() => toggleMenu("projects")}
-       className={`bi bi-${
-       "plus"
-       } dropdown-icon`}
-     />
-   )}
 
-   {groupedData?.length > 0 && (
-     <ul
-       className={`sub-menu ${
-        
-          state.activeMenu === "projects" ? "d-block" : ""
-       }`}
-     >
-       {groupedData?.map((subItem, subIndex) => (
-         <li key={subIndex}>
-           <Link legacyBehavior href={subItem.link}>
-             <a>{subItem.label}</a>
-           </Link>
-           {subItem?.icon && subItem?.icon ? (
-             <>
-               <i className="d-lg-flex d-none bi bi-chevron-right dropdown-icon" />
-               <i
-                 onClick={() => toggleSubMenu(subItem?.label)}
-                 className={`d-lg-none d-flex bi bi-${
-                   state.activeSubMenu === subItem?.label
-                     ? "dash"
-                     : "plus"
-                 } dropdown-icon `}
-               />
-             </>
-           ) : (
-             ""
-           )}
-           {subItem?.subMenu && (
-             <ul
-               className={`sub-menu ${
-                 state.activeSubMenu === subItem.label
-                   ? "d-block"
-                   : ""
-               }`}
-             >
-               {subItem?.subMenu.map((subItem, subIndex) => (
-                 <li key={subItem?.id}>
-                   <Link legacyBehavior href={subItem?.link}>
-                     <a>{subItem?.label}</a>
-                   </Link>
-                 </li>
-               ))}
-             </ul>
-           )}
-         </li>
-       ))}
-     </ul>
-   )}
- </li>
+            {/* COUNTRIES WITH CITIES HERE  */}
 
+            <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+              <Link href={projectslink} className="drop-down">
+                Countries
+              </Link>
+              {groupedData?.length > 0 && (
+                <i
+                  // state.activeMenu === label ? "dash" : "plus"
+
+                  onClick={() => toggleMenu("projects")}
+                  className={`bi bi-${"plus"} dropdown-icon`}
+                />
+              )}
+
+              {groupedData?.length > 0 && (
+                <ul
+                  className={`sub-menu ${
+                    state.activeMenu === "projects" ? "d-block" : ""
+                  }`}
+                >
+                  {groupedData?.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <Link legacyBehavior href={subItem.link}>
+                        <a>{subItem.label}</a>
+                      </Link>
+                      {subItem?.icon && subItem?.icon ? (
+                        <>
+                          <i className="d-lg-flex d-none bi bi-chevron-right dropdown-icon" />
+                          <i
+                            onClick={() => toggleSubMenu(subItem?.label)}
+                            className={`d-lg-none d-flex bi bi-${
+                              state.activeSubMenu === subItem?.label
+                                ? "dash"
+                                : "plus"
+                            } dropdown-icon `}
+                          />
+                        </>
+                      ) : (
+                        ""
+                      )}
+                      {subItem?.subMenu && (
+                        <ul
+                          className={`sub-menu ${
+                            state.activeSubMenu === subItem.label
+                              ? "d-block"
+                              : ""
+                          }`}
+                        >
+                          {subItem?.subMenu.map((subItem, subIndex) => (
+                            <li key={subItem?.id}>
+                              <Link legacyBehavior href={subItem?.link}>
+                                <a>{subItem?.label}</a>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
 
 
 
@@ -432,7 +476,6 @@ const Header = () => {
           </div>
           <div className="hotline-area d-lg-none d-flex">
             <div className="icon">
-              
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={28}
@@ -454,7 +497,7 @@ const Header = () => {
         </div>
         <div className="nav-right d-flex jsutify-content-end align-items-center">
           <ul className="icon-list">
-            <li    onClick={openModal} className="d-lg-flex d-none">
+            <li onClick={openModal} className="d-lg-flex d-none">
               <a href="#" data-bs-toggle="modal" data-bs-target="#user-login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

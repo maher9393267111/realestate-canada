@@ -15,16 +15,25 @@ const schema = new mongoose.Schema(
       default: "",
     },
 
+    story: {
+      type: String,
+      required: true,
+      // trim: true,
+    },
+
+    storyfr: {
+      type: String,
+      required: true,
+      // trim: true,
+      // default: "",
+    },
 
     cover: {
       type: String,
       required: true,
-    
+
       default: "",
     },
-
-
-    
   },
   {
     timestamps: true,

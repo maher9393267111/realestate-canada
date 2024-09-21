@@ -28,6 +28,7 @@ import { TransitionProps } from "@mui/material/transitions";
 import { DeleteIcon, EditIcon } from "@/components/icons";
 import { uploadImages, deleteImage } from "@/utils/getData";
 
+
 import useCountries from "@/hooks/useCountries";
 
 import {
@@ -40,8 +41,57 @@ import {
   message,
 } from "antd";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
-const uploadApi = "https://file-uploader-red.vercel.app";
+
 import { ImageEndpoint } from "@/utils/global";
+
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+const uploadApi = "https://file-uploader-red.vercel.app";
+
+const colorList = [
+  "#001f3f",
+  "#0074D9",
+  "#7FDBFF",
+  "#39CCCC",
+  "#3D9970",
+  "#2ECC40",
+  "#01FF70",
+  "#FFDC00",
+  "#FF851B",
+  "#FF4136",
+  "#85144b",
+  "#F012BE",
+  "#B10DC9",
+  "#111111",
+  "#AAAAAA",
+  "#DDDDDD",
+  "#FFFFFF",
+  "#1C00ff00",
+];
+
+const modules = {
+  toolbar: [
+    [{ header: "1" }, { header: "2" }, { font: [] }],
+    [{ size: [] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [{ direction: "rtl" }],
+    [{ color: [...colorList] }, { background: [...colorList] }],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ],
+    ["link", "image", "video"],
+    ["clean"],
+  ],
+};
+
+
+
 
 interface Category {
   _id: string | number;
@@ -75,22 +125,51 @@ export default function AdminAllCountries() {
 
   const [open, setOpen] = React.useState(false);
   const [selectedCategory, setSelectedCategory] =
-    React.useState<Category>() as any;
+    React.useState(
+{
+  title: "",
+  titlefr: "",
+  story:"",
+  storyfr:"",
+}
+
+    );
 
   const handleClickOpen = (category: Category) => {
+
+    setSelectedCategory(category);
+    console.log("OPENNNN" , category)
+
+   // if(selectedCategory?._id){
+
     setOpen(true);
     console.log("category", category);
     setImage(category?.cover);
     setSelectedCategory(category);
+    
+   // }
 
     // setImage(category?.cover)
   };
 
   const handleClose = () => {
+
+    setSelectedCategory({
+      title: "",
+      titlefr: "",
+      story:"",
+      storyfr:"",
+    });
+     //window.location.reload();
+
+  
+
     setOpen(false);
-    setSelectedCategory(undefined);
+   
     setFile("");
     setImage("");
+   
+    
   };
 
   const handleUploadImage2 = async (file: any, logo: any) => {
@@ -154,6 +233,7 @@ export default function AdminAllCountries() {
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      console.log(selectedCategory,"???")
       let newimage: string | any = "";
 
       if (file && image) {
@@ -175,10 +255,13 @@ export default function AdminAllCountries() {
       console.log("NEWW image", newimage, file);
 
       await axios.put(
-        `/api/country/handler/${selectedCategory._id}`,
+        `/api/country/handler/${selectedCategory?._id}`,
         {
-          title: selectedCategory.title,
-          titlefr: selectedCategory.titlefr,
+          title: selectedCategory?.title,
+          titlefr: selectedCategory?.titlefr,
+          story:selectedCategory?.story,
+          storyfr:selectedCategory?.storyfr,
+
           cover: newimage ? newimage : selectedCategory?.cover,
         },
         {
@@ -187,11 +270,12 @@ export default function AdminAllCountries() {
           },
         }
       );
-      handleClose();
+      mutate();
+    await   handleClose();
 
       message.success("City updated successfully");
 
-      mutate();
+     
     } catch (err) {
       console.error(err);
     }
@@ -211,7 +295,7 @@ export default function AdminAllCountries() {
   if (user && user.role !== "admin") return <NotFound />;
   if (!categories) return <Loading />;
   return (
-    <>
+    <div  dir="ltr">
       <Head>
         <title>Outlet Turkey</title>
       </Head>
@@ -314,6 +398,45 @@ export default function AdminAllCountries() {
                 }}
               />
 
+              
+
+<Grid item xs={12} md={12}>
+                English Description   {selectedCategory?.storyfr}
+                <ReactQuill
+                  modules={modules}
+           
+                  className="mt-1"
+                  value={selectedCategory?.story}
+                  // focused
+                  onChange={(e) => {
+                    setSelectedCategory({
+                      ...selectedCategory,
+                      story: e,
+                    });
+                  }}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={12}>
+                French Description
+                <ReactQuill
+                  modules={modules}
+                  value={selectedCategory?.storyfr}
+                  // focused
+                  onChange={(e) => {
+                    setSelectedCategory({
+                      ...selectedCategory,
+                      storyfr: e,
+                    });
+                  }}
+                  className="mt-1"
+                />
+              </Grid>
+
+
+
+
+
               <Grid item xs={12} md={12}>
                 <div>
                   <Upload
@@ -371,6 +494,6 @@ export default function AdminAllCountries() {
           </form>
         </Dialog>
       </AdminMainLayout>
-    </>
+    </div>
   );
 }

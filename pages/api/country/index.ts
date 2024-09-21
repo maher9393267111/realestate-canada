@@ -14,11 +14,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
     case "POST":
       try {
-        const { title , titlefr ,cover} = req.body;
+        const { title , titlefr ,cover , story,storyfr} = req.body;
         const newCountry = new Country({
           title,
           titlefr,
-          cover
+          cover,
+          story,
+          storyfr
         
         //   addBy: user.id,
         });

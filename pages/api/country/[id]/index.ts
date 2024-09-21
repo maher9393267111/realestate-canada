@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import Blog from "@/models/blog";
+import Blog from "@/models/country";
 import dbConnect from "@/utils/dbConnect";
-
+import mongoose from 'mongoose';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect();
@@ -10,7 +10,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     case "GET":
       try {
         const { id } = req.query;
-        console.log("UIDDDD BLKOG" , id)
+        console.log("IDDDDD" , req?.query?.id)
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, message: "Invalid ID format" });
+          }
+
+
+
         let blog = await Blog.findOne({
           _id: id,
         });

@@ -33,13 +33,26 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const uploadApi = "https://file-uploader-red.vercel.app";
 
-
-const colorList = ['#001f3f', '#0074D9', '#7FDBFF', '#39CCCC', '#3D9970', '#2ECC40', '#01FF70', '#FFDC00', '#FF851B', '#FF4136', '#85144b', '#F012BE', '#B10DC9', '#111111', '#AAAAAA', '#DDDDDD', '#FFFFFF','#1C00ff00'];
-
-
-
-
-
+const colorList = [
+  "#001f3f",
+  "#0074D9",
+  "#7FDBFF",
+  "#39CCCC",
+  "#3D9970",
+  "#2ECC40",
+  "#01FF70",
+  "#FFDC00",
+  "#FF851B",
+  "#FF4136",
+  "#85144b",
+  "#F012BE",
+  "#B10DC9",
+  "#111111",
+  "#AAAAAA",
+  "#DDDDDD",
+  "#FFFFFF",
+  "#1C00ff00",
+];
 
 const modules = {
   toolbar: [
@@ -47,7 +60,7 @@ const modules = {
     [{ size: [] }],
     ["bold", "italic", "underline", "strike", "blockquote"],
     [{ direction: "rtl" }],
-    [{ 'color': [...colorList] }, { 'background': [...colorList] }],
+    [{ color: [...colorList] }, { background: [...colorList] }],
     [
       { list: "ordered" },
       { list: "bullet" },
@@ -59,30 +72,21 @@ const modules = {
   ],
 };
 
-
-
-
 export default function BookCreatePage() {
-
   const countries = [
     { value: "", label: "All countries" },
-  
-    { value: "Mexico", label: 'Mexico' },
-    { value: "North Cyprus", label: "North Cyprus"  },
-    { value: "Spain", label:  "Spain"  },
-    { value: "Republic Dominica", label: "Republic Dominica"  },
-  
-  { value: "Portugal", label:  "Portugal" },
-  
-  { value: "Canada", label: "Canada" },
-  
-    { value: "United Arab Emirates", label:"United Arab Emirates" },
+
+    { value: "Mexico", label: "Mexico" },
+    { value: "North Cyprus", label: "North Cyprus" },
+    { value: "Spain", label: "Spain" },
+    { value: "Republic Dominica", label: "Republic Dominica" },
+
+    { value: "Portugal", label: "Portugal" },
+
+    { value: "Canada", label: "Canada" },
+
+    { value: "United Arab Emirates", label: "United Arab Emirates" },
   ];
-  
-
-
-
-
 
   const { user } = useAuth({
     redirectTo: "/auth/login",
@@ -110,7 +114,6 @@ export default function BookCreatePage() {
     addBy: "Admin",
   });
 
-
   const [selectedCountry, setSelectedCountry] = useState({});
 
   useEffect(() => {
@@ -118,12 +121,9 @@ export default function BookCreatePage() {
       setPropertyDetails((prev) => ({
         ...prev,
         category: selectedCountry?.value,
-      
       }));
     }
   }, [selectedCountry]);
-
-
 
   // Handle input changes for the form
   const handleInputChange = (name, value) => {
@@ -154,11 +154,15 @@ export default function BookCreatePage() {
       });
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
-      const response = await axios.post(`${uploadApi}/file/uploads?size=600&hieghtsize=800`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        `${uploadApi}/file/uploads?size=600&hieghtsize=800`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       console.log("Files Uplaoded successfully", response.data);
 
       return response?.data?.files;
@@ -256,7 +260,6 @@ export default function BookCreatePage() {
                 />
               </Grid>
 
-
               <Grid item xs={12} md={6}>
                 <SelectInput
                   placeholder="Select Country"
@@ -266,15 +269,10 @@ export default function BookCreatePage() {
                 />
               </Grid>
 
-
-
-
-
-
               <Grid item xs={12} md={12}>
                 English Description
                 <ReactQuill
-                 modules={modules}
+                  modules={modules}
                   value={propertyDetails.story}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({
@@ -289,7 +287,7 @@ export default function BookCreatePage() {
               <Grid item xs={12} md={12}>
                 French Description
                 <ReactQuill
-                 modules={modules}
+                  modules={modules}
                   value={propertyDetails.storyfr}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({
