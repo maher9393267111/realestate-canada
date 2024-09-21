@@ -15,6 +15,7 @@ import useProducts from "@/hooks/useProducts";
 import ProjectForm from "../../components/Site/ProjectForm";
 import ContactModal from "../../components/Site/ContactModal";
 import ProjectCard from "../../components/Site/ProjectCard";
+import { handleChange } from "../../utils/handleLanguage";
 import moment from "moment/moment";
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -51,6 +52,9 @@ const page = () => {
     isfeatured:true
  
   });
+
+
+ 
 
 
 
@@ -113,7 +117,7 @@ const page = () => {
          
                      
                     <h6 className="!text-[#63ab45]">
-                    {data?.book?.category}      
+                    {language === 'en' ? data?.book?.category : handleChange(data?.book?.category)}      
                     </h6>
                    
                   

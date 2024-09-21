@@ -20,7 +20,7 @@ const ProjectForm = () => {
 
   useEffect(() => {
     if (error) {
-      antdMessage.error (error);
+      antdMessage.error(error);
       setError(null);
     }
 
@@ -61,7 +61,11 @@ const ProjectForm = () => {
   };
 
   return (
-    <form dir="ltr" autoComplete="off" className="w-full grid grid-cols-3 gap-4">
+    <form
+      dir="ltr"
+      autoComplete="off"
+      className="w-full grid grid-cols-3 gap-4"
+    >
       <div className="col-span-3 search-box">
         <input
           type="text"
@@ -78,7 +82,6 @@ const ProjectForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
-
         />
       </div>
       <div className="col-span-3 search-box">
@@ -121,11 +124,13 @@ const ProjectForm = () => {
               />
             </svg>
 
-            {user ? (
+            <span className="block">Send message</span>
+
+            {/* {user ? (
               <span className="block">Send message</span>
             ) : (
               <span className="block">Please login to send</span>
-            )}
+            )} */}
           </div>
         </button>
       </div>

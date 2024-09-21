@@ -9,21 +9,21 @@ import dbConnect from "@/utils/dbConnect";
 async function handler(req, res) {
   await dbConnect();
 
-  const user = req.user;
-  console.log('user' , user)
-  if (!user)
-    return res.status(403).json({
-      message: "You are not authorized to access this resource",
-    });
+  // const user = req.user;
+  // console.log('user' , user)
+  // if (!user)
+  //   return res.status(403).json({
+  //     message: "You are not authorized to access this resource",
+  //   });
 
   switch (req.method) {
     case "POST":
       try {
-const data ={user:user?._id ,...req.body}
+//const data ={user:user?._id ,...req.body}
 
 
 
-        const message = await Message.create(data);
+        const message = await Message.create(req.body);
 
         res.status(200).json({
           success: true,

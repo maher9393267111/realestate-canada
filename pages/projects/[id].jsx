@@ -20,7 +20,7 @@ import ProjectCard from "@/components/Site/ProjectCard";
 
 import { useRouter } from "next/router";
 import { ImageEndpoint } from "../../utils/global";
-
+import { handleChange } from "../../utils/handleLanguage";
 import { useLanguageContext } from "@/context/languageContext";
 
 import moment from "moment/moment";
@@ -388,7 +388,7 @@ const ProjectDetails = () => {
               <div className="destination-sidebar">
               <div className="destination-info mb-30">
                 <div className="single-info">
-                  <span>Destination: {data?.book?.country}</span>
+                  <span>Destination: {language ==='en' ? data?.book?.country :handleChange(data?.book?.country) }</span>
                 
                 </div>
                 <div className="single-info">
