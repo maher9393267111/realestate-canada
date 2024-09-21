@@ -324,11 +324,11 @@ const ProjectDetails = () => {
         <div className="container">
           <div className="row g-lg-4 gy-5">
             <div className="col-lg-7">
-            <h2>Welcome To Egypt</h2>
-              <p>
+            <h2> {language === "en" ? data?.book?.title : data?.book?.titlefr}</h2>
+              {/* <p>
 
                 {language === "en" ? data?.book?.title : data?.book?.titlefr}
-              </p>
+              </p> */}
               <div className="destination-gallery mb-40 mt-40">
                 <div className="row g-4">
                   
