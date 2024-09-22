@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import {teamData} from '@/data/team'
 import { MdEmail } from "react-icons/md";
 import TeamCard from '@/components/Site/TeamCard'
+import { useLanguageContext } from "@/context/languageContext";
+
 
 import SwiperCore, {
   Autoplay,
@@ -57,6 +59,11 @@ const Home2Team = () => {
       },
     };
   }, []);
+
+
+  const { language } = useLanguageContext();
+
+
   return (
     <>
       <div className="teams-section mb-120">
@@ -65,9 +72,9 @@ const Home2Team = () => {
             <div className="col-lg-12">
               <div className="section-title2 text-center">
                 <div className="eg-section-tag">
-                  <span>Tour Guide</span>
+                  <span>{language === "en" ? "International Guide" : "Guide international"}</span>
                 </div>
-                <h2>Our Travel Guide </h2>
+                <h2>{language === "en" ? "Meet Our Team" : "Rencontrez notre équipe"} </h2>
               </div>
             </div>
           </div>

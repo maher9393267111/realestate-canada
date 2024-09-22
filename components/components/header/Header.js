@@ -260,7 +260,7 @@ const Header = () => {
 
   <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
               <Link href={projectslink} className="drop-down">
-                Destenations
+                Destinations
               </Link>
               {groupedData?.length > 0 && (
                 <i
@@ -325,7 +325,7 @@ const Header = () => {
 {/* -----ONLY COUNTRIES HERE----- */}
 <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
               <Link href={'/'} className="drop-down">
-                For sale
+              {language === "en" ? "For Sale" : "À vendre"}
               </Link>
               {groupedData?.length > 0 && (
                 <i

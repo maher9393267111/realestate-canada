@@ -30,7 +30,7 @@ const page = () => {
     <div className="" dir="ltr">
       <Topbar />
       <Header />
-      <Breadcrumb pagename="About Us" pagetitle="About Us" />
+      <Breadcrumb pagename={language === 'en' ? "About Us" : "À propos de nous"} pagetitle={language === 'en' ? "About Us" : "À propos de nous"} />
      <AboutBlogs language={language} blogs={data?.books} />
       <Home2About />
       <Home2WhyChoose />
