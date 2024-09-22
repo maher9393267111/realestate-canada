@@ -8,8 +8,9 @@ export default function TeamCard({member}) {
                         <img src="/assets/img/home2/teams-card-bg.png" alt="" />
                         <div className="teams-img">
                           <img
-                          src={member?.image}
-                           //src="/assets/img/home2/teams-card-img1.png"
+                          className=' !object-cover'
+                           src={member?.image}
+                          // src="/assets/img/home2/teams-card-img1.png"
                             alt=""
                           />
                         </div>
