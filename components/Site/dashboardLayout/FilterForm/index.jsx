@@ -6,6 +6,8 @@ import Select from "react-select";
 import useCountries from "@/hooks/useCountries";
 import useCities from "@/hooks/useCities";
 
+import { useLanguageContext } from "@/context/languageContext";
+
 export default function FilterForm({home=false}) {
   const router = useRouter();
   const { data, isLoading, error } = useCountries();
@@ -16,54 +18,54 @@ export default function FilterForm({home=false}) {
   }));
 
   const { data: citiesData } = useCities();
+const {language} = useLanguageContext();
 
   const categories = [
-    { value: "house", label: "Houses" },
-    { value: "apartment", label: "Apartment" },
-    { value: "office", label: "Offices" },
-    { value: "town", label: "Townhome" },
-    { value: "villa", label: "Villa" },
+    { value: "house", label: language === "en" ? "Houses" : "Maisons" },
+    { value: "apartment", label:  language === "en" ? "Apartment" : "Appartement" },
+    { value: "office", label:  language === "en" ? "Offices" : "Bureaux"  },
+    { value: "town", label: language === "en" ? "Townhome" : "Maison de ville"  },
+    { value: "villa", label: language === "en" ? "Villa" : "Villa"   },
   ];
 
   const rooms = [
-    { value: 1, label: "+1 Room" },
-    { value: 2, label: "+2 Room" },
-    { value: 3, label: "+3 Room" },
-    { value: 4, label: "+4 Room" },
-    { value: 5, label: "+5 Room" },
-    { value: 6, label: "+6 Room" },
-    { value: 7, label: "+7 Room" },
+    { value: 1, label: language === "en" ? "+1 Room" : "+1 Chambre"  },
+    { value: 2, label: language === "en" ? "+2 Room" : "+2 Chambre" },
+    { value: 3, label: language === "en" ? "+3 Room" : "+3 Chambre" },
+    { value: 4, label: language === "en" ? "+4 Room" : "+4 Chambre" },
+    { value: 5, label: language === "en" ? "+5 Room" : "+5 Chambre" },
+    { value: 6, label: language === "en" ? "+6 Room" : "+6 Chambre" },
+    { value: 7, label: language === "en" ? "+7 Room" : "+7 Chambre" },
   ];
 
   const baths = [
-    { value: 1, label: "+1 Bathroom" },
-    { value: 2, label: "+2 Bathroom" },
-    { value: 3, label: "+3 Bathroom" },
-    { value: 4, label: "+4 Bathroom" },
-    { value: 5, label: "+5 Bathroom" },
-    { value: 6, label: "+6 Bathroom" },
-    { value: 7, label: "+7 Bathroom" },
+    { value: 1, label: language === "en" ? "+1 Bathroom" : "+1 salle de bain" },
+    { value: 2, label: language === "en" ? "+2 Bathroom" : "+2 salle de bain" },
+    { value: 3, label: language === "en" ? "+3 Bathroom" : "+3 salle de bain" },
+    { value: 4, label: language === "en" ? "+4 Bathroom" : "+4 salle de bain" },
+    { value: 5, label: language === "en" ? "+5 Bathroom" : "+5 salle de bain" },
+    { value: 6, label: language === "en" ? "+6 Bathroom" : "+6 salle de bain" },
+    { value: 7, label: language === "en" ? "+7 Bathroom" : "+7 salle de bain" },
   ];
 
   const beds = [
-    { value: 1, label: "+1 Beds" },
-    { value: 2, label: "+2 Beds" },
-    { value: 3, label: "+3 Beds" },
-    { value: 4, label: "+4 Beds" },
-    { value: 5, label: "+5 Beds" },
-    { value: 6, label: "+6 Beds" },
-    { value: 7, label: "+7 Beds" },
+    { value: 1, label: language === "en" ? "+1 Beds" : "+1 Lits" }  ,
+    { value: 2, label: language === "en" ? "+2 Beds" : "+2 Lits" }  ,
+    { value: 3, label: language === "en" ? "+3 Beds" : "+3 Lits" }  ,
+    { value: 4, label: language === "en" ? "+4 Beds" : "+4 Lits" }  ,
+    { value: 5, label: language === "en" ? "+5 Beds" : "+5 Lits" }  ,
+    { value: 6, label: language === "en" ? "+6 Beds" : "+6 Lits" }  ,
+    { value: 7, label: language === "en" ? "+7 Beds" : "+7 Lits" }  ,
   ];
 
   const price = [
-    { value: "50000", label: "50000" },
-    { value: "10000", label: "10000" },
-    { value: "20000", label: "20000" },
-    { value: "30000", label: "30000" },
-    { value: "40000", label: "40000" },
-    { value: "50000", label: "50000" },
-    { value: "60000", label: "60000" },
-    { value: "70000", label: "70000" },
+    { value: "300000", label: "$300,000" },
+    { value: "600000", label: "$600,000" },
+    { value: "900000", label: "$900,000" },
+    { value: "1200000", label: "$1,200,000" },
+    { value: "2000000", label: "$2,000,000" },
+    { value: "3000000", label: "$3,000,000" },
+    { value: "5000000", label: "$5,000,000" },
   ];
 
   const initialState = {
@@ -148,7 +150,7 @@ export default function FilterForm({home=false}) {
                       {home !== true &&
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
-                            <label className="form-label fs-6">Search :</label>
+                            <label className="form-label fs-6">{language === "en" ? "Search:": "Recherche:"} </label>
                             <div className="filter-search-form position-relative filter-border">
                               
                               <input
@@ -156,7 +158,7 @@ export default function FilterForm({home=false}) {
                                 type="text"
                                 id="job-keyword"
                                 className="form-control filter-input-box bg-light border-0"
-                                placeholder="Search your keaywords"
+                                placeholder={language === "en" ? "Search your keywords": "Recherchez vos mots-clés"} 
                               />
                             </div>
                           </div>
@@ -166,7 +168,7 @@ export default function FilterForm({home=false}) {
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3 w-full">
                             <label className="form-label fs-6">
-                              Select Country :
+                            {language === "en" ? "Select Country:": "Sélectionnez le pays:"}
                             </label>
                             <div className="filter-search-form w-full position-relative filter-border bg-light">
                               
@@ -177,8 +179,9 @@ export default function FilterForm({home=false}) {
                                     country: newValue,
                                   }));
                                 }}
-                                className="form-input     hover:!border-none !w-full filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                className="form-input  hover:!border-none !w-full filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={countries}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -190,7 +193,7 @@ export default function FilterForm({home=false}) {
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
                             <label className="form-label fs-6">
-                              Select City :
+                            {language === "en" ? "Select City:": "Sélectionnez la ville:"} 
                             </label>
                             <div className="filter-search-form position-relative filter-border bg-light">
                               
@@ -203,6 +206,7 @@ export default function FilterForm({home=false}) {
                                 }}
                                 className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={cities}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -212,7 +216,7 @@ export default function FilterForm({home=false}) {
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
                             <label className="form-label fs-6">
-                              Select Type :
+                            {language === "en" ? "Select Type:": "Sélectionnez le type:"}  
                             </label>
                             <div className="filter-search-form position-relative filter-border bg-light">
                             
@@ -225,6 +229,7 @@ export default function FilterForm({home=false}) {
                                 }}
                                 className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={categories}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -233,7 +238,7 @@ export default function FilterForm({home=false}) {
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
                             <label className="form-label fs-6">
-                              Min Price :
+                            {language === "en" ? "Min Price:": "Prix ​​minimum:"}  
                             </label>
                             <div className="filter-search-form position-relative filter-border bg-light">
                               
@@ -246,6 +251,7 @@ export default function FilterForm({home=false}) {
                                 }}
                                 className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={price}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -254,7 +260,7 @@ export default function FilterForm({home=false}) {
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
                             <label className="form-label fs-6">
-                              Max Price :
+                            {language === "en" ? "Max Price:": "Prix maximum:"} 
                             </label>
                             <div className="filter-search-form position-relative filter-border bg-light">
                            
@@ -267,6 +273,7 @@ export default function FilterForm({home=false}) {
                                 }}
                                 className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={price}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -280,7 +287,7 @@ export default function FilterForm({home=false}) {
                         {home !== true &&
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
-                            <label className="form-label fs-6">Rooms :</label>
+                            <label className="form-label fs-6"> {language === "en" ? "Rooms:": "Chambres:"} </label>
                             <div className="filter-search-form position-relative filter-border bg-light">
                               
                               <Select
@@ -292,6 +299,7 @@ export default function FilterForm({home=false}) {
                                 }}
                                 className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={rooms}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -301,7 +309,7 @@ export default function FilterForm({home=false}) {
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
                             <label className="form-label fs-6">
-                              Bathrooms :
+                            <label className="form-label fs-6"> {language === "en" ? "Bathrooms:": "Salles de bains:"} </label>
                             </label>
                             <div className="filter-search-form position-relative filter-border bg-light">
                               
@@ -314,6 +322,7 @@ export default function FilterForm({home=false}) {
                                 }}
                                 className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
                                 options={baths}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -321,7 +330,7 @@ export default function FilterForm({home=false}) {
 
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
-                            <label className="form-label fs-6">Beds :</label>
+                            <label className="form-label fs-6">{language === "en" ? "Beds:": "Lits:"} </label>
                             <div className="filter-search-form position-relative filter-border bg-light">
                               
                               <Select
@@ -331,8 +340,9 @@ export default function FilterForm({home=false}) {
                                     beds: newValue,
                                   }));
                                 }}
-                                className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0"
+                                className="form-input filter-input-box bg-gray-50 dark:bg-slate-800 border-0 mt-2"
                                 options={beds}
+                                placeholder={language === "en" ? "Select":"Sélectionner"}
                               />
                             </div>
                           </div>
@@ -410,7 +420,7 @@ export default function FilterForm({home=false}) {
                             name="search"
                             style={{ height: "48px" }}
                             className="btn !bg-primary !text-white searchbtn w-100"
-                            value="Search"
+                            value={language === "en" ? "Search": "Recherche"}
                           />
 
                           <input
@@ -420,7 +430,7 @@ export default function FilterForm({home=false}) {
                             name="search"
                             style={{ height: "48px" }}
                             className="btn !bg-primary !text-white searchbtn w-100"
-                            value="Reset"
+                            value={language === "en" ? "Reset": "Réinitialiser"} 
                           />
                         </div>
                       </div>
