@@ -1,6 +1,22 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
+import useAuth from "@/hooks/useAuth";
 export default function SidebarAdmin() {
+
+const router =useRouter()
+
+  const { user, logout, isLoading, mutate } = useAuth({});
+
+  const handleLogout = async () => {
+    localStorage.clear();
+    // console.log("logout⚡⚡⚡⚡⚡⚡");
+    await logout();
+    router.reload();
+    //router.push('/auth/login');
+  }
+
+
   return (
     <div className="dashboard-sidebar-wrapper">
       <div className="dashboard-sidebar-menu">
@@ -230,6 +246,11 @@ export default function SidebarAdmin() {
           </Link>
         </li>
     
+
+
+<li className=" cursor-pointer" onClick={handleLogout}>
+  Logout
+</li>
 
 
 

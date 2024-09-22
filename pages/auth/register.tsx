@@ -115,7 +115,7 @@ export default function Register() {
             required
             label={"Phone"}
             autoComplete="phone"
-            onChange={setName}
+            onChange={setPhone}
           />
 
 

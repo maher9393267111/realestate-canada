@@ -219,15 +219,20 @@ export default function BookCreatePage() {
     }
   };
 
-  if (user && user.role !== "admin") return <NotFound />;
+  // if (user && user.role !== "admin") return <NotFound />;
+  
+  if (!user || (user.role !== "admin" && user.name !== "staff")) {
+    return <NotFound />;
+}
   return (
     <div dir="ltr" className="cart-are !bg-[#ffff]  product-area">
       <Head>
         <title>إضافة منتج جديد - Outlet Turkey</title>
+        
       </Head>
       <AdminMainLayout>
         <PageLayout title="header.addBook">
-          <div className="text-center md:text-2xl"> Add Blog</div>
+          <div className="text-center md:text-2xl"> Add Blog </div>
           <form className=" p-20" onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>

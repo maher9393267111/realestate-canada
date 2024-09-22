@@ -7,10 +7,16 @@ import dbConnect from "@/utils/dbConnect";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect();
   const user = req.user;
-  if (user?.role !== "admin")
+  console.log("USER NAME" , user)
+  // if (user?.role !== "admin" || user?.name !=='staff')
+  //   return res.status(403).json({
+  //     message: "You are not authorized to access this resource",
+  //   });
+  if (user?.role !== "admin" && user?.name !== 'staff') {
     return res.status(403).json({
-      message: "You are not authorized to access this resource",
+        message: "You are not authorized to access this resource",
     });
+}
 
   switch (req.method) {
     case "DELETE":

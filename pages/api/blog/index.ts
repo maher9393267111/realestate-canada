@@ -8,10 +8,15 @@ import { features } from "process";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect();
   const user = req.user;
-  if (user?.role !== "admin")
+
+
+
+
+  if (user?.role !== "admin" && user?.name !== 'staff') {
     return res.status(403).json({
-      message: "You are not authorized to access this resource",
+        message: "You are not authorized to access this resource",
     });
+}
 
   switch (req.method) {
     case "POST":

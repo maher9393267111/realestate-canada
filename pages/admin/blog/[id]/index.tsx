@@ -244,7 +244,12 @@ export default function BookUpdatePage() {
       })
       .catch((err) => message.error(err?.message));
   };
-  if (user && user.role !== "admin") return <NotFound />;
+  // if (user && user.role !== "admin") return <NotFound />;
+
+  if (!user || (user.role !== "admin" && user.name !== "staff")) {
+    return <NotFound />;
+}
+
   return (
     <div dir="ltr" className="cart-area !bg-whit about-area">
       <Head>
@@ -316,17 +321,7 @@ export default function BookUpdatePage() {
                 />
               </Grid>
 
-              <Grid item xs={12} md={12}>
-                <TextInput
-                  name="storyfr"
-                  label="Storyfr"
-                  required
-                  multiline
-                  rows={4}
-                  value={propertyDetails?.storyfr}
-                  onChange={(value) => handleInputChange("storyfr", value)}
-                />
-              </Grid>
+      
 
               <Grid item xs={12} md={12}>
                 <div>

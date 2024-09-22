@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { ImageEndpoint } from "../../utils/global";
-
+import { handleChange } from "../../utils/handleLanguage";
 
 
 const BlogsComponent = ({ blogs ,language }) => {
@@ -59,7 +59,7 @@ const BlogsComponent = ({ blogs ,language }) => {
                             By <Link href="/blog">Admin</Link>
                           </li>
                           <li>
-                            <Link href="/blog">{category}</Link>
+                            <Link href="/blog">{language === 'en' ?  category :  handleChange(category)}</Link>
                           </li>
                         </ul>
                       </div>
