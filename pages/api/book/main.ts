@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           sort = 1,
           country = "",
           city = "",
-          limit = 4,
+          limit = 6,
           search = "",
           isfeatured= "",
           rooms,

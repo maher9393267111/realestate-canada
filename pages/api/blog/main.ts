@@ -13,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           page = 1,
           sort = 1,
 
-          limit = 4,
+          limit = 6,
           search = "",
           country = "",
         } = req.query;
