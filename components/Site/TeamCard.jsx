@@ -1,8 +1,13 @@
 import React from 'react'
 import { MdEmail } from "react-icons/md";
-
+import { useLanguageContext } from '@/context/languageContext';
 
 export default function TeamCard({member}) {
+
+
+  const { language } = useLanguageContext();
+
+
   return (
     <div className="teams-card">
                         <img src="/assets/img/home2/teams-card-bg.png" alt="" />
@@ -19,11 +24,11 @@ export default function TeamCard({member}) {
                           <span> 
 
                           {member.languages.length > 0 && (
-      <p>Languages: {member.languages.join(', ')}</p>
+      <p>{language === "en" ? "Languages:" : "Langues:"} {language === "en" ? `${member.languages.join(', ')}` : `${member.languagesfr.join(', ')}`}</p>
     )}
 
                           </span>
-                          <span>{member?.title}</span>
+                          <span>{language === "en" ? `${member?.title}` : `${member?.titlefr}`}</span>
                           
                         </div>
                         

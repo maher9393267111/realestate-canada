@@ -3,7 +3,9 @@ export const teamData = [
         id:1,
       name: "Mohamad Haidar",
       title: "International Real Estate Broker",
+      titlefr: "Courtier immobilier international",
       languages: ["English", "French", "Arabic"], // Add more languages as needed
+      languagesfr: ["Anglais", "Français", "Arabe"], // Add more languages as needed
       email: "m.haidar@groupeimmobilieraml.ca",
       image: "/team/1.png" // Replace with the actual image path
     }
@@ -13,7 +15,9 @@ export const teamData = [
         id:2,
         name: "Aimen Ben Fraj",
         title: "International Real Estate Advisor",
+        titlefr: "Conseiller immobilier international",
         languages: ["French"], // Add spoken languages as needed
+        languagesfr: ["Français"], // Add spoken languages as needed
         email: "a.fraj@groupeimmobilieraml.ca",
         image: "/team/2.png" // Replace with the actual image path
       }
@@ -22,7 +26,9 @@ export const teamData = [
         id:3,
         name: "Hmaeid Moujahed",
         title: "International Real Estate Advisor",
+        titlefr: "Conseiller immobilier international",
         languages: ["French"], // Add spoken languages as needed
+        languagesfr: ["Français"], // Add spoken languages as needed
         email: "h.moujahed@groupeimmobilieraml.ca",
         image: "/team/3.png" // Replace with the actual image path
       },
@@ -32,7 +38,9 @@ export const teamData = [
         
         name: "Jonathan Da Silva Pereira",
         title: "International Real Estate Advisor",
+        titlefr: "Conseiller immobilier international",
         languages: ["English" , "French" , "Spanish"], // Add spoken languages as needed
+        languagesfr: ["Anglais", "Français", "Arabe"], // Add more languages as needed
         email: "j.pereira@groupeimmobilieraml.ca",
         image: "/team/4.png"  // Replace with the actual image path
       }
@@ -41,7 +49,9 @@ export const teamData = [
     id:5,
     name: "Sara Yehia",
     title: "International Real Estate Advisor",
+    titlefr: "Conseiller immobilier international",
     languages: ["English" ,"French"], // Add spoken languages as needed
+    languagesfr: ["Anglais", "Français"], // Add more languages as needed
     email: "s.yehia@groupeimmobilieraml.ca",
     image: "/team/5.png" 
   },
@@ -51,7 +61,9 @@ export const teamData = [
     id:6,
     name: "Sanaa Abdallah",
     title: "International Real Estate Advisor",
+    titlefr: "Conseiller immobilier international",
     languages: ["English"], // Add spoken languages as needed
+    languagesfr: ["Anglais"], // Add more languages as needed
     email: "s.abdallah@groupeimmobilieraml.ca",
     image: "/team/6.png" 
   },
@@ -60,7 +72,9 @@ export const teamData = [
     id:7,
     name: "Karim Ghazleh",
     title: "International Real Estate Advisor",
+    titlefr: "Conseiller immobilier international",
     languages: ["English"], // Add spoken languages as needed
+    languagesfr: ["Anglais"], // Add more languages as needed
     email: "k.ghazleh@groupeimmobilieraml.ca",
     image: "/team/7.jpg" 
   },
@@ -69,7 +83,9 @@ export const teamData = [
     id:8,
     name: "Elaine Herrera",
     title: "International Real Estate Advisor",
+    titlefr: "Conseiller immobilier international",
     languages: ["Engish" ,"Spanish"], // Add spoken languages as needed
+    languagesfr: ["Anglais","Espagnole"], // Add more languages as needed
     email: "e.herrera@groupeimmobilieraml.ca",
     image: "/team/8.jpg" // Replace with the actual image path
   }

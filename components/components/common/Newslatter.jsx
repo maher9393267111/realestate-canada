@@ -1,6 +1,12 @@
 import React from "react";
+import { useLanguageContext } from '@/context/languageContext';
 
 const Newslatter = () => {
+
+
+  const { language } = useLanguageContext();
+
+
   return (
     <>
       <div className="banner3-section">
@@ -8,11 +14,11 @@ const Newslatter = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="banner3-content">
-                <h2>Join The Newsletter</h2>
-                <p>To receive our best monthly deals</p>
+                <h2>{language === "en" ? "Join The Newsletter":"Rejoignez la newsletter"}</h2>
+                <p>{language === "en" ? "To receive our best monthly deals":"Pour recevoir nos meilleures offres mensuelles"}</p>
                 <form>
                   <div className="from-inner">
-                    <input type="email" placeholder="Enter Your Gmail..." />
+                    <input type="email" placeholder={language === "en" ? "Enter Your Gmail...":"Entrez votre Gmail..."}/>
                     <button type="submit" className="from-arrow">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

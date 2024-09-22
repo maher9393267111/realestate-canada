@@ -104,10 +104,10 @@ const Home2Team = () => {
                   <div className="slider-btn-grp3">
                     <div className="slider-btn teams-card-prev">
                       <i className="bi bi-arrow-left" />
-                      <span>PREV</span>
+                      <span>{language === "en" ? "PREV" : "PREC"}  </span>
                     </div>
                     <div className="slider-btn teams-card-next">
-                      <span>NEXT</span>
+                      <span>{language === "en" ? "NEXT" : "SUIVANTE"}</span>
                       <i className="bi bi-arrow-right" />
                     </div>
                   </div>
