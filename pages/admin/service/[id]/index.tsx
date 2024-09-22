@@ -249,7 +249,7 @@ export default function BookUpdatePage() {
 
               <Grid item xs={12} md={6}>
                 <TextInput
-                  name="title"
+                  name="subdesc"
                   label="HomeDescription"
                   required
                   value={propertyDetails?.subdesc}
@@ -259,7 +259,7 @@ export default function BookUpdatePage() {
 
               <Grid item xs={12} md={6}>
                 <TextInput
-                  name="sudesc"
+                  name="subdescfr"
                   label="HomeDescription french"
                   required
                   value={propertyDetails?.subdescfr}

@@ -1,4 +1,7 @@
 "use client";
+
+// ---------------------services at about-----------------------
+
 import React, { useMemo, useState } from "react";
 import ModalVideo from "react-modal-video";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -187,13 +190,9 @@ const Home2Activities = () => {
                             >
                               <div className="tab-content-wrap">
                                 <h2>{language ==='en' ? service?.title : service?.titlefr}</h2>
-                                <p>
-                                  Embark on an adrenaline-fueled journey,
-                                  zipping through lush landscapes, feeling the
-                                  wind rush past, and experiencing nature from
-                                  breathtaking heights. Unleash your inner
-                                  adventurer today.
-                                </p>
+                                <div
+                  dangerouslySetInnerHTML={{ __html: language === 'en' ? service?.subdesc : service?.storyfr }}
+                />
                                 <ul>
                                   {/* <li>
                                     <svg
