@@ -16,7 +16,7 @@ const BlogsComponent = ({ blogs ,language }) => {
                 <div className="eg-section-tag">
                   <span>Article</span>
                 </div>
-                <h2>Travel Article Enthusiast</h2>
+                <h2>{language === "en" ? "Our Blogs" : "Nos blogs"}</h2>
               </div>
             </div>
           </div>
@@ -46,18 +46,18 @@ const BlogsComponent = ({ blogs ,language }) => {
                           alt=""
                         />
                       </Link>
-                      <Link href="/blogs" className="date">
+                      {/* <Link href="/blogs" className="date">
                         <span>
                           <strong>20</strong> <br /> August
                         </span>
-                      </Link>
+                      </Link> */}
                     </div>
                     <div className="blog-card-content">
                       <div className="blog-card-content-top">
                         <ul>
-                          <li>
+                          {/* <li>
                             By <Link href="/blog">Admin</Link>
-                          </li>
+                          </li> */}
                           <li>
                             <Link href="/blog">{category}</Link>
                           </li>
@@ -65,12 +65,12 @@ const BlogsComponent = ({ blogs ,language }) => {
                       </div>
                       <h5>
                         <Link href={`/blogs/${_id}`}>
-                       {language === 'en' ? title?.slice(0,20)  : titlefr?.slice(0,20)}....
+                       {language === 'en' ? title?.slice(0,30)  : titlefr?.slice(0,30)}....
                         </Link>
                       </h5>
                       <div className="bottom-area">
                         <Link href={`/blogs/${_id}`}>
-                          View Post
+                        {language === "en" ? "View Post" : "Voir le message"}  
                           <span>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ const BlogsComponent = ({ blogs ,language }) => {
                             </svg>
                           </span>
                         </Link>
-                        <span>
+                        <span className="text-[#63ab45]">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={9}
