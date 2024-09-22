@@ -114,9 +114,15 @@ const ServicesTabs = () => {
             <div className="tab-area">
               <div className="section-title2 text-center mb-50">
                 <div className="eg-section-tag">
-                  <span>What We Do</span>
+                  <span>
+                    
+                  {language === "en"
+                                      ? "What We Do"
+                                      : "Ce que nous faisons" }</span>
                 </div>
-                <h2>Our Services</h2>
+                <h2>     {language === "en"
+                                      ? "Our Services"
+                                      : "Nos prestations" }</h2>
               </div>
 
               {data?.books?.length && (
@@ -247,7 +253,9 @@ const ServicesTabs = () => {
                                     href={`/services/${service?._id}`}
                                     className="primary-btn3"
                                   >
-                                    Check Service details
+                                    {language === "en"
+                                      ? "Check Service details"
+                                      : "Vérifier les détails du service" }
                                   </Link>
                                   {/* <a */}
                                     {/* style={{ cursor: "pointer" }}

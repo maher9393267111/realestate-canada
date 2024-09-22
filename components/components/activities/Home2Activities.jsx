@@ -111,11 +111,17 @@ const Home2Activities = () => {
           </div>
           <div className="col-lg-7">
             <div className="tab-area">
-              <div className="section-title2 text-center mb-50">
+            <div className="section-title2 text-center mb-50">
                 <div className="eg-section-tag">
-                  <span>What We Do</span>
+                  <span>
+                    
+                  {language === "en"
+                                      ? "What We Do"
+                                      : "Ce que nous faisons" }</span>
                 </div>
-                <h2>Our Services</h2>
+                <h2>     {language === "en"
+                                      ? "Our Services"
+                                      : "Nos prestations" }</h2>
               </div>
 
               {data?.books?.length && (
@@ -190,9 +196,9 @@ const Home2Activities = () => {
                             >
                               <div className="tab-content-wrap">
                                 <h2>{language ==='en' ? service?.title : service?.titlefr}</h2>
-                                <div
-                  dangerouslySetInnerHTML={{ __html: language === 'en' ? service?.subdesc : service?.storyfr }}
-                />
+                                <p>
+                                {language === 'en'  ? service?.subdesc : service?.subdescfr}
+                   </p>
                                 <ul>
                                   {/* <li>
                                     <svg
@@ -246,7 +252,9 @@ const Home2Activities = () => {
                                     href={`/services/${service?._id}`}
                                     className="primary-btn3"
                                   >
-                                    Check Service details
+                                     {language === "en"
+                                      ? "Check Service details"
+                                      : "Vérifier les détails du service" }
                                   </Link>
                                   {/* <a */}
                                     {/* style={{ cursor: "pointer" }}
