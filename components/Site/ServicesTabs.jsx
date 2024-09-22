@@ -188,11 +188,7 @@ const ServicesTabs = () => {
                               <div className="tab-content-wrap">
                                 <h2>{language ==='en' ? service?.title : service?.titlefr}</h2>
                                 <p>
-                                  Embark on an adrenaline-fueled journey,
-                                  zipping through lush landscapes, feeling the
-                                  wind rush past, and experiencing nature from
-                                  breathtaking heights. Unleash your inner
-                                  adventurer today.
+                           {language === 'en'  ? service?.subdesc : service?.subdescfr}
                                 </p>
                                 <ul>
                                   {/* <li>

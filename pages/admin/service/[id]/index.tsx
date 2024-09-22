@@ -86,6 +86,8 @@ export default function BookUpdatePage() {
     subtitlefr: "",
     story: "",
     storyfr: "",
+    subdesc: "",
+    subdescfr: "",
 
    
     image: [],
@@ -241,6 +243,27 @@ export default function BookUpdatePage() {
                   required
                   value={propertyDetails?.titlefr}
                   onChange={(value) => handleInputChange("titlefr", value)}
+                />
+              </Grid>
+
+
+              <Grid item xs={12} md={6}>
+                <TextInput
+                  name="title"
+                  label="HomeDescription"
+                  required
+                  value={propertyDetails?.subdesc}
+                  onChange={(value) => handleInputChange("subdesc", value)}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <TextInput
+                  name="sudesc"
+                  label="HomeDescription french"
+                  required
+                  value={propertyDetails?.subdescfr}
+                  onChange={(value) => handleInputChange("subdescfr", value)}
                 />
               </Grid>
 

@@ -41,6 +41,23 @@ const schema = new mongoose.Schema(
       default: "",
     },
 
+    subdesc: {
+      type: String,
+      required: true,
+      trim: true,
+      default: "",
+    },
+
+    subdescfr: {
+      type: String,
+      required: true,
+      trim: true,
+      default: "",
+    },
+
+
+
+
     image: { type: [String], default: [] },
 
     author: String,
