@@ -93,7 +93,7 @@ const  ProjectsOfferSlider = () => {
               <div className="col-lg-12">
                 <Swiper
                   {...settings}
-                  className="swiper package-card-slider mb-60"
+                  className="swiper package-card-slider mb-16"
                 >
                   <div className="swiper-wrapper">
 
