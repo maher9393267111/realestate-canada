@@ -194,16 +194,16 @@ export default function AllBooks() {
                         <TableHead>
                           <TableRow>
                             <TableCell>
-                              <Typography>عنوان المنتج</Typography>
+                              <Typography>Blog Description</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>السعر الجملي</Typography>
+                              <Typography>Countries</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>تاريخ الانشاء</Typography>
+                              <Typography>Creation Date</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>العمليات</Typography>
+                              <Typography>Action</Typography>
                             </TableCell>
                           </TableRow>
                         </TableHead>
@@ -215,7 +215,7 @@ export default function AllBooks() {
                                   <Typography>{book?.title}</Typography>
                                 </TableCell>
                                 <TableCell>
-                                  <Typography>{book?.price}</Typography>
+                                  <Typography>{book?.category}</Typography>
                                 </TableCell>
                                 <TableCell>
                                   <Typography>
