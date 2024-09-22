@@ -144,6 +144,13 @@ export default function AllBooks() {
 
   const t = useMemo(() => translation ?? {}, [translation]);
 
+  if (!user || (user.role !== "admin" && user.name !== "staff")) {
+    return <NotFound />;
+}
+
+
+
+
   return (
     <>
       <Head>
