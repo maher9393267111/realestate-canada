@@ -39,8 +39,8 @@ const [currentCountry , setCurrentCountry] = useState(id && id)
       <Topbar />
       <Header />
       <Breadcrumb
-        pagename={language === "en" ? "Contry details" : "Détails du country"}
-        pagetitle={language === "en" ? "Contry details" : "Détails du country"}
+        pagename={language === "en" ? "Country details" : "Détails du country"}
+        pagetitle={language === "en" ? "Country details" : "Détails du country"}
       />
 
 {/* ---All countries tab-- */}
