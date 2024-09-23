@@ -217,6 +217,7 @@ export default function BookUpdatePage() {
       .catch((err) => message.error(err?.message));
   };
   if (user && user.role !== "admin") return <NotFound />;
+
   return (
     <div dir="ltr" className="cart-area !bg-whit about-area">
       <Head>

@@ -264,6 +264,8 @@ export default function AdminAllCountries() {
   };
 
   if (user && user.role !== "admin") return <NotFound />;
+
+
   if (!categories) return <Loading />;
   return (
     <>
