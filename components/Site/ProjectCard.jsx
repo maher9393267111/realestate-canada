@@ -160,11 +160,11 @@ export default function ProjectCard({
             </div>
             {!isfeaturepage ? (
               <Link href={`/projects/${_id}`} className="primary-btn2">
-                Project Details
+               {language === "en" ? "Project Details" : "Détails du projet"} 
               </Link>
             ) : (
               <button onClick={openModal} className="primary-btn2">
-                Book Now
+               {language === "en" ? "Book Now" : "Réservez maintenant"} 
               </button>
             )}
           </div>
