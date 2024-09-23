@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 
 import { message as antdMessage } from "antd";
 import useAuth from "@/hooks/useAuth";
+import { useLanguageContext } from "@/context/languageContext";
 
-const ProjectForm = () => {
+const ProjectForm = ({reference}) => {
+
+
+const {language} = useLanguageContext()
+
   // const { status } = useSession();
   const { user } = useAuth({});
 
@@ -49,6 +54,7 @@ const ProjectForm = () => {
           email,
           phone,
           message,
+          reference
         },
         config
       );
@@ -60,6 +66,8 @@ const ProjectForm = () => {
     }
   };
 
+
+
   return (
     <form
       dir="ltr"
@@ -69,7 +77,7 @@ const ProjectForm = () => {
       <div className="col-span-3 search-box">
         <input
           type="text"
-          placeholder="Name"
+          placeholder={language === "en" ? "Name" : "Nom" }
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="mt-1 p-2 block w-full rounded-md border focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
@@ -78,7 +86,7 @@ const ProjectForm = () => {
       <div className="col-span-3 search-box">
         <input
           type="email"
-          placeholder="Email"
+          placeholder={language === "en" ? "Email" : "E-mail" }
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
@@ -87,15 +95,34 @@ const ProjectForm = () => {
       <div className="col-span-3 search-box">
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder={language === "en" ? "Phone" : "Téléphone" }
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
         />
       </div>
+    
+
+    {reference != null ? 
+
+      <div className="col-span-3 search-box flex-col">
+        <label>{language === "en" ? "Your Reference Number" : "Votre numéro de référence" }</label>
+        <input
+          type="number"
+          placeholder="Reference"
+          value={reference}
+          //onChange={(e) => setPhone(e.target.value)}
+          className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
+        />
+      </div>
+:
+""
+    }
+
+
       <div className="col-span-3 search-box">
         <textarea
-          placeholder="Message"
+          placeholder={language === "en" ? "Message" : "Message" }
           rows="4"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -124,7 +151,7 @@ const ProjectForm = () => {
               />
             </svg>
 
-            <span className="block">Send message</span>
+            <span className="block">{language === "en" ? "Send message" : "envoyer un message" }</span>
 
             {/* {user ? (
               <span className="block">Send message</span>

@@ -442,7 +442,9 @@ const ProjectDetails = () => {
                 </div>
 
                 <div className="mt-3">
-                  <ProjectForm />
+                  <ProjectForm 
+                  reference={data?.book?.reference}
+                  />
                 </div>
 
             
