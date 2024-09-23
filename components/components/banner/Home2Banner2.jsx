@@ -1,6 +1,9 @@
 import React from "react";
+import { useLanguageContext } from "@/context/languageContext";
+
 
 const Home2Banner2 = () => {
+  const {language} = useLanguageContext()
   return (
     <>
       <div className="banner6-section">
@@ -31,18 +34,18 @@ const Home2Banner2 = () => {
                   </svg>
                 </div>
                 <div className="content">
-                  <span>More Inquiry</span>
+                  <span>{language === "en" ? "More Inquiry": "Plus de demande"}</span>
                   <a href="tel:+999858624984">+999-858 624 984</a>
                 </div>
               </div>
             </div>
             <div className="col-lg-6 order-lg-2 order-1">
               <div className="banner6-content">
-                <h2>Join The Newsletter</h2>
-                <p>To receive our best monthly deals</p>
+                <h2>{language === "en" ? "Join The Newsletter":"Rejoignez la newsletter"}</h2>
+                <p>{language === "en" ? "To receive our best monthly deals":"Pour recevoir nos meilleures offres mensuelles"}</p>
                 <form>
                   <div className="from-inner">
-                    <input type="email" placeholder="Enter Your Gmail..." />
+                    <input type="email" placeholder={language === "en" ? "Enter Your Gmail...":"Entrez votre Gmail..."}/>
                     <button type="submit" className="from-arrow">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +88,7 @@ const Home2Banner2 = () => {
                   </svg>
                 </div>
                 <div className="content">
-                  <span>Send Mail</span>
+                  <span>{language === "en" ? "Send Mail":"Envoyer un courrier"}</span>
                   <a href="mailto:info@example.com">info@example.com</a>
                 </div>
               </div>

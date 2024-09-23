@@ -3,6 +3,7 @@ import Footer from "@/components/components/footer/Footer";
 import Header from "@/components/components/header/Header";
 import TeamCard from '@/components/Site/TeamCard'
 import {teamData} from '@/data/team'
+import { useLanguageContext } from "@/context/languageContext";
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -13,12 +14,15 @@ export const metadata = {
   },
 };
 
+const {language} = useLanguageContext()
+
 const Team = () => {
   return (
     <div dir="ltr">
 
+
 <Header/>
-      <Breadcrumb pagename="Our Guide" pagetitle="Our Guide" />
+      <Breadcrumb pagename={language === 'en' ? "Our Guide" : "Notre guide"} pagetitle={language === 'en' ? "Our Guide" : "Notre guide"} />
       <div className="guide-section pt-120 mb-120">
         <div className="container">
           <div className="row g-lg-4 gy-5">

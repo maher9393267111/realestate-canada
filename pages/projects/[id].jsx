@@ -97,10 +97,8 @@ const ProjectDetails = () => {
     <div dir="ltr">
       <Header />
 
-      <Breadcrumb
-        pagename="Destination Details"
-        pagetitle="Destination Details"
-      />
+      <Breadcrumb pagename={language === 'en' ? "Destination Details" : "Détails de la destination"} pagetitle={language === 'en' ? "Destination Details" : "Détails de la destination"} />
+
       {/* <div className="destination-details-wrap mb-120 pt-120">
         <div className="container">
           <div className="row  flex-col-reverse md:!flex-row g-lg-4 gy-5">
@@ -392,53 +390,53 @@ const ProjectDetails = () => {
                 
                 </div>
                 <div className="single-info">
-                  <span>City: {data?.book?.city}</span>
+                  <span>{language ==='en' ? "City:" : "Ville"} {language ==='en' ? data?.book?.city : data?.book?.cityfr }</span>
                  
                 </div>
 
                 <div className="single-info">
                   <span>
-                    Resale: {data?.book?.services?.resale ? "True" : "False"}
+                  {language ==='en' ? "Resale:" : "Revente:"} {data?.book?.services?.resale ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}
                   </span>
                  
                 </div>
                 <div className="single-info">
                   <span>
-                    Lock off: {data?.book?.services ? "True" : "False"}
+                  {language ==='en' ? "Lock off:" : "Verrouillage:"}  {data?.book?.services ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}
                   </span>
               
                 </div>
                 <div className="single-info">
-                  <span>Bathrooms: {data?.book?.details?.baths}</span>
+                  <span>{language ==='en' ? "Bathrooms:" : "Salles de bains:"}{data?.book?.details?.baths}</span>
                
                 </div>
                 <div className="single-info">
-                  <span>Rooms: {data?.book?.details?.rooms}</span>
+                  <span>{language ==='en' ? "Rooms:" : "Chambres:"}{data?.book?.details?.rooms}</span>
                  
                 </div>
                 <div className="single-info">
-                  <span>Beds: {data?.book?.details?.beds}</span>
+                  <span>{language ==='en' ? "Beds:" : "Lits:"} {data?.book?.details?.beds}</span>
                   
                 </div>
 
                 <div className="single-info">
                   <span>
-                    Furnished:{" "}
-                    {data?.book?.services?.Furnished ? "True" : "False"}
+                    {language ==='en' ? "Furnished:" : "Meublée:"}
+                    {data?.book?.services?.Furnished ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}
                   </span>
                 
                 </div>
 
                 <div className="single-info">
-                  <span>Parking Lots: {data?.book?.details?.parkings}</span>
+                  <span>{language ==='en' ? "Parking Lots:" : "Parcs de stationnement:"}  {data?.book?.details?.parkings}</span>
                 </div>
 
                 <div className="single-info">
-                  <span>Reference: {data?.book?.reference}</span>
+                  <span> {language ==='en' ? "Reference:" : "Parcs de stationnement:"} {data?.book?.reference}</span>
                 </div>
 
                 <div className="single-info">
-                  <span>Condition: {data?.book?.condition}</span>
+                  <span>Condition:  {language ==='en' ? data?.book?.condition : "Ready" ? "Prêt" : "Construction"}</span>
                 </div>
 
                 <div className="mt-3">

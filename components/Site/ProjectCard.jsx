@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ImageEndpoint } from "../../utils/global";
 
+
 export default function ProjectCard({
   blog,
   language,
@@ -32,6 +33,8 @@ export default function ProjectCard({
     // read_time,
   } = blog;
 
+
+
   return (
     <div className={` ${isProjectsPage ? "col-md-4 item" : ""} `}>
       <div className="package-card3  ">
@@ -44,7 +47,7 @@ export default function ProjectCard({
             alt=""
           />
           <div className="batch">
-            <span>Popular  </span>
+            <span>  {language === "en" ? "Popular" : "Populaire"}  </span>
           </div>
         </Link>
         <div className="package-card-content">
@@ -69,7 +72,7 @@ export default function ProjectCard({
                 <li className="projectcard">
                   <i className="bi bi-star-fill" />
                 </li>
-                <span>(33 Review) Popular</span>
+                <span>{language === "en" ? "(33 Review) Popular" : "(33 avis) Populaire"} </span>
               </ul>
 
               {/* {!isfeaturepage &&
@@ -98,7 +101,7 @@ export default function ProjectCard({
                     <path d="M11.0896 9.8611H9.77027V8.04908C9.77027 7.88275 9.63545 7.74792 9.46912 7.74792C9.30279 7.74792 9.16797 7.88275 9.16797 8.04908V10.162C9.16923 10.2424 9.20213 10.3192 9.25955 10.3756C9.31697 10.432 9.39429 10.4636 9.47478 10.4634H11.0896C11.2559 10.4634 11.3908 10.3286 11.3908 10.1623C11.3908 9.99593 11.2559 9.8611 11.0896 9.8611Z" />
                   </g>
                 </svg>
-                Beds: {details?.beds}
+                {language === "en" ? "Beds" : "Lits"} {details?.beds}
               </li>
               <li className="projectcard">
                 <svg
@@ -123,7 +126,7 @@ export default function ProjectCard({
                     />
                   </g>
                 </svg>
-                Rooms: {details?.rooms}
+                {language === "en" ? "Rooms:" : "Chambres:"} {details?.beds} {details?.rooms}
               </li>
               <li className="projectcard">
                 <svg
@@ -141,13 +144,13 @@ export default function ProjectCard({
                     />
                   </g>
                 </svg>
-                Baths: {details?.baths}
+                {language === "en" ? "Bathrooms:" : "salles de bains:"} {details?.beds} {details?.rooms} {details?.baths}
               </li>
             </ul>
           </div>
           <div className="card-content-bottom">
             <div className="price-area">
-              <span className="title">PriceStarting Form:</span>
+              <span className="title"> {language === "en" ? "Price Starting From:" : "Prix ​​à partir de:"} </span>
               <h6>
                 <sub>$</sub>
                 {price}
