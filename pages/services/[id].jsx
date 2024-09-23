@@ -53,10 +53,11 @@ const BlogDetailsPage = () => {
               
 
               
-              <div className="post-thumb mb-30">
+              <div className="post-thumb mb-6">
                 <img
+                className=" !w-full  !h-[360px] object-contai"
                   src={`${ImageEndpoint}/${data?.book?.image[0]}`}
-                  // src="/assets/img/innerpage/blog-standard-img2.jpg"
+                 //  src="/assets/img/innerpage/blog-standard-img2.jpg"
                   alt=""
                 />
               </div>

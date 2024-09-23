@@ -64,7 +64,9 @@ const BlogsMainpage = () => {
                   <div className="blog-card">
                     <div className="blog-card-img-wrap">
                       <Link href={`/services/${_id}`} className="card-img">
-                        <img src={`${ImageEndpoint}/${image[0]}`} alt="" />
+                        <img 
+                         className="  !w-full !h-[360px] "
+                         src={`${ImageEndpoint}/${image[0]}`} alt="" />
                       </Link>
                       {/* <Link href="/services" className="date">
                         <span>
