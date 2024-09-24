@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const useStyles: any = makeStyles((theme: any) => ({
   title: {
-    // padding: theme?.spacing(2),
+     padding: theme?.spacing(2),
     marginBottom: "1rem",
   },
 }));
