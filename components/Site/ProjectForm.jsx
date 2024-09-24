@@ -6,7 +6,7 @@ import { message as antdMessage } from "antd";
 import useAuth from "@/hooks/useAuth";
 import { useLanguageContext } from "@/context/languageContext";
 
-const ProjectForm = ({reference}) => {
+const ProjectForm = ({}) => {
 
 
 const {language} = useLanguageContext()
@@ -54,7 +54,7 @@ const {language} = useLanguageContext()
           email,
           phone,
           message,
-          reference
+         // reference:'*****'
         },
         config
       );

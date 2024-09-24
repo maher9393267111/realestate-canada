@@ -40,6 +40,7 @@ import { fetcher } from "@/utils/fetcher";
 import useBlogs from "@/hooks/useBlogs";
 
 import AdminMainLayout from "@/components/Site/dashboardLayout";
+import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";
 
 interface Book {
   _id: string | number;
@@ -120,6 +121,25 @@ export default function AllBooks() {
   }, []);
 
   if (error) return <div>failed to load</div>;
+
+
+
+  const handleDeleteSingleImage = async (fileToDelete) => {
+    try {
+      console.log("FILE TO DLEETe-->", fileToDelete);
+      const res = await axios.delete(
+        `${uploadApi}/file/delete?fileName=${fileToDelete}`
+      );
+      console.log("File deleted successfully", res);
+      message.success("single image deleted success");
+    } catch (error) {
+      console.error("Error deleting files:", error);
+    }
+  };
+
+
+
+
 
   const handleDelete = (id: number, image: string) => {
     if (!id) return;

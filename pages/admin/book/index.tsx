@@ -40,7 +40,7 @@ import useProducts from "@/hooks/useProducts";
 import useCities from "@/hooks/useCities";
 import useCountries from "@/hooks/useCountries";
 import AdminMainLayout from "@/components/Site/dashboardLayout";
-
+import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";
 interface Book {
   _id: string | number;
   title: string;
@@ -133,13 +133,50 @@ export default function AllBooks() {
 
   if (error) return <div>failed to load</div>;
 
-  const handleDelete = (id: number, image: string) => {
+
+
+  
+  // In your front-end code ARRAY IMAGES ADD DELETE
+  const handleDeleteAllImages = async (filesToDelete: any) => {
+    try {
+      const res = await axios.post(`${uploadApi}/file/delets`, {
+        filesToDelete,
+      });
+      console.log("Files deleted successfully", res);
+      message.success("image deleted success");
+    } catch (error) {
+      console.error("Error deleting files:", error);
+    }
+  };
+
+  // ------------ SINGLE IMAGE ADD DELETE
+
+  const handleDeleteSingleImage = async (fileToDelete) => {
+    try {
+      console.log("FILE TO DLEETe-->", fileToDelete);
+      const res = await axios.delete(
+        `${uploadApi}/file/delete?fileName=${fileToDelete}`
+      );
+      console.log("File deleted successfully", res);
+      message.success("single image deleted success");
+    } catch (error) {
+      console.error("Error deleting files:", error);
+    }
+  };
+
+
+
+
+
+  const handleDelete = (id: number, image: string ,images) => {
     if (!id) return;
     if (!confirm("هل انت متأكد من حذف المنتج ؟")) return;
     axios
       .delete(`/api/book/${id}/handler`)
       .then(async (res) => {
-        await deleteImage(image);
+        await handleDeleteAllImages(images)
+        await handleDeleteSingleImage(image)
+      //  await deleteImage(image);
         message.success("تم حذف المنتج بنجاح");
         mutate();
         //    window.location.reload();
@@ -302,7 +339,7 @@ export default function AllBooks() {
 
                                   <IconButton
                                     onClick={() => {
-                                      handleDelete(book._id, book?.cover);
+                                      handleDelete(book._id, book?.cover,book?.image);
                                     }}
                                   >
                                     <DeleteIcon size={20} fill="#c45e4c" />
