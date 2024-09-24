@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme: any) => ({
   form: {
-    marginTop: theme.spacing(3),
+  //  marginTop: theme?.spacing(3),
     minWidth: "70%",
   },
   invalidCode: {

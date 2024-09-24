@@ -23,8 +23,8 @@ import "../public/assets/css/dashboard.css";
 
 import type { AppProps } from "next/app";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "@/site-settings/theme";
+ import { ThemeProvider } from "@material-ui/core/styles";
+ import theme from "@/site-settings/theme";
 import RTL from "@/site-settings/RTL";
 import { IntlProvider } from "react-intl";
 import msgs from "@/site-settings/site-translations";
@@ -33,6 +33,8 @@ import Head from "next/head";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import NextNProgress from "nextjs-progressbar";
+import { ChakraProvider } from '@chakra-ui/react'
+// import themechakra from "@/site-settings/chakra/theme";
 import {
   LanguageProvider,
   useLanguageContext,
@@ -70,7 +72,15 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       {!isSSR && (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider 
+         theme={theme}
+        
+        >
+
+        {/* <ChakraProvider  */}
+        {/* //   theme={themechakra}
+        // > */}
+          
           <LanguageProvider>
             <IntlProvider locale="en" messages={msgs["en"]}>
               {/* <RTL> */}
@@ -92,7 +102,9 @@ export default function App({ Component, pageProps }: AppProps) {
             height={3}
             showOnShallow={true}
           />
-        </ThemeProvider>
+          {/* //  </ChakraProvider>  */}
+
+         </ThemeProvider>
       )}
     </>
   );

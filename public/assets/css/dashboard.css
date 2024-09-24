@@ -443,7 +443,7 @@ ul {
   z-index: 99;
 }
 .dashboard-wrapper .dashboard-sidebar-wrapper.slide {
-  left: -100%;
+  /* left: -100%; */
 }
 @media (max-width: 1399px) {
   .dashboard-wrapper .dashboard-sidebar-wrapper {
