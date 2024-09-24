@@ -181,7 +181,11 @@ export default function BookCreatePage() {
     }
   };
 
-  if (user && user.role !== "admin") return <NotFound />;
+  // if (user && user.role !== "admin") return <NotFound />;
+
+  if (!user || (user.role !== "admin" && user.name !== "staff")) {
+    return <NotFound />;
+}
   return (
     <div dir="ltr" className="cart-are !bg-[#ffff]  product-area">
       <Head>

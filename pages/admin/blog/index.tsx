@@ -13,6 +13,7 @@ import CartButton from "@/components/button";
 import { Typography, Button, IconButton } from "@material-ui/core";
 import axios from "axios";
 import styled from "styled-components";
+import NotFound from "@/pages/404";
 import { useRouter } from "next/router";
 import { deleteImage } from "@/utils/getData";
 

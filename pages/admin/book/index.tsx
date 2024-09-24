@@ -15,7 +15,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { deleteImage } from "@/utils/getData";
-
+import NotFound from "@/pages/404";
 import { useLanguageContext } from "@/context/languageContext";
 
 import { useTranslation } from "@/context/useTranslation";
@@ -180,6 +180,13 @@ export default function AllBooks() {
     label: city.title,
     value: city.title,
   }));
+
+
+
+  if (!user || (user.role !== "admin")) {
+    return <NotFound />;
+}
+
 
   return (
     <div dir="ltr">
