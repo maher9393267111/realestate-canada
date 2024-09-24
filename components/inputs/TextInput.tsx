@@ -16,7 +16,7 @@ const StyledTextField = styled(TextField)`
 
 const useStyles = makeStyles((theme: any) => ({
   root: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme?.spacing(2),
   },
 }));
 

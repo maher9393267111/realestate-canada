@@ -21,8 +21,8 @@ export const GoogleButton = styled(Button)`
 
 const useStyles: any = makeStyles((theme: any) => ({
   button: {
-    marginBottom: theme.spacing(2),
-    marginTop: theme.spacing(2),
+    marginBottom: theme?.spacing(2),
+    marginTop: theme?.spacing(2),
   },
 }));
 export default function GoogleAuthButton({text}:any) {

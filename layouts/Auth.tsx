@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme: any) => ({
     flexDirection: "column",
   },
   paper: {
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(8),
+    marginTop: theme?.spacing(8),
+   padding: theme?.spacing(8),
     width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     [theme.breakpoints.up("xs")]: {
-      padding: theme.spacing(3),
+      padding: theme?.spacing(3),
     },
   },
 }));

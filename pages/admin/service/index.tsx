@@ -205,7 +205,7 @@ export default function AllBooks() {
                               <Typography>Dare</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>العمليات</Typography>
+                              <Typography>Actions</Typography>
                             </TableCell>
                           </TableRow>
                         </TableHead>
