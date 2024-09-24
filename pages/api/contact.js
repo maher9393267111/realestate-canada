@@ -1,7 +1,3 @@
-const passw = "bbvh hors bgbq pxjm";
-const email = "noreply.springworthbooks@gmail.com";
-
-
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
@@ -10,20 +6,17 @@ const transporter = nodemailer.createTransport({
 
   secure: true, // use SSL
   auth: {
-    // user: "itesa.getViral@gmail.com",
-    // pass: "rtspkviskcrhorey",
-
-    user: email, // generated ethereal user
-    pass: passw, // generated ethereal password
+    user: "itesa.getViral@gmail.com",
+    pass: "rtspkviskcrhorey",
   },
 });
 
-async function sendEmail({ name, email, phone, message}) {
-    console.log("SEND????????" ,name ,email ,phone ,message)
-    const defaultYear = new Date().getFullYear();
+async function sendEmail({ name, email, phone, message, language, country }) {
+  console.log("SEND????????", name, email, phone, message, language, country);
+  const defaultYear = new Date().getFullYear();
   const emailOptions = {
     form: email,
-    to: ["sales@wancafe.com.sa" ,"info@wancafe.com.sa"],
+    to: ["basma94ghanem@gmail.com"],
     subject: `Contact Message from ${email}`,
     html: `<body style="background: #f3f4f6; padding:0 5px;">
     <div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
@@ -37,19 +30,21 @@ async function sendEmail({ name, email, phone, message}) {
         <p style="font-size:1rem;"><strong> Phone: </strong> ${phone}</p>
         
         <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+        <p style="font-size:1rem;"><strong>Property country: </strong> ${country}</p>
+        <p style="font-size:1rem;"><strong>Selected language: </strong> ${language}</p>
+
+
     
     
     </div>
     </div>
     
     <footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
-    <h2>Outlet Turkey</h2>
+    <h2>Properties Canada</h2>
     <p>© ${defaultYear} All rights reserved</p>
     </footer>
-    </body>`
-  
+    </body>`,
   };
-
 
   return transporter.sendMail(emailOptions);
 }

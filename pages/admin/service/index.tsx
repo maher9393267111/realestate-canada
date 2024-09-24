@@ -196,13 +196,13 @@ export default function AllBooks() {
                         <TableHead>
                           <TableRow>
                             <TableCell>
-                              <Typography>عنوان المنتج</Typography>
+                              <Typography>Title</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>السعر الجملي</Typography>
+                              <Typography>Title french</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>تاريخ الانشاء</Typography>
+                              <Typography>Dare</Typography>
                             </TableCell>
                             <TableCell>
                               <Typography>العمليات</Typography>
@@ -217,7 +217,7 @@ export default function AllBooks() {
                                   <Typography>{book?.title}</Typography>
                                 </TableCell>
                                 <TableCell>
-                                  <Typography>{book?.price}</Typography>
+                                  <Typography>{book?.titlefr}</Typography>
                                 </TableCell>
                                 <TableCell>
                                   <Typography>
@@ -228,7 +228,7 @@ export default function AllBooks() {
                                 </TableCell>
                                 <TableCell className="btn-icons">
                                   <IconButton onClick={() => {}}>
-                                    <Link href={`/admin/book/${book?._id}`}>
+                                    <Link href={`/services/${book?._id}`}>
                                       <EyeIcon size={20} fill="#29221f" />
                                     </Link>
                                   </IconButton>

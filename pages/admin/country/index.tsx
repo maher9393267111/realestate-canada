@@ -192,11 +192,11 @@ export default function AdminAllCountries() {
     }
   }, [data]);
 
-  const handleDelete = async (id: string | number) => {
+  const handleDelete = async (id: string | number, image:any) => {
     if (!confirm("هل انت متأكد من حذف هذا التصنيف؟")) return;
     try {
-      await axios.delete(`/api/city/handler/${id}`);
-      //  await handleDelete2(image);
+      await axios.delete(`/api/country/handler/${id}`);
+        await handleDelete2(image);
       message.success("Country deleted successfully");
       mutate();
     } catch (err) {
@@ -321,7 +321,7 @@ export default function AdminAllCountries() {
                             </IconButton>
                             <IconButton
                               className="btn-spacing"
-                              onClick={() => handleDelete(category._id)}
+                              onClick={() => handleDelete(category._id ,category?.cover)}
                             >
                               <DeleteIcon size={20} fill="#575757" />
                             </IconButton>
