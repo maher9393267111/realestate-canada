@@ -4,8 +4,15 @@ import Header from "@/components/components/header/Header";
 import React, { useEffect } from "react";
 import AdminMainLayout from "../../components/Site/dashboardLayout";
 // import "../../../public/assets/css/dashboard.css";
+import useCounts from '@/hooks/useCounts'
 import Link from "next/link";
 const Page = () => {
+
+
+  const { data, isLoading, error, mutate } = useCounts({});
+console.log("DATA-->" , data)
+
+
   const handleContainerClick = (event) => {
     const target = event.target;
 
@@ -63,7 +70,7 @@ const Page = () => {
      
      
        
-          <div className="row">
+          <div dir="ltr" className="row">
             <div className="col-xl-12">
               <div className="main-content-title-profile mb-50">
                 <div className="main-content-title">
@@ -102,9 +109,9 @@ const Page = () => {
                         </svg>
                       </div>
                       <div className="counter-content">
-                        <p>Total Tour</p>
+                        <p>Total Countries</p>
                         <div className="number">
-                          <h3 className="counter">1530</h3>
+                          <h3 className="counter">{data?.countries}</h3>
                           <span>+</span>
                         </div>
                       </div>
@@ -125,9 +132,9 @@ const Page = () => {
                         </svg>
                       </div>
                       <div className="counter-content">
-                        <p>Total Hotel</p>
+                        <p>Total Properties</p>
                         <div className="number">
-                          <h3 className="counter">263</h3>
+                          <h3 className="counter">{data?.properties}</h3>
                           <span>+</span>
                         </div>
                       </div>
@@ -220,9 +227,9 @@ const Page = () => {
                         </svg>
                       </div>
                       <div className="counter-content">
-                        <p>Total Transport</p>
+                        <p>Total Cities</p>
                         <div className="number">
-                          <h3 className="counter">82</h3>
+                          <h3 className="counter">{data?.cities}</h3>
                           <span>+</span>
                         </div>
                       </div>
@@ -241,9 +248,9 @@ const Page = () => {
                         </svg>
                       </div>
                       <div className="counter-content">
-                        <p>Total Visa</p>
+                        <p>Total Blogs</p>
                         <div className="number">
-                          <h3 className="counter">720</h3>
+                          <h3 className="counter">{data?.blogs}</h3>
                           <span>+</span>
                         </div>
                       </div>
@@ -262,9 +269,9 @@ const Page = () => {
                         </svg>
                       </div>
                       <div className="counter-content">
-                        <p>Total Activities</p>
+                        <p>Total Services</p>
                         <div className="number">
-                          <h3 className="counter">70</h3>
+                          <h3 className="counter">{data?.services}</h3>
                           <span>+</span>
                         </div>
                       </div>

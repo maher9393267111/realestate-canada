@@ -1,12 +1,14 @@
 import React from 'react'
 import SidebarAdmin from './sidebar'
 import FooterAdmin from './footer'
-import Header from "../../components/header/Header";
+import Header from "./header";
 export default function AdminMainLayout({children}) {
   return (
     <div className='dashboard-wrapper'>
 
 <Header/>
+
+
 <SidebarAdmin/>
 
 <div className="main-content">
