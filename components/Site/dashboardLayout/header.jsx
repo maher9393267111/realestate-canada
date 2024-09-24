@@ -10,6 +10,14 @@ import LanguageToggle from "@/context/selectLanguage";
 import { useLanguageContext } from "@/context/languageContext";
 import { useTranslation } from "@/context/useTranslation";
 
+
+import useAuth from "@/hooks/useAuth";
+
+
+
+
+
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
   Autoplay,
@@ -70,12 +78,20 @@ function reducer(state, action) {
   }
 }
 
-const Header = () => {
+const HeaderAdmin = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const headerRef = useRef(null);
 
+  const { user, logout, isLoading, mutate } = useAuth({});
 
  
+  const handleLogout = async () => {
+    localStorage.clear();
+    // console.log("logout⚡⚡⚡⚡⚡⚡");
+    await logout();
+    router.reload();
+    //router.push('/auth/login');
+  }
 
   const handleScroll = () => {
     const { scrollY } = window;
@@ -348,6 +364,14 @@ const Header = () => {
             <h6>All Messages</h6>
           </Link>
         </li>
+
+        <li className=" cursor-pointer" onClick={handleLogout}>
+
+<Link href="/">
+
+<h6>Logout</h6>
+</Link>
+</li>
 </ul>
 
           </div>
@@ -482,4 +506,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderAdmin;
