@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import Blog from "@/models/service";
+import Blog from "@/models/visa";
 import dbConnect from "@/utils/dbConnect";
 
 
@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
 
         // const Blogwithrelated = {...Blog , related}
-        console.log("RELATED AS:ALS", blog);
+        console.log("RELATED", blog);
 
         res.status(200).json({ book:blog });
       } catch (error) {

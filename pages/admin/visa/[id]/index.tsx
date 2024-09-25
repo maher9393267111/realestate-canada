@@ -68,6 +68,7 @@ export default function BookUpdatePage() {
   const [rootImages, setRootImages] = useState([]);
   const { mutate, data } = useVisas();
   const { mutate: mutatesingle } = useVisa({ id });
+  console.log("SSSs")
   const [form, setForm] = useState({
     sizes: [],
     features: [],
@@ -88,7 +89,7 @@ export default function BookUpdatePage() {
 
   useEffect(() => {
     if (!id) return;
-    axios.get(`/api/service/${id}`).then((res) => {
+    axios.get(`/api/visa/${id}`).then((res) => {
       const {
         data: { book },
       } = res;
@@ -245,7 +246,7 @@ export default function BookUpdatePage() {
               <Grid item xs={12} md={12}>
                 English Description
                 <ReactQuill
-                  value={propertyDetails.story}
+                  value={propertyDetails?.story}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({
                       ...prevState,
@@ -260,7 +261,7 @@ export default function BookUpdatePage() {
                 French Description
                 <ReactQuill
                   modules={modules}
-                  value={propertyDetails.storyfr}
+                  value={propertyDetails?.storyfr}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({
                       ...prevState,
