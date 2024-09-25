@@ -24,6 +24,9 @@ const Projects = ({
   type,
   city,
   beds,
+  condition,
+  lockoff,
+  resale
 }) => {
   const router = useRouter;
   const { query } = router;
@@ -44,6 +47,9 @@ const Projects = ({
     type,
     city,
     beds,
+    condition,
+    lockoff,
+    resale
   });
 
   const handlePageChange = (event, value) => {
@@ -57,7 +63,7 @@ const Projects = ({
       <Topbar />
       <Header />
       <Breadcrumb pagename="Package Grid" pagetitle="Package Grid" />
-      {data?.books?.length}
+      
       <FilterForm />
       <div className="package-grid-with-sidebar-section pt-120 mb-120">
         <div className="container">
@@ -108,7 +114,13 @@ export const getServerSideProps = async (context) => {
   const { baths, rooms, beds, minPrice, maxPrice, country, type, city } =
     context.query;
 
-  // const searchTerm = context?.query?.country ? context?.query?.country : "";
+   const condition= context?.query?.condition ? context?.query?.condition : "";
+   const resale= context?.query?.resale ? context?.query?.resale : "";
+
+   const lockoff= context?.query?.lockoff ? context?.query?.lockoff : "";
+
+   //lockoff
+
   // const baths = context?.query?. ? context?.query?.baths :0;
 
   // const searchTerm = context?.query?.country ? context?.query?.country : 0;
@@ -129,6 +141,9 @@ export const getServerSideProps = async (context) => {
       maxPrice: maxPrice,
       type: type,
       beds: beds,
+      condition:condition,
+      resale,
+      lockoff
     },
   };
 };

@@ -222,7 +222,7 @@ const router =useRouter()
     // console.log("logout⚡⚡⚡⚡⚡⚡");
     await logout();
     router.reload();
-    //router.push('/auth/login');
+    router.push('/auth/login');
   }
 
 
