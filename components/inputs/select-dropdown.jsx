@@ -41,7 +41,7 @@ const Select = (props) => {
                 />
             </div>
             {isOpen && (
-                <ul className="absolute  bg-white mt-2 py-2 w-full overflow-y-hidden max-h-60 text-base rounded-md border border-gray-300 z-10">
+                <ul className="absolute  bg-white mt-2 py-2 w-full overflow-y-scroll max-h-60 text-base rounded-md border border-gray-300 z-10">
                     {options?.map((option, i) => (
                         <li
                             key={i}
