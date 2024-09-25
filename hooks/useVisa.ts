@@ -5,9 +5,7 @@ import useSWRImmutable from "swr/immutable";
 import Router from "next/router";
 
 interface Query {
-  page?: string | number;
-
-  search?: string;
+  id?: any;
 }
 
 interface BookDetails {
@@ -21,18 +19,11 @@ interface BookDetails {
 
 const fetcher = (url: string) => axios.get(url).then(({ data }: any) => data);
 
-export default function useVisa({
-  page = 1,
-  search="",
-
-}: Query = {}) {
+export default function useService({ id }: Query = {}) {
   // console.log(">C<>" , category)
   const { data, isLoading, error, mutate } = useSWR(
-
-    `/api/visa/main/?page=${page}&search=${search}`,
-    fetcher
-    
-    ,
+    `/api/visa/${id}`,
+    fetcher,
 
     {
       dedupingInterval: 3600000,

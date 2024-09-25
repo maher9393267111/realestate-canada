@@ -7,6 +7,15 @@ import Topbar from "@/components/components/topbar/Topbar";
 import Header from "@/components/components/header/Header";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
+import useVisas from "@/hooks/useVisas";
+import { ImageEndpoint } from "../../utils/global";
+import { useState } from "react";
+import { Pagination } from "@material-ui/lab";
+import { useLanguageContext } from "@/context/languageContext";
+
+
+
+
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
   description:
@@ -16,6 +25,25 @@ export const metadata = {
   },
 };
 const page = () => {
+
+  const { language } = useLanguageContext();
+  const [page, setPage] = useState(1);
+
+  const { data, isLoading, error, mutate } = useVisas({
+    page,
+
+    search: "",
+  });
+
+  const handlePageChange = (event, value) => {
+    if (value === page) return;
+    setPage(value);
+    window.scrollTo(0, 0);
+  };
+
+
+
+
   return (
     <div dir="ltr">
       <Topbar />
@@ -25,7 +53,7 @@ const page = () => {
         <div className="container">
 
             {/* --FILTER HERE-- */}
-          <div className="filter-group">
+          {/* <div className="filter-group">
             <form>
               <div className="filter-area">
                 <div className="row g-xl-4 gy-4">
@@ -256,8 +284,8 @@ const page = () => {
                       </div>
                       <div className="searchbox-input">
                         <label>Traveler</label>
-                        5
-                        {/* <QuantityCounter /> */}
+                        
+                        
                       </div>
                     </div>
                   </div>
@@ -265,16 +293,16 @@ const page = () => {
               </div>
               <button type="submit">Search</button>
             </form>
-          </div>
+          </div> */}
         </div>
       </div>
 
 
-      <div className="visa-with-sidebar-section pt-120 mb-120">
+      <div className="visa-with-sidebar-section pt-120 mb-24">
         <div className="container">
           <div className="row g-lg-4 gy-5">
             <div className="col-lg-8">
-              <div className="package-inner-title-section mb-40">
+              {/* <div className="package-inner-title-section mb-16">
                 <p>Showing 1–12 of 101 results</p>
                 <div className="selector-and-grid">
                   <ul className="grid-view">
@@ -334,26 +362,48 @@ const page = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
+
+
               <div className="list-grid-product-wrap mb-70">
                 <div className="row gy-4">
+
+                {data?.books?.map((blog) => {
+              const {
+                _id,
+
+                createdAt,
+
+                image,
+                title,
+                titlefr,
+                
+                story,
+                storyfr,
+                category,
+                // read_time,
+              } = blog;
+              return (
+
+
                   <div className="col-md-12 item">
                     <div className="package-card4 four">
                       <Link
-                        href="/visas/visas-details"
+                        href={`/invest/${_id}`} 
                         className="package-card-img"
                       >
                         <img
-                          src="/assets/img/home4/package-card4-img1.jpg"
+                         src={`${ImageEndpoint}/${image[0]}`}
+                          //src="/assets/img/home4/package-card4-img1.jpg"
                           alt=""
                         />
                       </Link>
                       <div className="package-card-content">
                         <div className="card-content-top">
                           <h5>
-                            Electronic Visa Adult with Fan with Insurance.
+                            {language === 'en' ? title :titlefr}
                           </h5>
-                          <ul>
+                          {/* <ul>
                             <li>
                               <span>Country :</span> New York
                             </li>
@@ -369,7 +419,7 @@ const page = () => {
                             <li>
                               <span>Processing Time :</span> 7-10 Working Day
                             </li>
-                          </ul>
+                          </ul> */}
                         </div>
                         <div className="card-content-bottom">
                           <div className="price-area">
@@ -378,7 +428,7 @@ const page = () => {
                               <strong>$</strong>3860 <span>Per Person</span>
                             </h6>
                           </div>
-                          <Link href="/visas/visas-details" className="apply-btn">
+                          <Link href={`/invest/${_id}`}  className="apply-btn">
                             Apply Now
                             <div className="arrow">
                               <i className="bi bi-arrow-right" />
@@ -388,13 +438,32 @@ const page = () => {
                       </div>
                     </div>
                   </div>
+
+              )})}
             
                 </div>
               </div>
               <div className="row">
                 <div className="col-lg-12">
-                  <nav className="inner-pagination-area">
-                    <ul className="pagination-list">
+                  <nav className="inner-pagination-area   flex justify-center">
+
+
+                  <Pagination
+                    dir="rtl"
+                    className=" text-center mx-auto"
+                    onChange={(e, i) => {
+                      handlePageChange(e, i);
+                    }}
+                    count={data?.pages}
+                    defaultPage={page}
+                    page={page}
+                    siblingCount={0}
+                    shape="rounded"
+                    color="primary"
+                    showFirstButton
+                    showLastButton
+                  />
+                    {/* <ul className="pagination-list">
                       <li>
                         <a href="#" className="shop-pagi-btn">
                           <i className="bi bi-chevron-left" />
@@ -424,7 +493,9 @@ const page = () => {
                           <i className="bi bi-chevron-right" />
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
+
+
                   </nav>
                 </div>
               </div>
