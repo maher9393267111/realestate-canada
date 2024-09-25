@@ -43,7 +43,7 @@ const countries = [
 
 const page = () => {
   const router = useRouter();
-  const { language } = useLanguageContext();
+  const { language , reference ,setReference} = useLanguageContext();
   const { id } = router.query;
   const { data } = useBlog({ id });
   const { data: blogs } = useBlogs({ page: 1 });
@@ -77,10 +77,12 @@ const page = () => {
 
   function closeModal() {
     setIsOpen(false);
+    setReference("")
   }
 
-  function openModal() {
+  function openModal(referenceid) {
     setIsOpen(true);
+    setReference(referenceid)
   }
 
   return (

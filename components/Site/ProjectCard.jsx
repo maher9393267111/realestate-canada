@@ -28,6 +28,7 @@ export default function ProjectCard({
     details,
     price,
     services,
+    reference
 
     // read_time,
   } = blog;
@@ -160,7 +161,7 @@ export default function ProjectCard({
                 Project Details
               </Link>
             ) : (
-              <button onClick={openModal} className="primary-btn2">
+              <button onClick={()=>openModal(reference)} className="primary-btn2">
                 Book Now
               </button>
             )}

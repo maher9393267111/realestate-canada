@@ -2,7 +2,7 @@
 
 
 "use client";
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import Breadcrumb from "@//components/components/common/Breadcrumb";
 import RecommendatedPackage from "@/components/components/tourPackage/RecommendatedPackage";
 import Lightbox from "yet-another-react-lightbox";
@@ -34,7 +34,7 @@ const ProjectDetails = () => {
   });
 
   const router = useRouter();
-  const { language } = useLanguageContext();
+  const { language ,reference ,setReference } = useLanguageContext();
   const { id } = router.query;
   const { data } = useProduct({ id });
   const { data: blogs } = useBlogs({
@@ -46,14 +46,26 @@ const ProjectDetails = () => {
     isfeatured: true,
   });
 
+  // Set the reference when the project loads
+  useEffect(() => {
+    if (data) {
+      setReference(data.book.reference); // Adjust according to your data structure
+    }
+  }, [data, setReference]);
+
+
+
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
+    setReference(data?.book?.reference)
   }
 
-  function openModal() {
+  function openModal(referenceid) {
+    setReference(referenceid)
     setIsOpen(true);
+
   }
 
   const images2 = [
@@ -101,6 +113,8 @@ const ProjectDetails = () => {
         pagename="Destination Details"
         pagetitle="Destination Details"
       />
+
+      
       {/* <div className="destination-details-wrap mb-120 pt-120">
         <div className="container">
           <div className="row  flex-col-reverse md:!flex-row g-lg-4 gy-5">
@@ -324,6 +338,7 @@ const ProjectDetails = () => {
         <div className="container">
           <div className="row g-lg-4 gy-5">
             <div className="col-lg-7">
+              
             <h2> {language === "en" ? data?.book?.title : data?.book?.titlefr}</h2>
               {/* <p>
 
