@@ -37,6 +37,8 @@ import { message } from "antd";
 import useSWR from "swr";
 import { fetcher } from "@/utils/fetcher";
 import useServices from "@/hooks/useServices";
+import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";
+
 
 import AdminMainLayout from "@/components/Site/dashboardLayout";
 
@@ -122,20 +124,37 @@ export default function AllBooks() {
 
   if (error) return <div>failed to load</div>;
 
+  const handleDelete2 = async (fileToDelete) => {
+    try {
+      console.log("FILE TO DLEETe-->", fileToDelete);
+      const res = await axios.delete(
+        `${uploadApi}/file/delete?fileName=${fileToDelete}`
+      );
+      console.log("File deleted successfully", res);
+      message.success("single image deleted success");
+    } catch (error) {
+      console.error("Error deleting files:", error);
+    }
+  };
+
+
+
+
+
   const handleDelete = (id: number, image: string) => {
     if (!id) return;
-    if (!confirm("هل انت متأكد من حذف المنتج ؟")) return;
+    if (!confirm("Are you sure you want to delete item?")) return;
     axios
       .delete(`/api/service/${id}/handler`)
       .then(async (res) => {
-        await deleteImage(image);
-        message.success("تم حذف المنتج بنجاح");
+        await handleDelete2(image);
+        message.success("Item deleted Successfully");
         mutate();
         //    window.location.reload();
         //router.push("/admin/books");
       })
       .catch((err) => {
-        message.error("حدث خطأ ما");
+        message.error("Something went wrong");
         console.log(err);
       });
   };
@@ -243,7 +262,7 @@ export default function AllBooks() {
 
                                   <IconButton
                                     onClick={() => {
-                                      handleDelete(book._id, book?.cover);
+                                      handleDelete(book._id, book?.image[0]);
                                     }}
                                   >
                                     <DeleteIcon size={20} fill="#c45e4c" />
