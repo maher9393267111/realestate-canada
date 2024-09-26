@@ -1,8 +1,25 @@
-"use client";
+
+
+import { useState } from "react";
 import Link from "next/link";
 import navData from "../../../data/nav.json";
-import { useEffect, useMemo, useReducer, useRef } from "react";
+import destinaiton_sidebar_data from "../../../data/destination-_idebar.json";
+import { useEffect, useMemo, useReducer, useRef, useCallback } from "react";
 import LoginModal from "../common/LoginModal";
+import english2 from "@/public/turkish2.jpg";
+import english from "@/public/english2.png";
+import arabic from "@/public/arabic2.png";
+import french from "@/public/french.png";
+
+import LanguageToggle from "@/context/selectLanguage";
+import { useLanguageContext } from "@/context/languageContext";
+import { useTranslation } from "@/context/useTranslation";
+import useCountries from "@/hooks/useCountries";
+import useCities from "@/hooks/useCities";
+
+
+
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
   Autoplay,
@@ -65,6 +82,44 @@ function reducer(state, action) {
 const Header2 = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const headerRef = useRef(null);
+
+  const { data: countries, isLoading, error } = useCountries();
+
+  const {
+    data: cities,
+    isLoading: loadCities,
+    error: errorCities,
+  } = useCities();
+
+  const groupedData = countries?.map((country) => ({
+    country: country?.title,
+    id: 1,
+    
+    label: country?.title,
+    labelfr: country?.titlefr,
+    link: `/projects/?country=${
+      country?.title
+    }&city=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
+    countrylink:`/forsale/${country?._id}`,
+
+    subMenu: cities
+      ?.filter((city) => city?.country === country?.title)
+      .map((city, index) => ({
+        id: index,
+        label: city?.title,
+        labelfr: city?.labelfr,
+        link: `/projects/?city=${
+          city?.title
+        }&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
+      })),
+    icon:
+      cities?.filter((city) => city?.country === country?.title)?.length > 0
+        ? true
+        : false,
+  }));
+
+  const projectslink = `/projects/?city=${""}&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`;
+
   const handleScroll = () => {
     const { scrollY } = window;
     dispatch({ type: "setScrollY", payload: scrollY });
@@ -90,6 +145,46 @@ const Header2 = () => {
     dispatch({ type: "TOGGLE_SUB_MENU", subMenu: "" });
     dispatch({ type: "TOGGLE_SIDEBAR" });
   };
+
+  // language swither
+
+  const { language, changeLanguage } = useLanguageContext();
+
+  const { translation } = useTranslation();
+
+  const t = useMemo(() => translation ?? {}, [translation]);
+  // console.log("HEADER", t);
+
+  let [isOpen, setIsOpen] = useState(true);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  const selectLanguage = useCallback(
+    (language) => {
+      switch (language) {
+        case "en":
+          changeLanguage("en");
+          break;
+        case "fr":
+          changeLanguage("fr");
+          break;
+        case "tr":
+          changeLanguage("tr");
+          break;
+        default:
+          changeLanguage("en");
+          break;
+      }
+    },
+    [changeLanguage]
+  );
+
   const settings = useMemo(() => {
     return {
       slidesPerView: "auto",
@@ -135,6 +230,7 @@ const Header2 = () => {
     };
   });
 
+
   return (
     <>
       <LoginModal />
@@ -163,15 +259,129 @@ const Header2 = () => {
             </div>
           </div>
           <ul className="menu-list">
+          {/* COUNTRIES WITH CITIES HERE  */}
+
+  <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+              <Link href={projectslink} className="drop-down">
+                Destinations
+              </Link>
+              {groupedData?.length > 0 && (
+                <i
+                  // state.activeMenu === label ? "dash" : "plus"
+
+                  onClick={() => toggleMenu("projects")}
+                  className={`bi bi-${"plus"} dropdown-icon`}
+                />
+              )}
+
+              {groupedData?.length > 0 && (
+                <ul
+                  className={`sub-menu ${
+                    state.activeMenu === "projects" ? "d-block" : ""
+                  }`}
+                >
+                  {groupedData?.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <Link legacyBehavior href={subItem.link}>
+                        <a>{subItem.label}</a>
+                      </Link>
+                      {subItem?.icon && subItem?.icon ? (
+                        <>
+                          <i className="d-lg-flex d-none bi bi-chevron-right dropdown-icon" />
+                          <i
+                            onClick={() => toggleSubMenu(subItem?.label)}
+                            className={`d-lg-none d-flex bi bi-${
+                              state.activeSubMenu === subItem?.label
+                                ? "dash"
+                                : "plus"
+                            } dropdown-icon `}
+                          />
+                        </>
+                      ) : (
+                        ""
+                      )}
+                      {subItem?.subMenu && (
+                        <ul
+                          className={`sub-menu ${
+                            state.activeSubMenu === subItem.label
+                              ? "d-block"
+                              : ""
+                          }`}
+                        >
+                          {subItem?.subMenu.map((subItem, subIndex) => (
+                            <li key={subItem?.id}>
+                              <Link legacyBehavior href={subItem?.link}>
+                                <a>{subItem?.label}</a>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+
+
+
+{/* -----ONLY COUNTRIES HERE----- */}
+<li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+              <Link href={'/'} className="drop-down">
+              {language === "en" ? "For Sale" : "À vendre"}
+              </Link>
+              {groupedData?.length > 0 && (
+                <i
+                  // state.activeMenu === label ? "dash" : "plus"
+
+                  onClick={() => toggleMenu("countries")}
+                  className={`bi bi-${"plus"} dropdown-icon`}
+                />
+              )}
+
+              {groupedData?.length > 0 && (
+                <ul
+                  className={`sub-menu ${
+                    state.activeMenu === "countries" ? "d-block" : ""
+                  }`}
+                >
+                  {groupedData?.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <Link legacyBehavior href={subItem?.countrylink}>
+                        <a>{subItem?.label}</a>
+                      </Link>
+                      {/* {subItem?.icon && subItem?.icon ? (
+                        <>
+                          <i className="d-lg-flex d-none bi bi-chevron-right dropdown-icon" />
+                          <i
+                            onClick={() => toggleSubMenu(subItem?.label)}
+                            className={`d-lg-none d-flex bi bi-${
+                              state.activeSubMenu === subItem?.label
+                                ? "dash"
+                                : "plus"
+                            } dropdown-icon `}
+                          />
+                        </>
+                      ) : (
+                        ""
+                      )} */}
+                  
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+
+
             {navData.map((data) => {
-              const { id, label, link, icon, subMenu } = data;
+              const { id, label, link, icon, subMenu, labelfr } = data;
               return (
                 <li
                   key={id}
                   className={`${icon === true ? "menu-item-has-children" : ""}`}
                 >
                   <Link href={link} className="drop-down">
-                    {label}
+                    {language === "en" ? label : labelfr}
                   </Link>
                   {icon && (
                     <i
@@ -191,7 +401,11 @@ const Header2 = () => {
                       {subMenu.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <Link legacyBehavior href={subItem.link}>
-                            <a>{subItem.label}</a>
+                            <a>
+                              {language === "en"
+                                ? subItem?.label
+                                : subItem?.labelfr}{" "}
+                            </a>
                           </Link>
                           {subItem.icon && subItem.icon ? (
                             <>
@@ -219,7 +433,11 @@ const Header2 = () => {
                               {subItem.subMenu.map((subItem, subIndex) => (
                                 <li key={subItem.id}>
                                   <Link legacyBehavior href={subItem.link}>
-                                    <a>{subItem.label}</a>
+                                    <a>
+                                      {language === "en"
+                                        ? subItem?.label
+                                        : subItem?.labelfr}
+                                    </a>
                                   </Link>
                                 </li>
                               ))}
@@ -232,6 +450,9 @@ const Header2 = () => {
                 </li>
               );
             })}
+
+
+
           </ul>
           <div className="topbar-right d-lg-none d-block">
             <button

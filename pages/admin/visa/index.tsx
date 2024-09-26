@@ -13,7 +13,6 @@ import CartButton from "@/components/button";
 import { Typography, Button, IconButton } from "@material-ui/core";
 import axios from "axios";
 import styled from "styled-components";
-import NotFound from "@/pages/404";
 import { useRouter } from "next/router";
 import { deleteImage } from "@/utils/getData";
 
@@ -37,20 +36,23 @@ import useAuth from "@/hooks/useAuth";
 import { message } from "antd";
 import useSWR from "swr";
 import { fetcher } from "@/utils/fetcher";
-import useBlogs from "@/hooks/useBlogs";
+import useVisas from "@/hooks/useVisas";
 
 import AdminMainLayout from "@/components/Site/dashboardLayout";
 import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";
 
+
 interface Book {
   _id: string | number;
   title: string;
+  subtitle: string;
   story?: string;
   price: string | number;
   cover: string;
   author?: string;
   category?: string;
   forsell?: boolean;
+  
 }
 
 const SearchTimeOut = 0; // 0 ms
@@ -90,7 +92,7 @@ export default function AllBooks() {
 
   // ----------
 
-  const { data, isLoading, error, mutate } = useBlogs({
+  const { data, isLoading, error, mutate } = useVisas({
     page,
 
     search,
@@ -123,8 +125,7 @@ export default function AllBooks() {
   if (error) return <div>failed to load</div>;
 
 
-
-  const handleDeleteSingleImage = async (fileToDelete) => {
+  const handleDelete2 = async (fileToDelete) => {
     try {
       console.log("FILE TO DLEETe-->", fileToDelete);
       const res = await axios.delete(
@@ -137,39 +138,22 @@ export default function AllBooks() {
     }
   };
 
-  // In your front-end code ARRAY IMAGES ADD DELETE
-  const handleDeleteImages = async (filesToDelete: any) => {
-    try {
-      const res = await axios.post(`${uploadApi}/file/delets`, {
-        filesToDelete,
-      });
-      console.log("Files deleted successfully", res);
-      message.success("image deleted success");
-    } catch (error) {
-      console.error("Error deleting files:", error);
-    }
-  };
 
 
-
-  const handleDelete = (id: number, image: string ,images) => {
+  const handleDelete = (id: number, image: string) => {
     if (!id) return;
     if (!confirm("Are you sure you want to delete item?")) return;
     axios
-      .delete(`/api/blog/${id}/handler`)
+      .delete(`/api/visa/${id}/handler`)
       .then(async (res) => {
-        await handleDeleteSingleImage(image);
-        await handleDeleteImages(images)
-
-
-
-        message.success("Item deleted Successfully");
+        await handleDelete2(image);
+        message.success("Visa Item deleted Successfully");
         mutate();
         //    window.location.reload();
         //router.push("/admin/books");
       })
       .catch((err) => {
-        message.error("Something went wrong");
+        message.error(err?.message);
         console.log(err);
       });
   };
@@ -180,17 +164,10 @@ export default function AllBooks() {
 
   const t = useMemo(() => translation ?? {}, [translation]);
 
-  if (!user || (user.role !== "admin" && user.name !== "staff")) {
-    return <NotFound />;
-}
-
-
-
-
   return (
     <>
       <Head>
-        <title>Outlet Turkey</title>
+        <title>triprex</title>
         <meta name="description" content="متجر لبيع كافة ماتحتاجه" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="" />
@@ -205,7 +182,7 @@ export default function AllBooks() {
               }}
               gutterBottom
             >
-              All Blogs
+              All Visa
             </AnimatedTypography>
 
             <Grid container spacing={4}>
@@ -237,16 +214,16 @@ export default function AllBooks() {
                         <TableHead>
                           <TableRow>
                             <TableCell>
-                              <Typography>Blog Description</Typography>
+                              <Typography>Title</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>Countries</Typography>
+                              <Typography>Title french</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>Creation Date</Typography>
+                              <Typography>Dare</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography>Action</Typography>
+                              <Typography>Actions</Typography>
                             </TableCell>
                           </TableRow>
                         </TableHead>
@@ -258,7 +235,7 @@ export default function AllBooks() {
                                   <Typography>{book?.title}</Typography>
                                 </TableCell>
                                 <TableCell>
-                                  <Typography>{book?.category}</Typography>
+                                  <Typography>{book?.titlefr}</Typography>
                                 </TableCell>
                                 <TableCell>
                                   <Typography>
@@ -269,7 +246,7 @@ export default function AllBooks() {
                                 </TableCell>
                                 <TableCell className="btn-icons">
                                   <IconButton onClick={() => {}}>
-                                    <Link href={`/admin/book/${book?._id}`}>
+                                    <Link href={`/visa/${book?._id}`}>
                                       <EyeIcon size={20} fill="#29221f" />
                                     </Link>
                                   </IconButton>
@@ -277,14 +254,14 @@ export default function AllBooks() {
                                     className="btn-spacing"
                                     //   onClick={() => (window.location.href = `/admin/book/${book._id}`)}
                                   >
-                                    <Link href={`/admin/blog/${book._id}`}>
+                                    <Link href={`/admin/visa/${book._id}`}>
                                       <EditIcon size={20} fill="#c45e4c" />
                                     </Link>
                                   </IconButton>
 
                                   <IconButton
                                     onClick={() => {
-                                      handleDelete(book._id, book?.cover ,book?.image);
+                                      handleDelete(book._id, book?.image[0]);
                                     }}
                                   >
                                     <DeleteIcon size={20} fill="#c45e4c" />

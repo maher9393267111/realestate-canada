@@ -24,6 +24,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           type,
           minPrice,
           maxPrice,
+          condition,
+          resale,
+          lockoff
         } = req.query;
         const where = {};
 
@@ -60,6 +63,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
 
+        if (resale && resale !== "") {
+          where["services.resale"]= resale === 'true' ? true : false;
+        }
+
+        if (lockoff && lockoff !== "") {
+          where["services.lockoff"]= lockoff === 'true' ? true : false;
+        }
+
+
+
         // if (category && category !== "") {
         //   where["category"] = category;
         // }
@@ -70,6 +83,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         if (country && country !== "") {
           where["country"] = country;
+        }
+
+        if (condition && condition !== "") {
+          where["condition"] = condition;
         }
 
         console.log("here", where, req.query);

@@ -5,6 +5,7 @@ const LanguageContext = createContext()
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState()
   const [mounted, setMounted] = useState(false)
+  const [reference, setReference] = useState("")
 
   const [isMobile, setIsMobile] = useState(true);
     const [isOpen, setIsOpen] = useState(isMobile ? false : true);
@@ -41,6 +42,8 @@ export function LanguageProvider({ children }) {
   }, [language, mounted])
 
   let sharedState = {
+    reference,
+    setReference,
     language,
     isMobile,
     setIsMobile,

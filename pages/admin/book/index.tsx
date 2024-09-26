@@ -170,20 +170,20 @@ export default function AllBooks() {
 
   const handleDelete = (id: number, image: string ,images) => {
     if (!id) return;
-    if (!confirm("هل انت متأكد من حذف المنتج ؟")) return;
+    if (!confirm("Are you sure you want to delete item?")) return;
     axios
       .delete(`/api/book/${id}/handler`)
       .then(async (res) => {
         await handleDeleteAllImages(images)
         await handleDeleteSingleImage(image)
       //  await deleteImage(image);
-        message.success("تم حذف المنتج بنجاح");
+        message.success("Item deleted Successfully");
         mutate();
         //    window.location.reload();
         //router.push("/admin/books");
       })
       .catch((err) => {
-        message.error("حدث خطأ ما");
+        message.error("Something went wrong");
         console.log(err);
       });
   };

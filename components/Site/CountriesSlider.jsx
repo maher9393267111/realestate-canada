@@ -42,15 +42,15 @@ const Countriesslide = () => {
           spaceBetween: 15,
         },
         992: {
-          slidesPerView: 4,
+          slidesPerView: 3,
           spaceBetween: 15,
         },
         1200: {
-          slidesPerView: 4,
+          slidesPerView: 3,
           spaceBetween: 15,
         },
         1400: {
-          slidesPerView: 4,
+          slidesPerView: 3,
         },
       },
     };

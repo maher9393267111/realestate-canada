@@ -1,6 +1,6 @@
 //@ts-nocheck
 import type { NextApiRequest, NextApiResponse } from "next";
-import Blog from "@/models/service";
+import Blog from "@/models/visa";
 import dbConnect from "@/utils/dbConnect";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -33,7 +33,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           where,
         });
 
-        console.log('SERVIICES-->WWWWW' , books)
+
+        
+        console.log('VISAAAS-->' , books)
+
         res.status(200).json({ books, pages });
       } catch (error) {
         console.error(error?.message);

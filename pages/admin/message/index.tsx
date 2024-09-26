@@ -122,7 +122,7 @@ export default function AllMessages() {
 
   const handleDelete = (id: number, image: string) => {
     if (!id) return;
-    if (!confirm("هل انت متأكد من حذف المنتج ؟")) return;
+    if (!confirm("Are you sure you want to delete item?")) return;
     axios
       .delete(`/api/message/${id}/handler`)
       .then(async (res) => {

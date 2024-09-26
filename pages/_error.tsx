@@ -6,10 +6,10 @@ export default function Error() {
   return (
     <>
       <Head>
-        <title>حدث خطأ ما - Outlet Turkey</title>
+        <title>Something went wrong - Outlet Turkey</title>
         <meta
           name="description"
-          content="حدث خطأ ما، يرجى المحاولة مرة أخرى."
+          content="Something went wrong، يرجى المحاولة مرة أخرى."
         />
       </Head>
       <Container
@@ -35,11 +35,11 @@ export default function Error() {
           }}
         >
           <Typography className="mb-5" variant="h5">
-            حدث خطأ ما
+            Something went wrong
           </Typography>
 
           <Typography className="mb-5">
-            حدث خطأ ما، يرجى المحاولة مرة أخرى.
+            Something went wrong، يرجى المحاولة مرة أخرى.
           </Typography>
 
           <Button variant="contained" color="primary" href="/">

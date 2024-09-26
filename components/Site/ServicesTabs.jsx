@@ -131,7 +131,7 @@ const ServicesTabs = () => {
                     <div className="col-xl-5">
                       <div className="tab-sidebar">
                         <ul
-                          className="nav nav-pills"
+                          className="nav nav-pills !bg-transparent"
                           id="pills-tab3"
                           role="tablist"
                         >
