@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 import { db } from "@/utils/firebaseConfig";
 import { useMemo } from "react";
 import { uploadImages, deleteImages, deleteImage } from "@/utils/getData";
-import useBlogs from "@/hooks/useBlogs";
+import useVisas from "@/hooks/useVisas";
 
 import { Form, Upload, Input, Select, Switch, InputNumber } from "antd";
 import { useTranslation } from "@/context/useTranslation";
@@ -30,6 +30,8 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+import { Rating as ReactRating } from "@smastrom/react-rating";
 
 const uploadApi = "https://file-uploader-red.vercel.app";
 
@@ -72,28 +74,13 @@ const modules = {
   ],
 };
 
-export default function BookCreatePage() {
-  const countries = [
-    { value: "", label: "All countries" },
-    { value: "United Arab Emirates", label: "United Arab Emirates" },
-    { value: "Mexico", label: "Mexico" },
-    { value: "North Cyprus", label: "North Cyprus" },
-    { value: "Spain", label: "Spain" },
-    { value: "Republic Dominica", label: "Republic Dominica" },
-
-    { value: "Portugal", label: "Portugal" },
-
-    { value: "Canada", label: "Canada" },
-
-   
-  ];
-
+export default function VisaCreatePage() {
   const { user } = useAuth({
     redirectTo: "/auth/login",
     redirectIfFound: false,
   });
 
-  const { mutate } = useBlogs();
+  const { mutate } = useVisas();
 
   const router = useRouter();
   const { translation } = useTranslation();
@@ -105,25 +92,16 @@ export default function BookCreatePage() {
   const [propertyDetails, setPropertyDetails] = useState({
     title: "",
     titlefr: "",
+
     story: "",
     storyfr: "",
+
     category: "",
 
     image: [],
 
     addBy: "Admin",
   });
-
-  const [selectedCountry, setSelectedCountry] = useState({});
-
-  useEffect(() => {
-    if (selectedCountry?.value) {
-      setPropertyDetails((prev) => ({
-        ...prev,
-        category: selectedCountry?.value,
-      }));
-    }
-  }, [selectedCountry]);
 
   // Handle input changes for the form
   const handleInputChange = (name, value) => {
@@ -155,7 +133,7 @@ export default function BookCreatePage() {
 
       //?size=${(size = 1200)}&&hieghtsize=${(hieghtSize = 1000)}
       const response = await axios.post(
-        `${uploadApi}/file/uploads?size=600&hieghtsize=800`,
+        `${uploadApi}/file/uploads?size=360&hieghtsize=360`,
         formData,
         {
           headers: {
@@ -202,12 +180,12 @@ export default function BookCreatePage() {
       };
 
       await axios
-        .post("/api/blog", updatedDetails)
+        .post("/api/visa", updatedDetails)
 
         .then((res) => {
           console.log(res);
           mutate();
-          message.success("Blog added successfully");
+          message.success("Visa added successfully");
           const { data } = res;
           //     router.push(`/~/book/${data}`);
         })
@@ -220,19 +198,18 @@ export default function BookCreatePage() {
   };
 
   // if (user && user.role !== "admin") return <NotFound />;
-  
+
   if (!user || (user.role !== "admin" && user.name !== "staff")) {
     return <NotFound />;
-}
+  }
   return (
     <div dir="ltr" className="cart-are !bg-[#ffff]  product-area">
       <Head>
-        <title>إضافة منتج جديد - Outlet Turkey</title>
-        
+        <title>إضافة منتج جديد </title>
       </Head>
       <AdminMainLayout>
         <PageLayout title="header.addBook">
-          <div className="text-center md:text-2xl"> Add Blog </div>
+          <div className="text-center md:text-2xl"> Add Service</div>
           <form className=" p-20" onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
@@ -255,6 +232,7 @@ export default function BookCreatePage() {
                 />
               </Grid>
 
+              {/*               
               <Grid item xs={12} md={6}>
                 <TextInput
                   name="category"
@@ -263,16 +241,7 @@ export default function BookCreatePage() {
                   value={propertyDetails.category}
                   onChange={(value) => handleInputChange("category", value)}
                 />
-              </Grid>
-
-              <Grid item xs={12} md={6}>
-                <SelectInput
-                  placeholder="Select Country"
-                  options={countries}
-                  selected={selectedCountry}
-                  setSelected={setSelectedCountry}
-                />
-              </Grid>
+              </Grid> */}
 
               <Grid item xs={12} md={12}>
                 English Description
@@ -327,7 +296,7 @@ export default function BookCreatePage() {
                     console.log("files", files);
                   }}
                 >
-                  Add images
+                  Add image
                 </Upload>
               </div>
 

@@ -21,6 +21,7 @@ import "../public/assets/sass/main.scss";
 
 import "../public/assets/css/dashboard.css";
 
+
 import type { AppProps } from "next/app";
 import CssBaseline from "@material-ui/core/CssBaseline";
  import { ThemeProvider } from "@material-ui/core/styles";
@@ -49,11 +50,12 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  // const { translation } = useTranslation()
-
-  // const t = useMemo(() => translation ?? {}, [translation])
 
   const [isSSR, setIsSSR] = useState(true);
+
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
 
   useEffect(() => {
     setIsSSR(false);

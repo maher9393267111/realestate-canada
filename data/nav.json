@@ -5,7 +5,15 @@
         "label": "Services",
         "labelfr": "Services",
         "link": "/services",
-        "icon": false
+        "icon": true,
+        "subMenu": [
+            {
+                "id": "1",
+                "label": "Invest",
+                "link": "/invest"
+            }
+         
+        ]
     },
 
     {

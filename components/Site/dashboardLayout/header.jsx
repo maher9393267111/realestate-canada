@@ -13,7 +13,7 @@ import { useTranslation } from "@/context/useTranslation";
 
 import useAuth from "@/hooks/useAuth";
 
-
+import { useRouter } from "next/router";
 
 
 
@@ -83,14 +83,13 @@ const HeaderAdmin = () => {
   const headerRef = useRef(null);
 
   const { user, logout, isLoading, mutate } = useAuth({});
-
- 
+const router =useRouter()
   const handleLogout = async () => {
     localStorage.clear();
     // console.log("logout⚡⚡⚡⚡⚡⚡");
     await logout();
     router.reload();
-    //router.push('/auth/login');
+    router.push('/auth/login');
   }
 
   const handleScroll = () => {

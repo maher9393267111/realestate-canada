@@ -9,7 +9,7 @@ import { useLanguageContext } from "@/context/languageContext";
 const ProjectForm = ({}) => {
 
 
-const {language} = useLanguageContext()
+const {language ,reference} = useLanguageContext()
 
   // const { status } = useSession();
   const { user } = useAuth({});
@@ -48,20 +48,22 @@ const {language} = useLanguageContext()
 
     try {
       const { data } = await axios.post(
-        `/api/message/new-message`,
+        `/api/offer`,
         {
           name,
           email,
           phone,
           message,
-         // reference:'*****'
+          reference
         },
         config
       );
 
+      antdMessage.success("Your message sended successfully")
       setIsSuccess(data.success);
     } catch (error) {
       setError(error.message);
+     // antdMessage.error("Your message sended successfully")
       console.error(error.message);
     }
   };
@@ -75,6 +77,7 @@ const {language} = useLanguageContext()
       className="w-full grid grid-cols-3 gap-4"
     >
       <div className="col-span-3 search-box">
+        
         <input
           type="text"
           placeholder={language === "en" ? "Name" : "Nom" }
@@ -103,21 +106,6 @@ const {language} = useLanguageContext()
       </div>
     
 
-    {/* {reference != null ?  */}
-
-      <div className="col-span-3 search-box flex-col">
-        <label>{language === "en" ? "Your Reference Number" : "Votre numéro de référence" }</label>
-        <input
-          type="number"
-          placeholder="Reference"
-          value={reference}
-          //onChange={(e) => setPhone(e.target.value)}
-          className="mt-1 p-2 block w-full rounded-md border  border-color   focus:outline-none !border-primary2 focus:!border-primary2 shadow-sm md:text-base"
-        />
-      </div>
-// :
-// ""
-{/* //     } */}
 
 
       <div className="col-span-3 search-box">
