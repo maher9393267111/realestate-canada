@@ -53,9 +53,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const [isSSR, setIsSSR] = useState(true);
 
-  useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.bundle.min.js");
-  }, []);
+  // useEffect(() => {
+  //   require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  // }, []);
 
   useEffect(() => {
     setIsSSR(false);

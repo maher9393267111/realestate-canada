@@ -21,7 +21,19 @@
         "label": "About",
         "labelfr": "À propos",
         "link": "/about",
-        "icon": false
+        "icon": true,
+        "subMenu": [
+            {
+                "id": "1",
+                "label": "Who we are",
+                "link": "/who-we-are"
+            },
+            {
+                "id": "1",
+                "label": "meet the team",
+                "link": "/meet-the-team"
+            }
+        ]
     },
 
     
