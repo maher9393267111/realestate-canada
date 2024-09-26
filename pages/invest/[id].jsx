@@ -6,9 +6,11 @@ import Topbar from "@/components/components/topbar/Topbar";
 import SelectComponent from "@/components/Site/SelectComponent";
 import { useRouter } from "next/router";
 import { ImageEndpoint } from "../../utils/global";
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import { useLanguageContext } from "@/context/languageContext";
 import { format, formatDistanceToNow, parseISO } from "date-fns";
+import { message as antdMessage } from "antd";
+import axios from "axios";
 import useVisa from "@/hooks/useVisa";
 // import ProjectForm from "../../components/Site/ProjectForm";
 // import ContactModal from "../../components/Site/ContactModal";
@@ -30,10 +32,85 @@ const VisaDetails = () => {
   //   console.log("?>??>?" , id , data)
 
   const [selectedVisa, setSelectedVisa] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [name, setName] = useState("");
+  const [email , setEmail] = useState("");
+  const [phone , setPhone] = useState("");
+  const [message , setMessage] = useState("");
+  const [selectedlanguage , setSelectedLanguage] = useState("");
+
+
+
+
+
+
 
   const handleSelect = (option) => {
     setSelectedVisa(option); // Update the selected visa state
   };
+
+
+  const handleSelectCountry = (option) => {
+    setSelectedCountry(option); // Update the selected visa state
+  };
+
+  const handleSelectLanguage = (option) => {
+    setSelectedLanguage(option); // Update the selected visa state
+  };
+
+
+    // CRUD State.
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      if (error) {
+        antdMessage.error(error);
+        setError(null);
+      }
+  
+      if (isSuccess) {
+        antdMessage.success("Message send successfully");
+  
+        setIsSuccess(false);
+      }
+    }, [error, isSuccess]);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+       // Validation
+  if (!name || !email || !phone || !message || !selectedVisa || !selectedCountry || !selectedlanguage) {
+    antdMessage.error("Please fill in all required fields.");
+    return;
+  }
+  
+      const config = { headers: { "Content-Type": "application/json" } };
+  
+      try {
+        const { data } = await axios.post(
+          `/api/visamessage`,
+          {
+            name,
+            email,
+            phone,
+            message,
+            visa:selectedVisa,
+            country:selectedCountry,
+            language:selectedlanguage
+          },
+          config
+        );
+  
+        antdMessage.success("Your message sended successfully")
+        setIsSuccess(data.success);
+      } catch (error) {
+        setError(error.message);
+       // antdMessage.error("Your message sended successfully")
+        console.error(error.message);
+      }
+    };
+
 
   return (
     <div dir="ltr">
@@ -415,27 +492,34 @@ const VisaDetails = () => {
                       prompt response via phone/email.
                     </p>
                   </div>
-                  <form>
-                    <div className="form-inner mb-20">
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-inner mb-4">
                       <label>
                         Full Name <span>*</span>
                       </label>
-                      <input type="text" placeholder="Enter your full name" />
+                      <input
+                       value={name}
+                       onChange={(e) => setName(e.target.value)}
+                      type="text" placeholder="Enter your full name" />
                     </div>
-                    <div className="form-inner mb-20">
+                    <div className="form-inner mb-4">
                       <label>
                         Email Address <span>*</span>
                       </label>
                       <input
+                       value={email}
+                       onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         placeholder="Enter your email address"
                       />
                     </div>
-                    <div className="form-inner mb-20">
+                    <div className="form-inner mb-4">
                       <label>
                         Phone Number <span>*</span>
                       </label>
                       <input
+                       value={phone}
+                       onChange={(e) => setPhone(e.target.value)}
                         type="text"
                         placeholder="Enter your phone number"
                       />
@@ -449,22 +533,41 @@ const VisaDetails = () => {
                         placeholder="Select Visa"
                         onSelect={handleSelect} // Pass the handler to the SelectComponent
                       />
-                      {selectedVisa && <p>Selected Visa: {selectedVisa}</p>}
+                      
                     </div>
                     <div className="form-inner mb-70">
                       <label>
                         Country <span>*</span>
                       </label>
                       <SelectComponent
-                        options={["Australia", "Brazil", "Bangladesh"]}
-                        placeholder={["Select Country"]}
+                        options={["Spain", "Canada", "France"]}
+                        placeholder="Select Country"
+                        onSelect={handleSelectCountry}
                       />
+
                     </div>
+
+                    <div className="form-inner mb-70">
+                      <label>
+                        Your language <span>*</span>
+                      </label>
+                      <SelectComponent
+                        options={["French" ,"Spanish","English"]}
+                        placeholder="Select Language"
+                        onSelect={handleSelectLanguage} // Pass the handler to the SelectComponent
+                      />
+                     
+                    </div>
+
+
+
                     <div className="form-inner mb-30">
                       <label>
                         Write Your Massage <span>*</span>
                       </label>
                       <textarea
+                       value={message}
+                       onChange={(e) => setMessage(e.target.value)}
                         placeholder="Write your quiry"
                         defaultValue={""}
                       />
