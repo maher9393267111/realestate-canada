@@ -231,7 +231,7 @@ const Header = () => {
       {/* <LoginModal isOpen={isOpen} closeModal={closeModal} /> */}
       <header
         ref={headerRef}
-        className={`header-area style-2 ${state.scrollY > 10 ? "sticky" : ""}`}
+        className={`header-area style-1 ${state.scrollY > 10 ? "sticky" : ""}`}
       >
         <div className="header-logo d-lg-none d-flex">
           <Link href="/">

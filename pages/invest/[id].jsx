@@ -1,4 +1,3 @@
-
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
@@ -14,7 +13,6 @@ import useVisa from "@/hooks/useVisa";
 // import ProjectForm from "../../components/Site/ProjectForm";
 // import ContactModal from "../../components/Site/ContactModal";
 
-
 import moment from "moment/moment";
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -25,20 +23,17 @@ export const metadata = {
   },
 };
 const VisaDetails = () => {
+  const router = useRouter();
+  const { language, reference, setReference } = useLanguageContext();
+  const { id } = router.query;
+  const { data } = useVisa({ id });
+  //   console.log("?>??>?" , id , data)
 
-    const router = useRouter();
-    const { language , reference ,setReference} = useLanguageContext();
-    const { id } = router.query;
-    const { data } = useVisa({ id });
- //   console.log("?>??>?" , id , data)
+  const [selectedVisa, setSelectedVisa] = useState("");
 
-    const [selectedVisa, setSelectedVisa] = useState("");
-
-    const handleSelect = (option) => {
-      setSelectedVisa(option); // Update the selected visa state
-    };
-
-
+  const handleSelect = (option) => {
+    setSelectedVisa(option); // Update the selected visa state
+  };
 
   return (
     <div dir="ltr">
@@ -54,15 +49,15 @@ const VisaDetails = () => {
             <div className="col-lg-8">
               <div className="visa-thumb">
                 <img
-                className="w-full h-[350px] object-fit"
-                 src={`${ImageEndpoint}/${data?.book?.image[0]}`}
-                // src="/assets/img/innerpage/visa-bt-img.jpg" 
-                alt="" />
+                  className="w-full h-[350px] object-fit"
+                  src={`${ImageEndpoint}/${data?.book?.image[0]}`}
+                  // src="/assets/img/innerpage/visa-bt-img.jpg"
+                  alt=""
+                />
               </div>
               <div className="visa-title">
                 <h3>
-                {language === "en" ? data?.book?.title : data?.book?.titlefr}{" "}
-
+                  {language === "en" ? data?.book?.title : data?.book?.titlefr}{" "}
                 </h3>
               </div>
               {/* <ul className="visa-meta">
@@ -87,18 +82,15 @@ const VisaDetails = () => {
               </ul> */}
               <div className="visa-required-document mb-50">
                 <div className="document-list">
-
-
-                <div
-                  className="bg-whit !text-[#100c08]"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      language === "en"
-                        ? data?.book?.story
-                        : data?.book?.storyfr,
-                  }}
-                />
-
+                  <div
+                    className="bg-whit !text-[#100c08]"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        language === "en"
+                          ? data?.book?.story
+                          : data?.book?.storyfr,
+                    }}
+                  />
 
                   {/* <h3>View Required Documents</h3>
                   <h6>
@@ -168,11 +160,8 @@ const VisaDetails = () => {
                       Processing time 7 working days.
                     </li>
                   </ul> */}
-
-
                 </div>
               </div>
-
 
               {/* <h4 className="widget-title mb-30">
                 FAQ - General Visa Information:
@@ -408,9 +397,6 @@ const VisaDetails = () => {
                   </div>
                 </div>
               </div> */}
-
-
-
             </div>
             <div className="col-lg-4">
               <div className="visa-sidebar mb-30">
@@ -459,13 +445,11 @@ const VisaDetails = () => {
                         Visa Type <span>*</span>
                       </label>
                       <SelectComponent
-        options={["Tourist", "Business visa", "Student visa"]}
-        placeholder="Select Visa"
-        onSelect={handleSelect} // Pass the handler to the SelectComponent
-      />
-      {selectedVisa && <p>Selected Visa: {selectedVisa}</p>}
-
-
+                        options={["Tourist", "Business visa", "Student visa"]}
+                        placeholder="Select Visa"
+                        onSelect={handleSelect} // Pass the handler to the SelectComponent
+                      />
+                      {selectedVisa && <p>Selected Visa: {selectedVisa}</p>}
                     </div>
                     <div className="form-inner mb-70">
                       <label>
@@ -493,6 +477,9 @@ const VisaDetails = () => {
                   </form>
                 </div>
               </div>
+
+              
+{/* 
               <div className="banner2-card">
                 <img src="/assets/img/innerpage/support-img.jpg" alt="" />
                 <div className="banner2-content-wrap">
@@ -519,7 +506,10 @@ const VisaDetails = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
+
+
+
             </div>
           </div>
         </div>
