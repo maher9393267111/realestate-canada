@@ -36,7 +36,7 @@ import useAuth from "@/hooks/useAuth";
 import { message } from "antd";
 import useSWR from "swr";
 import { fetcher } from "@/utils/fetcher";
-import useVisas from "@/hooks/useVisa";
+import useVisas from "@/hooks/useVisas";
 
 import AdminMainLayout from "@/components/Site/dashboardLayout";
 import { ImageEndpoint, defaultImage, uploadApi } from "@/utils/global";

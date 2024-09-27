@@ -90,13 +90,13 @@ const Header = () => {
   const groupedData = countries?.map((country) => ({
     country: country?.title,
     id: 1,
-    
+
     label: country?.title,
     labelfr: country?.titlefr,
     link: `/projects/?country=${
       country?.title
     }&city=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`,
-    countrylink:`/forsale/${country?._id}`,
+    countrylink: `/forsale/${country?._id}`,
 
     subMenu: cities
       ?.filter((city) => city?.country === country?.title)
@@ -231,7 +231,7 @@ const Header = () => {
       {/* <LoginModal isOpen={isOpen} closeModal={closeModal} /> */}
       <header
         ref={headerRef}
-        className={`header-area style-2 ${state.scrollY > 10 ? "sticky" : ""}`}
+        className={`header-area style-1 ${state.scrollY > 10 ? "sticky" : ""}`}
       >
         <div className="header-logo d-lg-none d-flex">
           <Link href="/">
@@ -255,10 +255,9 @@ const Header = () => {
             </div>
           </div>
           <ul className="menu-list">
+            {/* COUNTRIES WITH CITIES HERE  */}
 
-  {/* COUNTRIES WITH CITIES HERE  */}
-
-  <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+            <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
               <Link href={projectslink} className="drop-down">
                 Destinations
               </Link>
@@ -320,12 +319,10 @@ const Header = () => {
               )}
             </li>
 
-
-
-{/* -----ONLY COUNTRIES HERE----- */}
-<li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
-              <Link href={'/'} className="drop-down">
-              {language === "en" ? "For Sale" : "À vendre"}
+            {/* -----ONLY COUNTRIES HERE----- */}
+            <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+              <Link href={"/"} className="drop-down">
+                {language === "en" ? "For Sale" : "À vendre"}
               </Link>
               {groupedData?.length > 0 && (
                 <i
@@ -362,13 +359,11 @@ const Header = () => {
                       ) : (
                         ""
                       )} */}
-                  
                     </li>
                   ))}
                 </ul>
               )}
             </li>
-
 
             {navData.map((data) => {
               const { id, label, link, icon, subMenu, labelfr } = data;
@@ -447,17 +442,6 @@ const Header = () => {
                 </li>
               );
             })}
-
-
-
-
-
-
-
-         
-
-
-
           </ul>
           <div className="topbar-right d-lg-none d-block">
             <button

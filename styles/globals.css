@@ -72,3 +72,34 @@ body {
 
   @apply !border-primary !border-none
 }
+
+
+.automotive-hero {
+  background-image: url("https://bluecaribbeanproperties.com/wp-content/uploads/2023/07/bg-who-we-are.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-1-hero{
+  background-image: url("https://bluecaribbeanproperties.com/wp-content/uploads/2023/07/about-palmeras.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.section-2-hero{
+  background-image: url("https://bluecaribbeanproperties.com/wp-content/uploads/2023/07/about-blue-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+/* text-xl md:!text-2xl !font-bold  */
+
+.m-t {
+
+  @apply !text-2xl md:text-[32px]   !font-rubik   !text-[#16426F]
+}
