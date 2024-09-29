@@ -117,8 +117,8 @@ const VisaDetails = () => {
       {/* <Topbar /> */}
       <Header />
       <Breadcrumb
-        pagename={language === "en" ? "Visa Details" : "Détails du blog"}
-        pagetitle={language === "en" ? "Visa Details" : "Détails du blog"}
+        pagename={language === "en" ? "Invest Details" : "Détails d'investissement"}
+        pagetitle={language === "en" ? "Invest Details" : "Détails d'investissement"}
       />
       <div className="visa-details-pages pt-120 mb-120">
         <div className="container">
@@ -132,8 +132,8 @@ const VisaDetails = () => {
                   alt=""
                 />
               </div>
-              <div className="visa-title">
-                <h3>
+              <div className="visa-title  !font-rubik">
+                <h3 className="!text-[23px] sm:!text-[30px] md:!text-[35px] !font-rubik">
                   {language === "en" ? data?.book?.title : data?.book?.titlefr}{" "}
                 </h3>
               </div>
@@ -159,6 +159,7 @@ const VisaDetails = () => {
               </ul> */}
               <div className="visa-required-document mb-50">
                 <div className="document-list">
+                  <p>
                   <div
                     className="bg-whit !text-[#100c08]"
                     dangerouslySetInnerHTML={{
@@ -168,7 +169,7 @@ const VisaDetails = () => {
                           : data?.book?.storyfr,
                     }}
                   />
-
+                    </p>
                   {/* <h3>View Required Documents</h3>
                   <h6>
                     <span>*</span>Required Documents for Electronic Visa (Adult)
