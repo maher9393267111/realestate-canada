@@ -10,6 +10,7 @@
             {
                 "id": "1",
                 "label": "Invest",
+                "labelfr":"Investir",
                 "link": "/invest"
             }
          
@@ -25,12 +26,14 @@
         "subMenu": [
             {
                 "id": "1",
-                "label": "Who we are",
+                "label": "Who We Are",
+                "labelfr": "Qui nous sommes",
                 "link": "/who-we-are"
             },
             {
                 "id": "1",
-                "label": "meet the team",
+                "label": "Meet The Team",
+                "labelfr":"Rencontrez l'équipe",
                 "link": "/meet-the-team"
             }
         ]
@@ -40,23 +43,12 @@
     {
         "id": "3",
         "label": "Blogs",
-        "labelfr": "Blogs",
+        "labelfr": "Blogues",
         "link": "/blogs",
         "icon": false
     },
 
-    
-    {
-        "id": "4",
-        "label": "Collaborations",
-        "labelfr": "Collaborations",
-        "link": "/collaborations",
-        "icon": false
-    },
 
-
-
-  
   
   
     {
