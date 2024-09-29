@@ -39,10 +39,7 @@ const {language ,reference} = useLanguageContext()
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // if (status === "unauthenticated") {
-    //     setError("You are not sign in");
-    //     return
-    // }
+   
 
     const config = { headers: { "Content-Type": "application/json" } };
 
