@@ -48,13 +48,13 @@ body {
   @apply   !font-rubik 
 }
 
-.first-para1  p {
+/* .first-para1  p {
   @apply !font-bold !text-[#292e26] 
 }
 
 .first-para1  * {
   @apply !font-bold !text-[#292e26] 
-}
+} */
 
 .p strong {
   @apply   !font-rubik 
