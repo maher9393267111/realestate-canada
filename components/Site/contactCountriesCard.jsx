@@ -16,7 +16,7 @@ export default function OurCoreItem({ item }) {
         <span className=" font-semibold">{item.title}</span>
       </div>
 
-      <p className="text-center text-md text-secondary font-semibold">{item.description}</p>
+      <p className="text-center text-md text-secondar !text-[#16426F] font-semibold">{item.description}</p>
     </div>
   );
 }
