@@ -49,7 +49,7 @@ body {
 }
 
 .first-para1  p {
-  @apply !font-bold !text-black
+  @apply !font-bold !text-[#292e26] 
 }
 
 .p strong {
