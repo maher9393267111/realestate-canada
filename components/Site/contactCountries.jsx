@@ -46,7 +46,7 @@ export default function OurContact() {
         <p className="my-3 text-2xl md:text-3xl  text-secondary  font-semibold">Lets talk</p>
       </div>
 
-      <div className="grid  mx-auto container  items-center grid-cols-1 md:grid-cols-3 mt-[80px] space-y-5 md:space-y-0">
+      <div className="grid  mx-auto container  items-center grid-cols-1 md:grid-cols-3 mt-[33px] space-y-5 md:space-y-0">
         {coreValues.map((item, index) => (
           <ContactCard key={index} item={item} />
         ))}
