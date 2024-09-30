@@ -7,6 +7,8 @@ export default function SectionTwo({ background }) {
   return (
     <div className={rootStyle}>
       <section className=" text-center sm:text-left w-full sm:w-[68%] xl:w-[100%]">
+    
+
         <div>
           <div className=" mt-6 !w-full flex-col  flex items-center justify-center">
             <div class="flex items-center text-white">
@@ -39,11 +41,6 @@ export default function SectionTwo({ background }) {
               </span>
             </div>
 
-            <div className=" container">
-              <div class="wp-block-uagb-advanced-heading text-white font-[300] !text-xl md:!text-[32px] mt-5  mb-[24px] !text-[#16426F]">
-                <section class="uagb-heading-text">
-                  About Blue Caribbean Properties
-                </section>
 
 <div className=" container">
 <div class="wp-block-uagb-advanced-heading text-white font-[300] !text-xl md:!text-[32px] mt-5  mb-[24px] !text-[#16426F]1"><section class="uagb-heading-text">{language === "en" ? "We Are Committed to High-Quality Real Estate Service":"Nous Nous Engager à Fournir un Service Immobilier de Haute Qualité"}</section>
@@ -54,18 +51,6 @@ export default function SectionTwo({ background }) {
 <p class="has-text-align-center  !text-white  max-w-[900px] text-center my-6">Nous nous efforçons de dépasser vos attentes. Grâce à des relations de confiance, nous offrons des conseils éclairés pour rendre votre expérience d'achat ou de vente agréable et sans stress. Notre dévouement garantit que chaque étape du processus est gérée avec soin et expertise, vous permettant de naviguer sur le marché immobilier en toute confiance.</p>
 }
 
-                    <p class="    md:text-start my-6">
-                      Finding and acquiring an international property may seem
-                      like a daunting task, but when you With years of combined
-                      experience in the industry, we know real estate. We have
-                      connections and relationships that span throughout the
-                      country, ensuring access to your dream property.
-                      International investments require accordance with various
-                      legalities and regulations and real estate is no
-                      different.
-                    </p>
-                  </div>
-                </div>
 
 <div className=" grid grid-cols-1 md:grid-cols-2   gap-4 mt-12 ">
 
@@ -160,30 +145,11 @@ Notre équipe, composée de professionnels expérimentés, est prête à répond
 </div>
 </div>
 
-                    <p class="    md:text-start my-6">
-                      Each of our team members have been heavily involved in
-                      real estate development throughout their careers. Our
-                      founder also has a Bachelor’s Degree in Construction
-                      Management and owns a real estate/construction company in
-                      the United States. Construction in the Dominican Republic
-                      and Mexico takes on a different role and if you are not in
-                      the country, it is imperative that you have someone you
-                      can trust to check on the progress of your investment
-                      throughout its development.
-                    </p>
-                  </div>
 
-                  <div className="  w-full">
-                    <img
-                      className=" !w-full !h-full"
-                      src="https://bluecaribbeanproperties.com/wp-content/uploads/2023/07/construction-1024x617.jpg"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
+
+
       </section>
     </div>
   );
