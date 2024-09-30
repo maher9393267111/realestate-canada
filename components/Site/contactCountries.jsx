@@ -42,7 +42,8 @@ export default function OurContact() {
   return (
     <div>
       <div className="text-center">
-        <span className="text-4xl font-bold">Temel Değerlerimiz</span>
+        <span className=" text-2xl md:text-3xl font-bold">Do you have any questions?</span>
+        <p className="my-3 text-2xl md:text-3xl  text-secondary  font-semibold">Lets talk</p>
       </div>
 
       <div className="grid  mx-auto container  items-center grid-cols-1 md:grid-cols-3 mt-[80px] space-y-5 md:space-y-0">
