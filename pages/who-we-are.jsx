@@ -1,6 +1,9 @@
 import React from "react";
 import SectionOne from "../components/Site/WeAre/sectionOne";
 import SectionTwo from "../components/Site/WeAre/sectionTwo";
+import SectionThree from "../components/Site/WeAre/sectionThree";
+
+
 
 import Footer from "@/components/components/footer/Footer";
 import Header from "@/components/components/header/Header";
@@ -23,6 +26,8 @@ export default function WhoWeArea() {
       <SectionOne background="section-1-hero" />
 
       <SectionTwo background="section-2-hero" />
+      <SectionThree />
+
 
       <div className="guide-section pt-120 mb-120">
         <div className="container">
