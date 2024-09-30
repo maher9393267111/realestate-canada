@@ -9,8 +9,12 @@ import ProjectForm from './ProjectForm'
 //   Slide,
 //   Dialog,
 // } from "@mui/material";
+import { useLanguageContext } from "@/context/languageContext";
 
 export default function ContactModal({isOpen ,closeModal}) {
+
+
+  const { language } = useLanguageContext();
 
   return (
     <>
@@ -48,7 +52,7 @@ export default function ContactModal({isOpen ,closeModal}) {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                Contact form
+                {language === "en" ? "Contact form" : "Formulaire de contact"}
 
                   </Dialog.Title>
                   <div className="mt-2">
@@ -61,7 +65,7 @@ export default function ContactModal({isOpen ,closeModal}) {
                       className="inline-flex justify-center rounded-md border border-transparent bg-primary2 text-white px-4 py-2 text-sm font-medium   focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
-                      Got it, thanks!
+                     {language === "en" ? "Close" : "Fermer"} 
                     </button>
                   </div>
                 </Dialog.Panel>

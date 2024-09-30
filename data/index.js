@@ -1,4 +1,15 @@
 
+// this is for nav.json
+// {
+//   "id": "4",
+//   "label": "Collaborations",
+//   "labelfr": "Collaborations",
+//   "link": "/collaborations",
+//   "icon": false
+// },
+
+
+
 import {
   Heart,
   Home2,

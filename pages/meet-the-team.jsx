@@ -14,8 +14,8 @@ export default function Meetteam() {
     <div dir="ltr" className=" !text-[#3a3a3a]">
       <Header />
       <Breadcrumb
-        pagename={language === "en" ? "Meet the team" : "Meet the team french"}
-        pagetitle={language === "en" ? "Meet the team" : "Meet the team french"}
+        pagename={language === "en" ? "Meet The Team" : "Rencontrez l'équipe"}
+        pagetitle={language === "en" ? "Meet The Team" : "Rencontrez l'équipe"}
       />
 
       <ProductsHero

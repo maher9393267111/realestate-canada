@@ -362,14 +362,14 @@ const page = () => {
                           </ul> */}
                         </div>
                         <div className="card-content-bottom">
-                          <div className="price-area">
+                          {/* <div className="price-area">
                             <span>Starting Form:</span>
                             <h6>
                               <strong>$</strong>3860 <span>Per Person</span>
                             </h6>
-                          </div>
+                          </div> */}
                           <Link href={`/invest/${_id}`}  className="apply-btn">
-                            Apply Now
+                          {language === 'en' ? "Invest Now" :"Investissez maintenant"}  
                             <div className="arrow">
                               <i className="bi bi-arrow-right" />
                             </div>
