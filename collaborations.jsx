@@ -27,7 +27,7 @@ const Team = () => {
         <div className="container">
           <div className="row g-lg-4 gy-5">
 
-          {teamData.map((member, index) => (
+          {teamData?.map((member, index) => (
 
             <div key={index} className="col-xl-3 col-lg-4 col-sm-6">
             <TeamCard member={member}/>

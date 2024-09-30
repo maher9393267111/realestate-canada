@@ -52,7 +52,7 @@ export default function ProductsHero({ title, text, background }) {
                   className="w-11 h-9"
                 />
               </span>
-             <span className="md:text-[20px] lg:text-[21px] xl:text-[20px]"> {language === "en" ? "Be Respect":"Soyez Respectueux"} </span>
+             <span className="md:text-[20px] !font-rubik lg:text-[21px] xl:text-[20px]"> {language === "en" ? "Be Respect":"Soyez Respectueux"} </span>
             </p>
             <p className="m-t flex gap-1 md:w-1/3 lg:w-1/4">
               <span>
@@ -127,7 +127,7 @@ export default function ProductsHero({ title, text, background }) {
           </div>
 
           <div  className=" mt-16 !w-full">
-            <p style={{fontfamily:  'Rubik' }} className=" !text-[#16426F] text-2xl   md:!text-[36px] font-rubik  ">
+            <p style={{fontfamily:  'Rubik' }} className=" !text-[#16426F] text-2xl   md:!text-[36px] !font-rubik  ">
             {language === "en" ? "We'll exceed your expectations":"Nous dépasserons vos attentes"}  
             </p>
             <p  style={{fontfamily: "Rubik"}}  className="!text-[#16426F] font-bold text-xl md:!mt-3 md:pt-3 !font-rubik md:!text-[36px]">

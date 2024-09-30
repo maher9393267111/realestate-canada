@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguageContext } from "@/context/languageContext";
 
 export default function SectionOne({ background }) {
-  const rootStyle = ` flex flex-col  pb-24 pt-4 gap-10 sm:gap-0 sm:flex-row items-center sm:items-en justify-cente sm:justify-cente mx-0 sm:mx-[5%] text-NormalWhite    md:h-auto pb-[2vh] px-[3%] sm:px-[1.5%] mt- ssm:mt-16 sm:mt-0 md:mt-0 lg:mt-0 ${background} `;
+  const rootStyle = ` flex flex-col   !font-rubik  pb-24 pt-4 gap-10 sm:gap-0 sm:flex-row items-center sm:items-en justify-cente sm:justify-cente mx-0 sm:mx-[5%] text-NormalWhite    md:h-auto pb-[2vh] px-[3%] sm:px-[1.5%] mt- ssm:mt-16 sm:mt-0 md:mt-0 lg:mt-0 ${background} `;
 
   const { language } = useLanguageContext();
 
@@ -55,20 +55,20 @@ export default function SectionOne({ background }) {
 {language === "en" ? "Who We Are":"Qui Nous Sommes"} </section>
 
 {language === "en" ?
-<p class="has-text-align-center  !text-[#16426F]  max-w-[900px] text-center my-6">We are real estate specialists, passionate about supporting our clients in their projects, whether it's buying their dream home or selling their property. Our goal is to identify your specific needs in order to provide you with personalized and comprehensive service.</p>
+<p class="has-text-align-center !font-rubik  !text-[#16426F]  max-w-[900px] text-center my-6">We are real estate specialists, passionate about supporting our clients in their projects, whether it's buying their dream home or selling their property. Our goal is to identify your specific needs in order to provide you with personalized and comprehensive service.</p>
 :
-<p class="has-text-align-center  !text-[#16426F]  max-w-[900px] text-center my-6">Nous sommes des spécialistes de l'immobilier, passionnés par le soutien à nos clients dans leurs projets, qu'il s'agisse d'acheter leur maison de rêve ou de vendre leur propriété. Notre but est d'identifier vos besoins spécifiques afin de vous fournir un service personnalisé et complet.</p>
+<p class="has-text-align-center !font-rubik   !text-[#16426F]  max-w-[900px] text-center my-6">Nous sommes des spécialistes de l'immobilier, passionnés par le soutien à nos clients dans leurs projets, qu'il s'agisse d'acheter leur maison de rêve ou de vendre leur propriété. Notre but est d'identifier vos besoins spécifiques afin de vous fournir un service personnalisé et complet.</p>
 }
 
-<section class="uagb-heading-text">{language === "en" ? "What We Do":"Ce Que Nous Faisons"}</section>
+<section class="uagb-heading-text !font-rubik ">{language === "en" ? "What We Do":"Ce Que Nous Faisons"}</section>
 
 
 {language === "en" ?
-<p class="has-text-align-center  !text-[#16426F]  max-w-[900px] text-center my-6">For buyers, we offer tailored support, facilitating your navigation in the real estate market. We help you identify properties that meet your criteria and are committed to securing the best offers for you.
+<p class="has-text-align-center !font-rubik   !text-[#16426F]  max-w-[900px] text-center my-6">For buyers, we offer tailored support, facilitating your navigation in the real estate market. We help you identify properties that meet your criteria and are committed to securing the best offers for you.
 For sellers, we implement effective marketing strategies to optimize your property's visibility. From pricing evaluation to staging advice, our aim is to ensure a smooth and successful sale.
 </p>
 :
-<p class="has-text-align-center  !text-[#16426F]  max-w-[900px] text-center my-6">Pour les acheteurs, nous offrons un soutien adapté, facilitant votre navigation sur le marché immobilier. Nous vous aidons à identifier des propriétés qui répondent à vos critères et nous nous engageons à sécuriser les meilleures offres pour vous.Pour les vendeurs, nous mettons en œuvre des stratégies de marketing efficaces pour optimiser la visibilité de votre propriété. De l'évaluation des prix aux conseils de mise en scène, notre objectif est d'assurer une vente fluide et réussie.
+<p class="has-text-align-center !font-rubik   !text-[#16426F]  max-w-[900px] text-center my-6">Pour les acheteurs, nous offrons un soutien adapté, facilitant votre navigation sur le marché immobilier. Nous vous aidons à identifier des propriétés qui répondent à vos critères et nous nous engageons à sécuriser les meilleures offres pour vous.Pour les vendeurs, nous mettons en œuvre des stratégies de marketing efficaces pour optimiser la visibilité de votre propriété. De l'évaluation des prix aux conseils de mise en scène, notre objectif est d'assurer une vente fluide et réussie.
 </p>
 }
 
