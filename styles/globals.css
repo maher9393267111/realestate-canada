@@ -48,6 +48,9 @@ body {
   @apply   !font-rubik 
 }
 
+.first-para1  p {
+  @apply !font-bold !text-black
+}
 
 .p strong {
   @apply   !font-rubik 
