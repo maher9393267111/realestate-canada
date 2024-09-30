@@ -2,6 +2,8 @@ import React from "react";
 import SectionOne from "../components/Site/WeAre/sectionOne";
 import SectionTwo from "../components/Site/WeAre/sectionTwo";
 import SectionThree from "../components/Site/WeAre/sectionThree";
+import ContactCountries from "../components/Site/contactCountries"
+
 
 
 
@@ -40,6 +42,8 @@ export default function WhoWeArea() {
           </div>
         </div>
       </div>
+
+      <ContactCountries/>
 
       <Footer />
     </div>
