@@ -478,54 +478,63 @@ const VisaDetails = () => {
             </div>
             <div className="col-lg-4">
               <div className="visa-sidebar mb-30">
-                <div className="sidebar-top text-center">
+                {/* <div className="sidebar-top text-center">
                   <h4>Cost Summary</h4>
                   <h6>
                     $7836/ <span>per person</span>
                   </h6>
                   <p>Arrange your trip in advance - book this room now!</p>
-                </div>
+                </div> */}
                 <div className="inquery-form">
                   <div className="form-title">
-                    <h4>Inquiry Form</h4>
+                    {language ==="en" ? <h4>Inquiry Form</h4> : <h4>Formulaire de demande</h4> }
+                    
+                    {language ==="en" ? 
+                    
                     <p>
-                      Complete form for complaints or service inquiries; expect
-                      prompt response via phone/email.
-                    </p>
+                    Complete form for complaints or service inquiries; expect
+                    prompt response via phone/email.
+                  </p>
+                    : 
+                    <p>Remplissez le formulaire pour les plaintes ou les demandes de service ; attendre
+                    réponse rapide par téléphone/e-mail.</p> 
+                    }  
+                  
+                  
                   </div>
                   <form onSubmit={handleSubmit}>
                     <div className="form-inner mb-4">
                       <label>
-                        Full Name <span>*</span>
+                        {language === "en" ? "Full Name" : "Nom et prénom"} <span>*</span>
                       </label>
                       <input
                        value={name}
                        onChange={(e) => setName(e.target.value)}
-                      type="text" placeholder="Enter your full name" />
+                      type="text" placeholder={language === "en" ?"Enter your full name":"Entrez votre nom complet"} />
                     </div>
                     <div className="form-inner mb-4">
                       <label>
-                        Email Address <span>*</span>
+                      {language === "en" ? "Email Address" : "Email Address"}  <span>*</span>
                       </label>
                       <input
                        value={email}
                        onChange={(e) => setEmail(e.target.value)}
                         type="email"
-                        placeholder="Enter your email address"
+                        placeholder={language === "en" ?"Enter your email address":"Entrez votre adresse email"}
                       />
                     </div>
                     <div className="form-inner mb-4">
                       <label>
-                        Phone Number <span>*</span>
+                      {language === "en" ?  "Phone Number" :"Numéro de téléphone"} <span>*</span>
                       </label>
                       <input
                        value={phone}
                        onChange={(e) => setPhone(e.target.value)}
                         type="text"
-                        placeholder="Enter your phone number"
+                        placeholder={language === "en" ?"Enter your phone number":"Entrez votre numéro de téléphone"}
                       />
                     </div>
-                    <div className="form-inner mb-70">
+                    {/* <div className="form-inner mb-70">
                       <label>
                         Visa Type <span>*</span>
                       </label>
@@ -535,8 +544,8 @@ const VisaDetails = () => {
                         onSelect={handleSelect} // Pass the handler to the SelectComponent
                       />
                       
-                    </div>
-                    <div className="form-inner mb-70">
+                    </div> */}
+                    {/* <div className="form-inner mb-70">
                       <label>
                         Country <span>*</span>
                       </label>
@@ -546,15 +555,15 @@ const VisaDetails = () => {
                         onSelect={handleSelectCountry}
                       />
 
-                    </div>
+                    </div> */}
 
                     <div className="form-inner mb-70">
                       <label>
-                        Your language <span>*</span>
+                      {language === "en" ? "Your language":"Votre langue"} <span>*</span>
                       </label>
                       <SelectComponent
-                        options={["French" ,"Spanish","English"]}
-                        placeholder="Select Language"
+                        options={["English","French" ,"Spanish",]}
+                        placeholder={language === "en" ? "Select Language":"Sélectionner la langue"}
                         onSelect={handleSelectLanguage} // Pass the handler to the SelectComponent
                       />
                      
@@ -564,18 +573,18 @@ const VisaDetails = () => {
 
                     <div className="form-inner mb-30">
                       <label>
-                        Write Your Massage <span>*</span>
+                      {language === "en" ? "Write Your Massage":"Écrivez votre massage"}  <span>*</span>
                       </label>
                       <textarea
                        value={message}
                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Write your quiry"
+                        placeholder= {language === "en" ? "Write your quiry" : "Écrivez votre demande"}
                         defaultValue={""}
                       />
                     </div>
                     <div className="form-inner">
                       <button type="submit" className="primary-btn1 two">
-                        Submit Now
+                      {language === "en" ?  "Submit Now":"Soumettre maintenant"}
                       </button>
                     </div>
                   </form>
@@ -618,7 +627,7 @@ const VisaDetails = () => {
           </div>
         </div>
       </div>
-      <Newslatter />
+      {/* <Newslatter /> */}
       <Footer />
     </div>
   );

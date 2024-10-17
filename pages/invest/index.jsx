@@ -48,7 +48,7 @@ const page = () => {
     <div dir="ltr">
       <Topbar />
       <Header />
-      <Breadcrumb pagename="Visa" pagetitle="Visa" />
+      <Breadcrumb pagename={language === "en" ? "Invest" : "Investir"} pagetitle={language === "en" ? "Invest" : "Investir"} />
       <div className="package-search-filter-wrapper">
         <div className="container">
 
@@ -336,6 +336,7 @@ const page = () => {
                          src={`${ImageEndpoint}/${image[0]}`}
                           //src="/assets/img/home4/package-card4-img1.jpg"
                           alt=""
+                          className=" !object-center"
                         />
                       </Link>
                       <div className="package-card-content">
