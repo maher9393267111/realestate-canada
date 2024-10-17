@@ -266,7 +266,7 @@ const Home2Destinationslide = () => {
                 </div>
               </Swiper>
               <div className="slide-and-view-btn-grp">
-                <div className="slider-btn-grp3 two">
+                <div className="slider-btn-grp3 two1">
                   <div className="slider-btn destination-card2-prev">
                     <i className="bi bi-arrow-left" />
                     <span>PREV</span>

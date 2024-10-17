@@ -1,6 +1,3 @@
-
-
-
 "use client";
 import React, { useState ,useEffect } from "react";
 import Breadcrumb from "@//components/components/common/Breadcrumb";
@@ -27,12 +24,19 @@ import moment from "moment/moment";
 import ProjectForm from "../../components/Site/ProjectForm";
 import ContactModal from "../../components/Site/ContactModal";
 
+
+  
+
+
+
 const ProjectDetails = () => {
   const [isOpenimg, setOpenimg] = useState({
     openingState: false,
     openingIndex: 0,
   });
 
+
+  
   const router = useRouter();
   const { language ,reference ,setReference } = useLanguageContext();
   const { id } = router.query;
@@ -45,6 +49,10 @@ const ProjectDetails = () => {
     page: 1,
     isfeatured: true,
   });
+
+
+
+
 
   // Set the reference when the project loads
   useEffect(() => {
@@ -104,6 +112,9 @@ const ProjectDetails = () => {
   });
 
   console.log("images22", images2, "imagess", images);
+
+
+
 
   return (
     <div dir="ltr">
@@ -340,7 +351,7 @@ const ProjectDetails = () => {
 
                 {language === "en" ? data?.book?.title : data?.book?.titlefr}
               </p> */}
-              <div className="destination-gallery mb-40 mt-40">
+              <div className="destination-gallery mb-20 mt-20">
                 <div className="row g-4">
                   
                 
@@ -374,21 +385,21 @@ const ProjectDetails = () => {
                     language === "en" ? data?.book?.story : data?.book?.storyfr,
                 }}
               ></p>
-              <h2>Features</h2>
-              <ul>
+              {language === "en" ? <h2 className="!font-jost">Features</h2> : <h2 className="!font-jost">Caractéristiques</h2> } 
+              <ul className="">
                 {data?.book?.services &&
                   Object.keys(data?.book?.services)?.map((feature, index) => {
                     if (data?.book?.services[feature]) {
-                      return <li key={index}>{feature}</li>;
+                      return <li className="!font-jost" key={index}>{feature}</li>;
                     }
                   })}
-              </ul>
+              {/* </ul> */}
 
-              <ul>
+              {/* <ul> */}
                 {data?.book?.features &&
                   Object.keys(data?.book?.features)?.map((feature, index) => {
                     if (data?.book?.features[feature]) {
-                      return <li key={index}>{feature}</li>;
+                      return <li className=" !font-jost" key={index}>{feature}</li>;
                     }
                   })}
               </ul>
@@ -398,58 +409,77 @@ const ProjectDetails = () => {
             <div className="col-lg-5">
               <div className="destination-sidebar">
               <div className="destination-info mb-30">
-                <div className="single-info">
-                  <span>Destination: {language ==='en' ? data?.book?.country :handleChange(data?.book?.country) }</span>
-                
+                <div className="single-info flex">
+                  <span className="text-[17px]">Destination:</span>
+                  {language ==='en' ? <h5 className="ml-2 font-semibold text-[19px]">{data?.book?.country}</h5> : <h5 className="ml-2 font-semibold text-[20px]">{handleChange(data?.book?.country)}</h5> }
                 </div>
-                <div className="single-info">
-                  <span>{language ==='en' ? "City:" : "Ville"} {language ==='en' ? data?.book?.city : data?.book?.cityfr }</span>
+                <div className="single-info flex">
+                  <span className="text-[17px]">{language ==='en' ? "City:" : "Ville:"}</span> {language ==='en' ? <h5 className="ml-2 font-semibold text-[20px]">{data?.book?.city}</h5> : <h5 className="ml-2 font-semibold text-[19px]">{data?.book?.city}</h5> }
                  
                 </div>
 
-                <div className="single-info">
-                  <span>
-                  {language ==='en' ? "Resale:" : "Revente:"} {data?.book?.services?.resale ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}
-                  </span>
+                <div className="single-info flex">
+                  <span className="text-[17px]">
+                  {language ==='en' ? "Resale:" : "Revente:"} </span><h5 className="ml-2 font-semibold text-[19px]">{data?.book?.services?.resale ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}</h5>
+                  
                  
                 </div>
-                <div className="single-info">
-                  <span>
-                  {language ==='en' ? "Lock off:" : "Verrouillage:"}  {data?.book?.services ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}
-                  </span>
+                <div className="single-info flex">
+                  <span className="text-[17px]">
+                  {language ==='en' ? "Lock off:" : "Verrouillage:"}</span> 
+                  <h5 className="ml-2 font-semibold text-[19px]">
+                   {data?.book?.services ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}
+                   </h5>
               
                 </div>
-                <div className="single-info">
-                  <span>{language ==='en' ? "Bathrooms:" : "Salles de bains:"}{data?.book?.details?.baths}</span>
-               
+                <div className="single-info flex">
+                  <span className="text-[17px]">{language ==='en' ? "Bathrooms:" : "Salles de bains:"}</span>
+                  <h5 className="ml-2 font-semibold text-[19px]">
+                  {data?.book?.details?.baths}
+                  </h5>
                 </div>
-                <div className="single-info">
-                  <span>{language ==='en' ? "Rooms:" : "Chambres:"}{data?.book?.details?.rooms}</span>
-                 
+                <div className="single-info flex">
+                  <span className="text-[17px]">{language ==='en' ? "Rooms:" : "Chambres:"}</span>
+                  <h5 className="ml-2 font-semibold text-[19px]">
+                  {data?.book?.details?.rooms}
+                 </h5>
                 </div>
-                <div className="single-info">
-                  <span>{language ==='en' ? "Beds:" : "Lits:"} {data?.book?.details?.beds}</span>
-                  
+                <div className="single-info flex">
+                  <span className="text-[17px]">{language ==='en' ? "Beds:" : "Lits:"} </span> 
+                  <h5 className="ml-2 font-semibold text-[19px]">
+                  {data?.book?.details?.beds}
+                  </h5>
                 </div>
 
-                <div className="single-info">
-                  <span>
-                    {language ==='en' ? "Furnished:" : "Meublée:"}
+                <div className="single-info flex">
+                  <span className="text-[17px]">
+                    {language ==='en' ? "Furnished:" : "Meublée:"}    
+                    </span>
+                    <h5 className="ml-2 font-semibold text-[19px]">
                     {data?.book?.services?.Furnished ? language ==='en' ? "True" : "Vrai" : language ==='en' ?"False": "Faux"}
-                  </span>
+              </h5>
                 
                 </div>
 
-                <div className="single-info">
-                  <span>{language ==='en' ? "Parking Lots:" : "Parcs de stationnement:"}  {data?.book?.details?.parkings}</span>
+                <div className="single-info flex">
+                  <span className="text-[17px]">{language ==='en' ? "Parking Lots:" : "Parcs de stationnement:"} </span> 
+                  <h5 className="ml-2 font-semibold text-[19px]">
+                  {data?.book?.details?.parkings}
+                  </h5>
                 </div>
 
-                <div className="single-info">
-                  <span> {language ==='en' ? "Reference:" : "Parcs de stationnement:"} {data?.book?.reference}</span>
+                <div className="single-info flex">
+                  <span className="text-[17px]"> {language ==='en' ? "Reference:" : "Parcs de stationnement:"}</span> 
+                  <h5 className="ml-2 font-semibold text-[19px]">
+                  {data?.book?.reference}
+                  </h5>
                 </div>
 
-                <div className="single-info">
-                  <span>Condition:  {language ==='en' ? data?.book?.condition : "Ready" ? "Prêt" : "Construction"}</span>
+                <div className="single-info flex">
+                  <span className="text-[17px]">Condition:</span>  
+                  <h5 className="ml-2 font-semibold text-[19px]">
+                  {language ==='en' ? data?.book?.condition : "Ready" ? "Prêt" : "Construction"}
+                </h5>
                 </div>
 
                 <div className="mt-3">
@@ -459,7 +489,7 @@ const ProjectDetails = () => {
                 </div>
 
             
-                <div className="single-widget mb-30">
+                <div className="single-widget mb-30 mt-5">
                   {blogs?.books?.length >0 &&
                   <h5 className="widget-title">
                  {language === "en" ? "Recent Post" : "Article récent"}
@@ -483,32 +513,33 @@ const ProjectDetails = () => {
                     } = blog;
                     return (
                       <div className="recent-post-widget mb-20">
-                        <div className="recent-post-img">
+                        <div className="recent-post-img mb-1">
                           <Link href={`/blogs/${_id}`}>
                             <img
                               src={`${ImageEndpoint}/${image[0]}`}
                               // src="/assets/img/innerpage/recent-post-img1.png"
                               alt=""
+                              className="w-[300px] h-[200px]"
                             />
                           </Link>
                         </div>
 
-                        <div className="recent-post-content">
-                          <Link className=" px-2" href={`/blogs/${_id}`}>
-                            20 July, 2023
+                        <div className="recent-post-content font-rubik ">
+                          <Link className=" px-2 text-black" href={`/blogs/${_id}`}>
+                            {/* 20 July, 2023 */}
                           </Link>
-                          <Link href={`/blogs?country=${category}`}>
-                            {category}
+                          <Link className=" -ml-4  text-[#100c08] text-opacity-50 hover:text-primary" href={`/blogs?country=${category}`}>
+                           {language === "en" ? `${category}` : handleChange(category) } 
                           </Link>
 
-                          <h6>
-                            <Link href={`/blogs/${_id}`}>
+                          <h5>
+                            <Link href={`/blogs/${_id}`} className="!text-black hover:text-primary">
                               {language === "en"
                                 ? title?.slice(0, 30)
                                 : titlefr?.slice(0, 30)}
                               ....
                             </Link>
-                          </h6>
+                          </h5>
                         </div>
                       </div>
                     );

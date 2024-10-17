@@ -62,9 +62,9 @@ const Projects = ({
     <div dir="ltr" className="">
       <Topbar />
       <Header />
-      <Breadcrumb pagename="Package Grid" pagetitle="Package Grid" />
+      <Breadcrumb  pagename={language === "en" ? "Projects Grid" : "Grille des projets"} pagetitle={language === "en" ? "Projects Grid":"Grille des projets"}/>
       
-      <FilterForm />
+      <FilterForm isProjectsPage={true} />
       <div className="package-grid-with-sidebar-section pt-120 mb-120">
         <div className="container">
           <div className="row g-lg-4 gy-5">

@@ -10,6 +10,8 @@ import SwiperCore, {
 import Link from "next/link";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
+import { useLanguageContext } from "@/context/languageContext";
+
 const Home2WhyChoose = () => {
   const settings = useMemo(() => {
     return {
@@ -25,6 +27,11 @@ const Home2WhyChoose = () => {
       },
     };
   }, []);
+
+
+  const { language } = useLanguageContext();
+
+  
   return (
     <>
       <div className="feature-card-section mb-120">
@@ -33,9 +40,9 @@ const Home2WhyChoose = () => {
             <div className="col-lg-12">
               <div className="section-title2 text-center">
                 <div className="eg-section-tag">
-                  <span>Who We Are</span>
+                {language === "en" ?<span>Who We Are</span> : <span>Qui nous sommes</span> } 
                 </div>
-                <h2>Why TripRex Is Best</h2>
+                {language === "en" ? <h2>Why We Are The Best</h2> : <h2>Pourquoi nous sommes les meilleurs</h2> }
               </div>
             </div>
           </div>

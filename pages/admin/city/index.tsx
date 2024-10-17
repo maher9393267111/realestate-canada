@@ -74,6 +74,8 @@ export default function AdminAllCities() {
   const [image, setImage] = useState("");
 
   const [open, setOpen] = React.useState(false);
+  
+  
   const [selectedCategory, setSelectedCategory] =
     React.useState<Category>() as any;
 
@@ -85,7 +87,6 @@ export default function AdminAllCities() {
       label: country.title,
       value: country.title,
   }));
-  
   
 
 
@@ -168,7 +169,7 @@ export default function AdminAllCities() {
   return (
     <div dir="ltr" className="">
       <Head>
-        <title>Outlet Turkey</title>
+        <title>Sand n Sea Dashboard</title>
       </Head>
       <AdminMainLayout>
         <PageLayout title="الاقسام">
@@ -286,7 +287,7 @@ export default function AdminAllCities() {
                 color="secondary"
                 onClick={handleClose}
               >
-                Close
+                Close  
               </Button>
               <Button type="submit" variant="contained" color="primary">
                 Update

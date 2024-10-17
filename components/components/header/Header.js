@@ -231,7 +231,7 @@ const Header = () => {
       {/* <LoginModal isOpen={isOpen} closeModal={closeModal} /> */}
       <header
         ref={headerRef}
-        className={`header-area style-1 ${state.scrollY > 10 ? "sticky" : ""}`}
+        className={`header-area style-1  ${state.scrollY > 10 ? "sticky" : ""}`}
       >
         <div className="header-logo d-lg-none d-flex">
           <Link href="/">
@@ -243,8 +243,8 @@ const Header = () => {
             <img src="/assets/img/logo.svg" alt="" />
           </Link>
         </div>
-        <div className={`main-menu ${state.isSidebarOpen ? "show-menu" : ""}`}>
-          <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
+        <div className={`main-menu  ${state.isSidebarOpen ? "show-menu" : ""}`}>
+          <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center !font-rubik">
             <div className="mobile-logo-wrap">
               <Link href="/">
                 <img alt="image" src="/assets/img/logo.svg" />
@@ -258,7 +258,7 @@ const Header = () => {
             {/* COUNTRIES WITH CITIES HERE  */}
 
             <li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
-              <Link href={projectslink} className="drop-down">
+              <Link href={projectslink} className="drop-down !font-rubik">
                 Destinations
               </Link>
               {groupedData?.length > 0 && (

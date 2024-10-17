@@ -62,15 +62,15 @@ const Countriesslide = () => {
 
   return (
     <>
-      <div className="destination-card2-slider-section mb-120">
+      <div className="destination-card2-slider-section mb-120 mt-80 sm:mt-52 ">
         <div className="container">
           <div className="row mb-50">
             <div className="col-lg-12">
               <div className="section-title2 text-center">
                 <div className="eg-section-tag">
-                  <span>Our projects</span>
+                {language === "en" ? <span>Our projects</span> : <span>Nos projets</span>}  
                 </div>
-                <h2> Countries</h2>
+                {language === "en" ? <h2> Countries</h2> : <h2>Pays</h2>}
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ const Countriesslide = () => {
                           />
                         </Link>
                         <div className="batch">
-                          <span> Projects</span>
+                        {language === "en" ? <span>Projects</span> : <span>Projets</span>}  
                         </div>
                         <div className="destination-card2-content">
                           {/* <span>Travel To</span> */}

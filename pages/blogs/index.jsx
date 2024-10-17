@@ -97,7 +97,7 @@ const BlogsMainpage = ({ search, country }) => {
           {isLoading && <Loading />}
 
 
-<div className="  container bg-white py-12 rounded-md px-4 mb-12">
+<div className="  container bg-white py-12 rounded-md px-4 mb-20 !font-rubik w-[280px] sm:w-full">
 
 
 <div>
@@ -153,7 +153,7 @@ const BlogsMainpage = ({ search, country }) => {
                     id="search"
                     name="search"
                     style={{ height: "48px" }}
-                    className="btn !h-full !bg-primary !text-white searchbtn w-100"
+                    className="btn !h-full !bg-primary !text-white searchbtn w-100 hover:text-primary hover:bg-white"
                     value={language === "en" ? "Search" : "Recherche"}
                     
                   />
@@ -164,7 +164,7 @@ const BlogsMainpage = ({ search, country }) => {
                     id="search"
                     name="search"
                     style={{ height: "48px" }}
-                    className="btn !h-full !bg-primary  !text-white searchbtn w-100"
+                    className="btn !h-full !bg-primary  !text-white searchbtn w-100  hover:text-primary hover:bg-white"
                     value={language === "en" ? "Reset" : "Réinitialiser"}
                     
                   />

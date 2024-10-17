@@ -82,9 +82,9 @@ const  ProjectsOfferSlider = () => {
             <div className="col-lg-12">
               <div className="section-title2 text-center">
                 <div className="eg-section-tag two">
-                  <span>Projects Package</span>
+                {language === "en" ?<span>Projects Package</span> : <span>Forfait Projets</span> }
                 </div>
-                <h2 className="text-white">Featured Projects</h2>
+                {language === "en" ? <h2 className="text-white">Featured Projects</h2> : <h2 className="text-white">Projets en vedette</h2>} 
               </div>
             </div>
           </div>
@@ -113,13 +113,13 @@ const  ProjectsOfferSlider = () => {
                   <div className="slider-btn-grp3">
                     <div className="slider-btn package-card-slider-prev">
                       <i className="bi bi-arrow-left" />
-                      <span>PREV</span>
+                      <span> {language === 'en' ?  'PREV' : 'Précédent'} </span>
                     </div>
                     {/* <Link href="/package" className="secondary-btn2">
                       View All Package
                     </Link> */}
                     <div className="slider-btn package-card-slider-next">
-                      <span>NEXT</span>
+                    <span> {language === 'en' ?  'NEXT' : 'Suivante'}  </span>
                       <i className="bi bi-arrow-right" />
                     </div>
                   </div>

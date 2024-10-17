@@ -52,7 +52,7 @@ export default function ProductsHero({ title, text, background }) {
                   className="w-11 h-9"
                 />
               </span>
-             <span className="md:text-[20px] !font-rubik lg:text-[21px] xl:text-[20px]"> {language === "en" ? "Be Respect":"Soyez Respectueux"} </span>
+             <span className="1md:text-[20px] !font-rubik lg:text-[21px] xl:text-[20px]"> {language === "en" ? "Be Respect":"Soyez Respectueux"} </span>
             </p>
             <p className="m-t flex gap-1 md:w-1/3 lg:w-1/4">
               <span>
@@ -62,7 +62,7 @@ export default function ProductsHero({ title, text, background }) {
                   className="w-11 h-9"
                 />
               </span>
-            <span className="md:text-[20px] lg:text-[21px] xl:text-[20px]">  {language === "en" ? "Be Customer-Oriented":"Soyez Orienté Client"} </span>
+            <span className="md1:text-[20px] !font-rubik lg:text-[21px] xl:text-[20px]">  {language === "en" ? "Be Customer-Oriented":"Soyez Orienté Client"} </span>
             </p>
             <p className="m-t flex gap-1 md:w-1/2 lg:w-1/4  ">
               <span>
@@ -122,7 +122,7 @@ export default function ProductsHero({ title, text, background }) {
                   className="w-11 h-9"
                 />
               </span>
-              <span className="md:text-[20px] lg:text-[21px]"> {language === "en" ? "Be Sand n Sea Realty":"Soyez Sand n Sea Realty"}   </span>
+              <span className="1md:text-[20px] lg:text-[21px]"> {language === "en" ? "Be Sand n Sea Realty":"Soyez Sand n Sea Realty"}   </span>
             </p>
           </div>
 

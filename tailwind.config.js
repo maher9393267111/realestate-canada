@@ -53,7 +53,7 @@ module.exports = {
       fontFamily: {
         estedad: ["var(--font-estedad)"],
         rubik: ["Rubik", "sans-serif"],
-
+        jost: ["Jost","sans-serif"]
       },
 
       keyframes: {

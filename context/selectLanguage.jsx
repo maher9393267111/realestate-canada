@@ -30,9 +30,9 @@ export default function LanguageToggle({
     selectedLanguage && (
       <div>
 
-<div  className="left !mt-2 lang-btn">
+<div  className="left !mt-4 lang-btn">
       <button   
-      className='!block !mt-2' id="menu_btn" onClick={handleMenu}>
+      className='!block !mt-5' id="menu_btn" onClick={handleMenu}>
         
       <Image
       className='!mt-2'

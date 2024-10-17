@@ -71,7 +71,7 @@ const {language ,reference} = useLanguageContext()
     <form
       dir="ltr"
       autoComplete="off"
-      className="w-full grid grid-cols-3 gap-4"
+      className="w-full grid grid-cols-3 gap-4  !font-jost"
     >
       <div className="col-span-3 search-box">
         
