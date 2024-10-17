@@ -4,14 +4,18 @@ import { PiHandshakeLight } from "react-icons/pi";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 import { MdOutlineSecurity } from "react-icons/md";
 import { PiTree } from "react-icons/pi";
-
+import { useLanguageContext } from "@/context/languageContext";
 
 
 export default function OurContact() {
+
+  const { language } = useLanguageContext();
+
   const coreValues = [
     {
       icon: PiHandshakeLight,
       title: "Lebanon",
+      titlefr: "Liban",
       description:
         "0512344546563",
         img:'https://cdn.vectorstock.com/i/1000v/88/50/circle-flag-of-lebanon-vector-50798850.jpg',
@@ -20,6 +24,7 @@ export default function OurContact() {
     {
       icon: HiOutlineDocumentSearch,
       title: "UEA",
+      titlefr: "UEA",
       description:
       "0512344546563",
       svg:<svg
@@ -31,7 +36,8 @@ export default function OurContact() {
   
     {
       icon: PiTree,
-      title: "CYPRUES",
+      title: "CYPRUS",
+      titlefr: "CHYPRE",
       description:
       "0512344546563",
       img:'https://freedesignfile.com/upload/2023/07/Lebanon-flags-icon-vector.jpg',
@@ -42,8 +48,8 @@ export default function OurContact() {
   return (
     <div>
       <div className="text-center">
-        <span className=" text-2xl md:text-3xl font-bold">Do you have any questions?</span>
-        <p className="my-3 text-2xl md:text-3xl  text-secondar !text-[#16426F]  font-semibold">Lets talk</p>
+        <span className=" text-2xl md:text-3xl font-bold">{language === "en" ? "Do you have any questions?" : "Avez-vous des questions?"}</span>
+        <p className="my-3 text-2xl md:text-3xl  text-secondar !text-[#16426F]  font-semibold">{language === "en" ? "Lets talk" : "Parlons"}</p>
       </div>
 
       <div className="grid  mx-auto container  items-center grid-cols-1 md:grid-cols-3 mt-[33px] space-y-5 md:space-y-0">

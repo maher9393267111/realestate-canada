@@ -24,6 +24,9 @@ import SwiperCore, {
 } from "swiper";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
+import { handleChange } from "@/utils/handleLanguage";
+
+
 const initialState = {
   activeMenu: "",
   activeSubMenu: "",
@@ -279,7 +282,7 @@ const Header = () => {
                   {groupedData?.map((subItem, subIndex) => (
                     <li key={subIndex}>
                       <Link legacyBehavior href={subItem.link}>
-                        <a>{subItem.label}</a>
+                        <a> {language === "en" ? subItem.label : subItem.labelfr} </a>
                       </Link>
                       {subItem?.icon && subItem?.icon ? (
                         <>
@@ -307,7 +310,7 @@ const Header = () => {
                           {subItem?.subMenu.map((subItem, subIndex) => (
                             <li key={subItem?.id}>
                               <Link legacyBehavior href={subItem?.link}>
-                                <a>{subItem?.label}</a>
+                                <a> {language === "en" ? subItem.label : subItem.labelfr} </a>
                               </Link>
                             </li>
                           ))}
@@ -342,7 +345,7 @@ const Header = () => {
                   {groupedData?.map((subItem, subIndex) => (
                     <li key={subIndex}>
                       <Link legacyBehavior href={subItem?.countrylink}>
-                        <a>{subItem?.label}</a>
+                        <a> {language === "en" ? subItem.label : subItem.labelfr} </a>
                       </Link>
                       {/* {subItem?.icon && subItem?.icon ? (
                         <>

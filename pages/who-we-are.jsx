@@ -19,6 +19,7 @@ export default function WhoWeArea() {
 
   return (
     <div dir="ltr" className=" !text-[#3a3a3a]">
+
       <Header />
       <Breadcrumb
         pagename={language === "en" ? "Who we are" : "Qui nous sommes"}

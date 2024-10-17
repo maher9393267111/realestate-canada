@@ -6,7 +6,7 @@ export default function SectionTwo({ background }) {
   const { language } = useLanguageContext();
   return (
     <div className={rootStyle}>
-      <section className=" text-center sm:text-left w-full sm:w-[68%] xl:w-[100%]">
+      <section className=" text-center sm:text-left w-full sm:w-[68%] xl:w-[100%] !font-rubik ">
     
 
         <div>
@@ -25,13 +25,13 @@ export default function SectionTwo({ background }) {
                   fill="currentColor"
                 ></path>
               </svg> */}
-              <span class="text-5xl text-white lg:text-8xl 2xl:text-[82px] ml-1 lg:ml-2 font-serif uppercase text-bc-navy">
+              <span class="text-5xl text-white lg:text-8xl 2xl:text-[82px] ml-1 lg:ml-2 !font-rubik  uppercase text-bc-navy">
               {language === "en" ? "WHAT":"QUOI"} 
               </span>
             </div>
 
             <div class="flex items-center">
-              <span class="ml-2 w-[65%] flex items-center gap-1 text-2xl text-[#9aea24] lg:text-4xl 2xl:text-5xl font-sans whitespace-nowrap uppercase text-bc-green">
+              <span class="ml-2 w-[65%] flex items-center gap-1 text-2xl text-[#9aea24] lg:text-4xl 2xl:text-5xl !font-rubik whitespace-nowrap uppercase text-bc-green">
                 <img
                   className="h-1 hidden md:block"
                   src="https://bluecaribbeanproperties.com/wp-content/uploads/2023/07/separator-1.png"
@@ -127,7 +127,7 @@ Nous sommes là pour vous assister à chaque étape. Nos agents sont bien inform
 
     
     
-    <section class=" md:text-start">{language === "en" ? "We Know You" : "Nous Vous Connaissons"}</section>
+    <section class=" md:text-start !font-rubik ">{language === "en" ? "We Know You" : "Nous Vous Connaissons"}</section>
     {language === "en" ?
 <p class="    md:text-start my-6">Every client is unique, which is why we are dedicated to providing you with quality service that combines professionalism and attentiveness. Whether you are a buyer or seller, we are here to help you realize your real estate project with confidence.
 Our team, composed of experienced professionals, is ready to meet your needs. Finding and acquiring property internationally may seem complex, but with our support, this journey becomes a rewarding experience: that of your own home. We look forward to working with you!
