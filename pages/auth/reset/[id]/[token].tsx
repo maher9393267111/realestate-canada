@@ -91,10 +91,10 @@ export default function Reset() {
   return (
     <>
       <Head>
-        <title>إعادة تعيين كلمة المرور - Outlet Turkey</title>
+        <title>إعادة تعيين كلمة المرور - Sand n Sea</title>
         <meta
           name="description"
-          content="قم بإعادة تعيين كلمة المرور الخاصة بك في Outlet Turkey."
+          content="قم بإعادة تعيين كلمة المرور الخاصة بك في Sand n Sea."
         />
       </Head>
       <AuthLayout>

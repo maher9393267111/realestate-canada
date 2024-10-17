@@ -39,7 +39,7 @@ export default function UsersPage({ users }: { users: UserProps[] }) {
   return (
     <>
       <Head>
-        <title>قائمة المستخدمين - Outlet Turkey</title>
+        <title>قائمة المستخدمين - Sand n Sea</title>
       </Head>
       <PageLayout title="المستخدمين">
         <div    className=" !min-h-[50vh]">

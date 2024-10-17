@@ -2,7 +2,7 @@ const EmailTemplate = (link: string) => {
   return `
 <div style="background-color: #f1f1f1; padding: 2rem; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; " dir="auto">
   <div style="margin: auto;">
-    <h1 style="color: #29221f">Outlet Turkey - طلب إعادة تعيين كلمة المرور</h1>
+    <h1 style="color: #29221f">Sand n Sea - طلب إعادة تعيين كلمة المرور</h1>
     <div style="margin-bottom: 2rem">
       <p style="font-size: large; margin-bottom: 4rem; color: #575757;">
         لقد تلقيت هذا البريد الإلكتروني لأننا تلقينا طلبًا لإعادة تعيين كلمة المرور لحسابك.
@@ -38,12 +38,12 @@ const EmailTemplate = (link: string) => {
       <div style="margin-top: 2rem">
         <b>اتمنى لك يوم جيد !</b>
       </div>
-      <small style="color: #a38579">فريق Outlet Turkey.</small>
+      <small style="color: #a38579">فريق Sand n Sea.</small>
     </div>
   </div>
 </div>
 `;
 };
-const EmailSubject = "Outlet Turkey - طلب إعادة تعيين كلمة المرور";
+const EmailSubject = "Sand n Sea - طلب إعادة تعيين كلمة المرور";
 
 export { EmailSubject, EmailTemplate };

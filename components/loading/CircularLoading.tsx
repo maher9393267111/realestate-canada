@@ -5,7 +5,7 @@ export function CircularLoading() {
   return (
     <div className=" min-h-[100vh]">
       <Head>
-        <title> اهلا بك في - Outlet Turkey</title>
+        <title> اهلا بك في - Sand n Sea</title>
       </Head>
       <Box
         sx={{

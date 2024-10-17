@@ -168,7 +168,7 @@ export default function AdminAllAreas() {
   return (
     <div dir="ltr" className="">
       <Head>
-        <title>Outlet Turkey</title>
+        <title>Sand n Sea</title>
       </Head>
       <AdminMainLayout>
         <PageLayout title="الاقسام">

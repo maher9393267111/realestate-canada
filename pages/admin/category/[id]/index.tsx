@@ -60,7 +60,7 @@ export default function AdminCategory() {
   return (
     <>
       <Head>
-        <title>Outlet Turkey</title>
+        <title>Sand n Sea</title>
       </Head>
       <PageLayout title="تفاصيل القسم">
         <Grid container spacing={2}>

@@ -36,7 +36,7 @@ export default function DashboardPage({
   return (
     <div className="about-area">
       <Head>
-        <title>لوحة التحكم - Outlet Turkey</title>
+        <title>لوحة التحكم - Sand n Sea</title>
       </Head>
       <PageLayout title="لوحة التحكم">
         <Grid container spacing={2}>

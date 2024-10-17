@@ -13,10 +13,10 @@ const Layout = ({ children }) => {
         <Head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-            <title> Outlet turkey Store</title>
+            <title> Sand n Sea Store</title>
             <meta name="description" content="Buy high-quality products  and save money  " />
-            <meta name="og:title" property="og:title" content="Outlet turkey -  eCommerce Store"></meta>
-            <meta name="twitter:card" content="Outlet turkey ecommerce Store"></meta>
+            <meta name="og:title" property="og:title" content="Sand n Sea -  eCommerce Store"></meta>
+            <meta name="twitter:card" content="Sand n Sea ecommerce Store"></meta>
             {/* <link rel="canonical" href="https://shoponix.envytheme.com/"></link> */}
             {/* <meta property="og:image" content="https://res.cloudinary.com/dev-empty/image/upload/v1590078952/qlm6qb1hzxd6iccmaf82.jpg" /> */}
         </Head>

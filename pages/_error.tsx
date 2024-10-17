@@ -6,7 +6,7 @@ export default function Error() {
   return (
     <>
       <Head>
-        <title>Something went wrong - Outlet Turkey</title>
+        <title>Something went wrong - Sand n Sea</title>
         <meta
           name="description"
           content="Something went wrong، يرجى المحاولة مرة أخرى."

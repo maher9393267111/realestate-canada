@@ -270,7 +270,7 @@ export default function AdminAllCountries() {
   return (
     <>
       <Head>
-        <title>Outlet Turkey</title>
+        <title>Sand n Sea</title>
       </Head>
       <AdminMainLayout>
         <PageLayout title="الاقسام">

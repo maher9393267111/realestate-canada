@@ -55,7 +55,7 @@ export default function CreateCategory() {
   return (
     <div className="cart-area !bg-white">
       <Head>
-        <title>إنشاء تصنيف - Outlet Turkey</title>
+        <title>إنشاء تصنيف - Sand n Sea</title>
       </Head>
       <PageLayout title="اضافة قسم جديد">
         <form className="  !p-20" onSubmit={handleSubmit}>

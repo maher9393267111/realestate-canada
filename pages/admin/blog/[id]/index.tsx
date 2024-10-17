@@ -253,7 +253,7 @@ export default function BookUpdatePage() {
   return (
     <div dir="ltr" className="cart-area !bg-whit about-area">
       <Head>
-        <title>تعديل المنتج - Outlet Turkey</title>
+        <title>تعديل المنتج - Sand n Sea</title>
       </Head>
       <AdminMainLayout>
         <PageLayout title="تعديل المنتج">

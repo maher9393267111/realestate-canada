@@ -185,7 +185,7 @@ export default function AdminCategory() {
   return (
     <>
       <Head>
-        <title>Outlet Turkey</title>
+        <title>Sand n Sea</title>
       </Head>
       <PageLayout title="الاقسام">
         <div className=" !min-h-[70vh]">

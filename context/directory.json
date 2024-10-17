@@ -94,8 +94,8 @@
  "send": "Send",
 
  "no_account":"You dont have account ? make new one",
- "welcome_2":"Welcome in Outlet Turkey",
- "welcome_1":"Welcome in Outlet Turkey",
+ "welcome_2":"Welcome in Sand n Sea",
+ "welcome_1":"Welcome in Sand n Sea",
  "login":"Login",
  "register":"Register",
 "google":"Login with google"
@@ -110,8 +110,8 @@
   "email": "Email",
   "pass": "Password",
   "send": "Send",
-  "welcome_2":"Welcome in Outlet Turkey",
-  "welcome_1":"Welcome in Outlet Turkey",
+  "welcome_2":"Welcome in Sand n Sea",
+  "welcome_1":"Welcome in Sand n Sea",
   "no_account":"You dont have account ? make new one",
 "forget":"Forget your password",
 "google":"Login with google"
@@ -232,7 +232,7 @@
 
      "no_account":"لديك حساب بالفعل؟ تسجيل الدخول",
      "welcome_2":"المتجر الافضل دوما تسوق كل ماتريد",
-     "welcome_1":"مرحبا بك في Outlet Turkey",
+     "welcome_1":"مرحبا بك في Sand n Sea",
      "login":"تسجيل دخول",
      "register":"حساب جديد",
         "google":"تسجيل الدخول باستخدام جوجل"
@@ -247,7 +247,7 @@
       "pass": "كلمة السر",
    "send": "تسجيل",
          "welcome_2":"المتجر الافضل دوما تسوق كل ماتريد",
-     "welcome_1":"مرحبا بك في Outlet Turkey",
+     "welcome_1":"مرحبا بك في Sand n Sea",
      "no_account":"ليس لديك حساب؟ سجل الآن",
      "forget":"نسيت كلمة المرور؟",
      "google":"تسجيل الدخول باستخدام جوجل"

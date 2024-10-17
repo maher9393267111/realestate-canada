@@ -55,10 +55,10 @@ export default function Register() {
   return (
     <>
       <Head>
-        <title>نسيت كلمة المرور - Outlet Turkey</title>
+        <title>نسيت كلمة المرور - Sand n Sea</title>
         <meta
           name="description"
-          content="قم بإعادة تعيين كلمة المرور الخاصة بك في Outlet Turkey."
+          content="قم بإعادة تعيين كلمة المرور الخاصة بك في Sand n Sea."
         />
       </Head>
       <AuthLayout>

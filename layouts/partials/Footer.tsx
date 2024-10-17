@@ -172,7 +172,7 @@ const Footer = ({  }) => {
 
 <div className=" mt-4  pb-4 flex flex-col md:flex-row gap-2  items-center  justify-center gap-y-2">
          <div>
-          <p className="caption-md md:caption-lg xl:body-md text-white">Outlet Turkey</p>
+          <p className="caption-md md:caption-lg xl:body-md text-white">Sand n Sea</p>
         </div>      
           <li className="flex items-center justify-center gap-x-2">
            <a href="https://www.instagram.com/Wanlounge">
@@ -272,7 +272,7 @@ export default Footer;
 //       </div>
 //       <div className=" mt-4 flex flex-col md:flex-row gap-2  items-center  justify-center gap-y-2">
 //         <div>
-//           <p className="caption-md md:caption-lg xl:body-md">Outlet Turkey</p>
+//           <p className="caption-md md:caption-lg xl:body-md">Sand n Sea</p>
 //         </div>
 //         <li className="flex items-center justify-center gap-x-2">
 //           <a href="https://www.instagram.com/Wanlounge">

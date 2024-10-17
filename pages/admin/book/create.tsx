@@ -366,7 +366,7 @@ export default function BookCreatePage() {
   return (
     <div dir="ltr" className="cart-are !bg-[#ffff]  product-area">
       <Head>
-        <title>إضافة منتج جديد - Outlet Turkey</title>
+        <title>إضافة منتج جديد - Sand n Sea</title>
       </Head>
       <AdminMainLayout>
         <PageLayout title="header.addBook">
