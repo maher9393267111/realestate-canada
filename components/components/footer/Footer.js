@@ -1,11 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import { useLanguageContext } from "@/context/languageContext";
-import { WhatsApp as WhatsAppIcon } from '@mui/icons-material';
+import { WhatsApp as WhatsAppIcon } from "@mui/icons-material";
 
-const Footer = ({style}) => {
-
-  const {language} = useLanguageContext()
+const Footer = ({ style }) => {
+  const { language } = useLanguageContext();
 
   return (
     <footer className={`footer-section ${style}`}>
@@ -38,10 +37,14 @@ const Footer = ({style}) => {
                 </div>
                 <ul className="widget-list">
                   <li>
-                    <Link href="/about">{language === "en" ? " About Us" : "À propos de nous"}</Link>
+                    <Link href="/about">
+                      {language === "en" ? " About Us" : "À propos de nous"}
+                    </Link>
                   </li>
                   <li>
-                    <Link href="/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=&rooms=0&beds=0">Destinations</Link>
+                    <Link href="/projects?city=&country=&baths=0=&beds=0&minPrice=0&maxPrice=10000000000000&type=&rooms=0&beds=0">
+                      Destinations
+                    </Link>
                   </li>
                   <li>
                     <Link href="/blogs">Blogs</Link>
@@ -50,8 +53,11 @@ const Footer = ({style}) => {
                     <Link href="/services">Services</Link>
                   </li>
                   <li>
-                    <Link href="/collaborations">{language === "en" ? "Meet Our Guide" : "Rencontrez notre guide"}
-                     </Link>
+                    <Link href="/collaborations">
+                      {language === "en"
+                        ? "Meet Our Guide"
+                        : "Rencontrez notre guide"}
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -70,7 +76,9 @@ const Footer = ({style}) => {
                         <path d="M17.5107 13.2102L14.9988 10.6982C14.1016 9.80111 12.5765 10.16 12.2177 11.3262C11.9485 12.1337 11.0514 12.5822 10.244 12.4028C8.44974 11.9542 6.0275 9.62168 5.57894 7.73772C5.3098 6.93027 5.84808 6.03314 6.65549 5.76404C7.82176 5.40519 8.18061 3.88007 7.28348 2.98295L4.77153 0.470991C4.05382 -0.156997 2.97727 -0.156997 2.34929 0.470991L0.644745 2.17553C-1.0598 3.96978 0.82417 8.72455 5.04066 12.941C9.25716 17.1575 14.0119 19.1313 15.8062 17.337L17.5107 15.6324C18.1387 14.9147 18.1387 13.8382 17.5107 13.2102Z" />
                       </g>
                     </svg>
-                    <h5>{language === "en" ? "More Inquiry":"Plus de demande"}</h5>
+                    <h5>
+                      {language === "en" ? "More Inquiry" : "Plus de demande"}
+                    </h5>
                   </div>
                   <a href="tel:999858624984">+999-858 624 984</a>
                 </div>
@@ -86,7 +94,9 @@ const Footer = ({style}) => {
                         <path d="M6.56266 13.2091V16.6876C6.56324 16.8058 6.60099 16.9208 6.67058 17.0164C6.74017 17.112 6.83807 17.1832 6.9504 17.22C7.06274 17.2569 7.18382 17.2574 7.29648 17.2216C7.40915 17.1858 7.5077 17.1155 7.57817 17.0206L9.61292 14.2516L6.56266 13.2091ZM17.7639 0.104306C17.6794 0.044121 17.5799 0.00848417 17.4764 0.00133654C17.3729 -0.00581108 17.2694 0.015809 17.1774 0.0638058L0.302415 8.87631C0.205322 8.92762 0.125322 9.00617 0.0722333 9.1023C0.0191447 9.19844 -0.00472288 9.30798 0.00355981 9.41749C0.0118425 9.52699 0.0519151 9.6317 0.11886 9.71875C0.185804 9.80581 0.276708 9.87143 0.380415 9.90756L5.07166 11.5111L15.0624 2.96856L7.33141 12.2828L15.1937 14.9701C15.2717 14.9963 15.3545 15.0051 15.4363 14.996C15.5181 14.9868 15.5969 14.9599 15.6672 14.9171C15.7375 14.8743 15.7976 14.8167 15.8433 14.7482C15.8889 14.6798 15.9191 14.6021 15.9317 14.5208L17.9942 0.645806C18.0094 0.543093 17.996 0.438159 17.9554 0.342598C17.9147 0.247038 17.8485 0.164569 17.7639 0.104306Z" />
                       </g>
                     </svg>
-                    <h5>{language === "en" ? "Send Mail" : "Envoyer un courrier"}</h5>
+                    <h5>
+                      {language === "en" ? "Send Mail" : "Envoyer un courrier"}
+                    </h5>
                   </div>
                   <a href="mailto:info@example.com">info@example.com</a>
                 </div>
@@ -114,14 +124,15 @@ const Footer = ({style}) => {
             <div className="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-lg-end justify-content-sm-end">
               <div className="footer-widget">
                 <div className="widget-title">
-                  <h5>{language === "en" ? "We Are Here" : "Nous sommes là"}</h5>
+                  <h5>
+                    {language === "en" ? "We Are Here" : "Nous sommes là"}
+                  </h5>
                 </div>
 
                 <p>
-                {language === "en" ? "Disclaimer: While every care has been taken in the preparation of this website, the particulars and information in it are not to be construed as containing any representations upon which any interested party is entitled to rely. All illustrations, drawings and photographs are for professional presentation purposes, are indicative only and are not necessarily to scale. All information and material is subject to change without notice." : 
-                
-                "Avertissement : Bien que tous les soins aient été apportés à la préparation de ce site web, les détails et les informations qu'il contient ne doivent pas être interprétés comme des représentations sur lesquelles toute partie intéressée est en droit de se fier. Toutes les illustrations, dessins et photographies sont destinés à des fins de présentation professionnelle, sont indicatifs uniquement et ne sont pas nécessairement à l'échelle. Toutes les informations et matériaux sont susceptibles de changer sans préavis."}
-                
+                  {language === "en"
+                    ? "Disclaimer: While every care has been taken in the preparation of this website, the particulars and information in it are not to be construed as containing any representations upon which any interested party is entitled to rely. All illustrations, drawings and photographs are for professional presentation purposes, are indicative only and are not necessarily to scale. All information and material is subject to change without notice."
+                    : "Avertissement : Bien que tous les soins aient été apportés à la préparation de ce site web, les détails et les informations qu'il contient ne doivent pas être interprétés comme des représentations sur lesquelles toute partie intéressée est en droit de se fier. Toutes les illustrations, dessins et photographies sont destinés à des fins de présentation professionnelle, sont indicatifs uniquement et ne sont pas nécessairement à l'échelle. Toutes les informations et matériaux sont susceptibles de changer sans préavis."}
                 </p>
 
                 {/* <div className="payment-partner">
@@ -218,14 +229,14 @@ const Footer = ({style}) => {
       </div>
 
       <a
-      href="https://wa.me/+11234567890" // Replace with your WhatsApp number
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300 z-50"
-      aria-label="Chat on WhatsApp"
-    >
-      <WhatsAppIcon className="w-8 h-8" />
-    </a>
+        href="https://wa.me/+11234567890" // Replace with your WhatsApp number
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300 z-50"
+        aria-label="Chat on WhatsApp"
+      >
+        <WhatsAppIcon className="w-8 h-8" />
+      </a>
     </footer>
   );
 };
