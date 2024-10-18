@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { useLanguageContext } from "@/context/languageContext";
+import { WhatsApp as WhatsAppIcon } from '@mui/icons-material';
 
 const Footer = ({style}) => {
 
@@ -215,6 +216,16 @@ const Footer = ({style}) => {
           </div>
         </div>
       </div>
+
+      <a
+      href="https://wa.me/+11234567890" // Replace with your WhatsApp number
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300 z-50"
+      aria-label="Chat on WhatsApp"
+    >
+      <WhatsAppIcon className="w-8 h-8" />
+    </a>
     </footer>
   );
 };
