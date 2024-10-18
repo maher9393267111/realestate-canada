@@ -414,7 +414,7 @@ const ProjectDetails = () => {
                   {language ==='en' ? <h5 className="ml-2 font-semibold text-[19px]">{data?.book?.country}</h5> : <h5 className="ml-2 font-semibold text-[20px]">{handleChange(data?.book?.country)}</h5> }
                 </div>
                 <div className="single-info flex">
-                  <span className="text-[17px]">{language ==='en' ? "City:" : "Ville:"}</span> {language ==='en' ? <h5 className="ml-2 font-semibold text-[20px]">{data?.book?.city}</h5> : <h5 className="ml-2 font-semibold text-[19px]">{data?.book?.city}</h5> }
+                  <span className="text-[17px]">{language ==='en' ? "City:" : "Ville:"}</span> {language ==='en' ? <h5 className="ml-2 font-semibold text-[20px]">{data?.book?.city}</h5> : <h5 className="ml-2 font-semibold text-[19px]">{data?.book?.cityFr}</h5> }
                  
                 </div>
 

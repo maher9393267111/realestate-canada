@@ -47,6 +47,10 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    cityFr: {
+      type: String,
+      required: true,
+    },
 
     area: {
       type: String,

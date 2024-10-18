@@ -71,6 +71,7 @@ export default function BookUpdatePage() {
     storyfr: "",
     country: "",
     city: "",
+    cityFr: "",
     area: "",
     type: "",
     price: "",
@@ -134,7 +135,8 @@ export default function BookUpdatePage() {
   });
 
   const [selectedCountry, setSelectedCountry] = useState({});
-  const [selectedCity, setSelectedCity] = useState({});
+  // const [selectedCity, setSelectedCity] = useState({});
+  const [selectedCity, setSelectedCity] = useState({ value: "", label: "", titlefr: "" });
   const [selectedArea, setSelectedArea] = useState({});
   const [selectedType, setSelectedType] = useState({});
   const [selectedCondition, setSelectedCondition] = useState({});
@@ -152,7 +154,12 @@ export default function BookUpdatePage() {
       setRootImages(book?.image);
 
       setSelectedCountry({ label: book?.country, value: book?.country });
-      setSelectedCity({ label: book?.city, value: book?.city });
+      // setSelectedCity({ label: book?.city, value: book?.city });
+      setSelectedCity({ 
+        label: book?.city, 
+        value: book?.city,
+        titlefr: book?.cityFr // Assuming the API returns cityFr
+      });
       setSelectedArea({ label: book?.area, value: book?.area });
 
       setSelectedType({ label: book?.type, value: book?.type });
@@ -165,6 +172,7 @@ export default function BookUpdatePage() {
   const countries = CountriesData?.map((country) => ({
     label: country.title,
     value: country.title,
+
   }));
 
   const {
@@ -184,6 +192,7 @@ export default function BookUpdatePage() {
   ).map((city) => ({
     label: city?.title,
     value: city?.title,
+    titlefr: city?.titlefr,
   }));
 
   // console.log("CITIES" , CitiesData)
@@ -239,6 +248,7 @@ export default function BookUpdatePage() {
         country: selectedCountry.value,
         city: selectedCity.value,
         area: selectedArea?.value,
+        cityFr: selectedCity.titlefr,
       }));
     }
   }, [selectedCountry, selectedCity, selectedArea]);
@@ -614,12 +624,27 @@ export default function BookUpdatePage() {
               </Grid>
 
               <Grid item xs={12} md={6}>
-                <SelectInput
+                {/* <SelectInput
                   placeholder="Select City"
                   options={cities}
                   selected={selectedCity}
                   setSelected={setSelectedCity}
-                />
+                /> */}
+
+<SelectInput
+            placeholder="Select City"
+            options={cities}
+            selected={selectedCity}
+            setSelected={(city) => {
+              setSelectedCity(city);
+              setPropertyDetails(prev => ({
+                ...prev,
+                city: city.value,
+                cityFr: city.titlefr
+              }));
+            }}
+          />
+         
               </Grid>
 
               <Grid item xs={12} md={6}>

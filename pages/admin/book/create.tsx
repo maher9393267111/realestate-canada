@@ -95,6 +95,7 @@ export default function BookCreatePage() {
     storyfr: "",
     country: "",
     city: "",
+    cityFr: "",
     area: "",
     type: "",
     price: "",
@@ -156,8 +157,9 @@ export default function BookCreatePage() {
     addBy: "Admin",
   });
 
-  const [selectedCountry, setSelectedCountry] = useState({});
-  const [selectedCity, setSelectedCity] = useState({});
+   const [selectedCountry, setSelectedCountry] = useState({});
+  // const [selectedCity, setSelectedCity] = useState({});
+  const [selectedCity, setSelectedCity] = useState({ value: "", label: "", titlefr: "" });
   const [selectedArea, setSelectedArea] = useState({});
   const [selectedType, setSelectedType] = useState({});
   const [selectedCondition, setSelectedCondition] = useState({});
@@ -168,6 +170,7 @@ export default function BookCreatePage() {
   ).map((city) => ({
     label: city?.title,
     value: city?.title,
+    titlefr: city?.titlefr,
   }));
 
   // console.log("CITIES" , CitiesData)
@@ -222,6 +225,7 @@ export default function BookCreatePage() {
         ...prev,
         country: selectedCountry.value,
         city: selectedCity.value,
+        cityFr: selectedCity.titlefr,
         area: selectedArea?.value,
       }));
     }
@@ -586,13 +590,31 @@ export default function BookCreatePage() {
               </Grid>
 
               <Grid item xs={12} md={6}>
-                
+{/*                 
                 <SelectInput
                   placeholder="Select City"
                   options={cities}
                   selected={selectedCity}
                   setSelected={setSelectedCity}
-                />
+                /> */}
+
+<SelectInput
+            placeholder="Select City"
+            options={cities}
+            selected={selectedCity}
+            setSelected={(city) => {
+              setSelectedCity(city);
+              setPropertyDetails(prev => ({
+                ...prev,
+                city: city.value,
+                cityFr: city.titlefr
+              }));
+            }}
+          />
+
+          
+
+
               </Grid>
 
               <Grid item xs={12} md={6}>
