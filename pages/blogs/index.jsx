@@ -14,6 +14,8 @@ import { useLanguageContext } from "@/context/languageContext";
 import { CircularLoading as Loading } from "@/components/loading";
 import Select from "react-select";
 import { handleChange } from "../../utils/handleLanguage";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -67,7 +69,7 @@ const BlogsMainpage = ({ search, country }) => {
   const handlePageChange = (event, value) => {
     if (value === page) return;
     setPage(value);
-    window.scrollTo(0, 0);
+   // window.scrollTo(0, 0);
   };
 
   const handleSearch = (e) => {
@@ -85,6 +87,75 @@ const BlogsMainpage = ({ search, country }) => {
     setCountry({ value: "", label: "" });
     setSearch("");
     mutate();
+  };
+
+  const renderPagination = () => {
+    const totalPages = data?.pages || 1;
+    const maxVisiblePages = 4;
+    const pages = [];
+
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (page <= maxVisiblePages - 1) {
+        for (let i = 1; i <= maxVisiblePages; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      } else if (page > totalPages - maxVisiblePages + 1) {
+        pages.push(1);
+        pages.push('...');
+        for (let i = totalPages - maxVisiblePages + 1; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
+        pages.push('...');
+        for (let i = page - 1; i <= page + 1; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      }
+    }
+
+    return (
+      <div className="flex justify-center items-center space-x-2" style={{ maxWidth: '300px', margin: '0 auto' }}>
+        <button
+          onClick={() => handlePageChange(null, Math.max(1, page - 1))}
+          className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 ${
+            page === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-green-500 hover:bg-green-100'
+          }`}
+          disabled={page === 1}
+        >
+          <ArrowBackIcon />
+        </button>
+        {pages.map((pageNumber, index) => (
+          <button
+            key={index}
+            onClick={() => typeof pageNumber === 'number' && handlePageChange(null, pageNumber)}
+            className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 ${
+              pageNumber === page ? 'bg-green-500 text-white' : 'text-green-500 hover:bg-green-100'
+            } ${pageNumber === '...' ? 'cursor-default' : ''}`}
+            disabled={pageNumber === '...'}
+          >
+            {pageNumber}
+          </button>
+        ))}
+        <button
+          onClick={() => handlePageChange(null, Math.min(totalPages, page + 1))}
+          className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 ${
+            page === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-green-500 hover:bg-green-100'
+          }`}
+          disabled={page === totalPages}
+        >
+          <ArrowForwardIcon />
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -279,22 +350,8 @@ const BlogsMainpage = ({ search, country }) => {
 
           <div className="row">
             <div className="col-lg-12">
-              <nav className="inner-pagination-area !text-center  !flex !justify-center">
-                <Pagination
-                  dir="rtl"
-                  className=""
-                  onChange={(e, i) => {
-                    handlePageChange(e, i);
-                  }}
-                  count={data?.pages}
-                  defaultPage={page}
-                  page={page}
-                  siblingCount={0}
-                  shape="rounded"
-                  color="primary"
-                  showFirstButton
-                  showLastButton
-                />
+              <nav className="inner-pagination-area text-center">
+                {renderPagination()}
               </nav>
             </div>
           </div>
@@ -382,3 +439,7 @@ export default BlogsMainpage;
   </div>
 </div>
 </div> */}
+
+
+
+
