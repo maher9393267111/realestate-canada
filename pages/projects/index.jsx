@@ -130,7 +130,12 @@ const Projects = ({
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>
+
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader"></div>
+      </div>
+    </div>}>
 
 
     <div dir="ltr" className="">

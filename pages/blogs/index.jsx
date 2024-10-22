@@ -16,6 +16,7 @@ import Select from "react-select";
 import { handleChange } from "../../utils/handleLanguage";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Suspense, lazy } from "react";
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -123,6 +124,13 @@ const BlogsMainpage = ({ search, country }) => {
     }
 
     return (
+      <Suspense fallback={<div>
+         <div className="flex justify-center items-center h-screen">
+        <div className="loader"></div>
+      </div>
+    </div>
+      }>
+     
       <div className="flex justify-center items-center space-x-2" style={{ maxWidth: '300px', margin: '0 auto' }}>
         <button
           onClick={() => handlePageChange(null, Math.max(1, page - 1))}
@@ -155,6 +163,7 @@ const BlogsMainpage = ({ search, country }) => {
           <ArrowForwardIcon />
         </button>
       </div>
+      </Suspense>
     );
   };
 

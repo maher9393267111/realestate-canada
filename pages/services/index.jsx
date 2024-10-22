@@ -12,6 +12,7 @@ import { Pagination } from "@material-ui/lab";
 import { useLanguageContext } from "@/context/languageContext";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Suspense, lazy } from "react";
 
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -108,6 +109,12 @@ const BlogsMainpage = () => {
   };
 
   return (
+    <Suspense fallback={<div>
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader"></div>
+      </div>
+    </div>
+    }>
     <div dir="ltr" className="">
       <Topbar />
       <Header />
@@ -218,6 +225,7 @@ const BlogsMainpage = () => {
       <Newslatter />
       <Footer />
     </div>
+    </Suspense>
   );
 };
 

@@ -37,7 +37,12 @@ const page = () => {
   return (
     <SWRConfig value={{ shouldRetryOnError: false, revalidateOnFocus: false }}>
       <div dir="ltr">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={
+
+<div className="flex justify-center items-center h-screen">
+<div className="loader"></div>
+          </div>
+        }>
           <Header />
           <Home2Banner />
           <CountriesSlider />
