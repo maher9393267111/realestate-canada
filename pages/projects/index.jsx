@@ -14,7 +14,6 @@ import FilterForm from "../../components/Site/dashboardLayout/FilterForm";
 import ProjectCard from "../../components/Site/ProjectCard";
 import { ImageEndpoint } from "../../utils/global";
 import { useState } from "react";
-import { Pagination } from "@material-ui/lab";
 import { useLanguageContext } from "@/context/languageContext";
 
 const Projects = ({
@@ -54,10 +53,10 @@ const Projects = ({
     resale
   });
 
-  const handlePageChange = (event, value) => {
+  const handlePageChange = (value) => {
     if (value === page) return;
     setPage(value);
- //   window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   };
 
   const renderPagination = () => {
@@ -94,9 +93,9 @@ const Projects = ({
     }
 
     return (
-      <div className="flex justify-center items-center space-x-2" style={{ maxWidth: '300px', margin: '0 auto' }}>
+      <div className="flex justify-center items-center space-x-2">
         <button
-          onClick={() => handlePageChange(null, Math.max(1, page - 1))}
+          onClick={() => handlePageChange(Math.max(1, page - 1))}
           className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 ${
             page === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-green-500 hover:bg-green-100'
           }`}
@@ -107,7 +106,7 @@ const Projects = ({
         {pages.map((pageNumber, index) => (
           <button
             key={index}
-            onClick={() => typeof pageNumber === 'number' && handlePageChange(null, pageNumber)}
+            onClick={() => typeof pageNumber === 'number' && handlePageChange(pageNumber)}
             className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 ${
               pageNumber === page ? 'bg-green-500 text-white' : 'text-green-500 hover:bg-green-100'
             } ${pageNumber === '...' ? 'cursor-default' : ''}`}
@@ -117,7 +116,7 @@ const Projects = ({
           </button>
         ))}
         <button
-          onClick={() => handlePageChange(null, Math.min(totalPages, page + 1))}
+          onClick={() => handlePageChange(Math.min(totalPages, page + 1))}
           className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 ${
             page === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-green-500 hover:bg-green-100'
           }`}
@@ -175,18 +174,6 @@ export const getServerSideProps = async (context) => {
    const resale= context?.query?.resale ? context?.query?.resale : "";
 
    const lockoff= context?.query?.lockoff ? context?.query?.lockoff : "";
-
-   //lockoff
-
-  // const baths = context?.query?. ? context?.query?.baths :0;
-
-  // const searchTerm = context?.query?.country ? context?.query?.country : 0;
-
-  // const searchTerm = context?.query?.country ? context?.query?.country : "";
-
-  // const searchTerm = context?.query?.country ? context?.query?.country : "";
-
-  // const searchTerm = context?.query?.country ? context?.query?.country : "";
 
   return {
     props: {

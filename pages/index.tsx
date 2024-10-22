@@ -1,28 +1,22 @@
-
-
-import Home2About from "../components/components/about/Home2About";
-// import Home2Activities from "../components/components/activities/Home2Activities";
-import Home2Banner from "../components/components/banner/Home2Banner";
-import Home2Banner2 from "../components/components/banner/Home2Banner2";
-import Home2Blog from "../components/components/blog/Home2Blog";
-import Home2Destinationslide from "../components/components/destinationSlider/Home2Destinationslide";
-import Footer from "../components/components/footer/Footer";
+import React, { Suspense, lazy } from "react";
 import Header from "../components/components/header/Header";
-import Home2Team from "../components/components/team/Home2Team";
-import Home2Testimonial from "../components/components/testimonial/Home2Testimonial";
-import Home2ThrillingTour from "../components/components/tourPackage/Home2ThrillingTour";
-import Home2VideoSection from "../components/components/videoSection/Home2VideoSection";
-import Home2WhyChoose from "../components/components/whyChoose/Home2WhyChoose";
-
-import CountriesSlider from '@/components/Site/CountriesSlider'
-import ProjectsOfferSlider from "@/components/Site/ProjectsOfferSlider"
-import ServicesTabs from '@/components/Site/ServicesTabs'
+import Footer from "../components/components/footer/Footer";
 import useBlogs from "../hooks/useBlogs";
-import AboutBlogs from "@/components/Site/AboutBlogs";
 import { useLanguageContext } from "@/context/languageContext";
 
+// Lazy load components
+const Home2Banner = lazy(() => import("../components/components/banner/Home2Banner"));
+const CountriesSlider = lazy(() => import('@/components/Site/CountriesSlider'));
+const ProjectsOfferSlider = lazy(() => import("@/components/Site/ProjectsOfferSlider"));
+const AboutBlogs = lazy(() => import("@/components/Site/AboutBlogs"));
+const ServicesTabs = lazy(() => import('@/components/Site/ServicesTabs'));
+const Home2About = lazy(() => import("../components/components/about/Home2About"));
+const Home2WhyChoose = lazy(() => import("../components/components/whyChoose/Home2WhyChoose"));
+const Home2Testimonial = lazy(() => import("../components/components/testimonial/Home2Testimonial"));
+const Home2Team = lazy(() => import("../components/components/team/Home2Team"));
+const Home2VideoSection = lazy(() => import("../components/components/videoSection/Home2VideoSection"));
+const Home2Banner2 = lazy(() => import("../components/components/banner/Home2Banner2"));
 
-import React from "react";
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template ",
   description:
@@ -31,31 +25,28 @@ export const metadata = {
     icon: "/assets/img/sm-logo.svg",
   },
 };
-const page = () => {
 
+const page = () => {
   const { data, isLoading, error, mutate } = useBlogs({page:1});
   const { language } = useLanguageContext();
 
-
   return (
     <div dir="ltr">
-    <Header />
-      <Home2Banner />
-      <CountriesSlider/>
-    <ProjectsOfferSlider/>
-    <AboutBlogs language={language} blogs={data?.books} />
-    <ServicesTabs/>
-     
-      <Home2About />
-
-      {/* <Home2Activities /> */}
-      <Home2WhyChoose />
-      <Home2Testimonial />
-      <Home2Team />
-      <Home2VideoSection />
-    
-      <Home2Banner2 />
-      <Footer style="style-2" />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header />
+        <Home2Banner />
+        <CountriesSlider />
+        <ProjectsOfferSlider />
+        <AboutBlogs language={language} blogs={data?.books} />
+        <ServicesTabs />
+        <Home2About />
+        <Home2WhyChoose />
+        <Home2Testimonial />
+        <Home2Team />
+        <Home2VideoSection />
+        <Home2Banner2 />
+        <Footer style="style-2" />
+      </Suspense>
     </div>
   );
 };
