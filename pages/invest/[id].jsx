@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Topbar from "@/components/components/topbar/Topbar";
 import SelectComponent from "@/components/Site/SelectComponent";
 import { useRouter } from "next/router";

@@ -4,7 +4,7 @@ import Breadcrumb from "@/components/components/common/Breadcrumb";
 // import QuantityCounter from "@/uitils/QuantityCounter";
 import Link from "next/link";
 import Topbar from "@/components/components/topbar/Topbar";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import useVisas from "@/hooks/useVisas";
@@ -46,7 +46,7 @@ const page = () => {
 
   return (
     <div dir="ltr">
-      <Topbar />
+      {/* <Topbar /> */}
       <Header />
       <Breadcrumb pagename={language === "en" ? "Invest" : "Investir"} pagetitle={language === "en" ? "Invest" : "Investir"} />
       <div className="package-search-filter-wrapper">

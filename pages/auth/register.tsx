@@ -15,7 +15,7 @@ import styled from "styled-components";
 import { GoogleAuthButton } from "@/components/button";
 import { useTranslation } from "@/context/useTranslation";
 import Breadcrumb from "@//components/components/common/Breadcrumb";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 
 export const Form = styled.form`
   align-items: center;

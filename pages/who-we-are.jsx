@@ -8,7 +8,7 @@ import ContactCountries from "../components/Site/contactCountries"
 
 
 import Footer from "@/components/components/footer/Footer";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import { useLanguageContext } from "@/context/languageContext";
 import TeamCard from "@/components/Site/TeamCard";

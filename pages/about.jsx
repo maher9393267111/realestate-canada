@@ -6,7 +6,7 @@ import AboutBlogs from "@/components/Site/AboutBlogs";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Topbar from "@/components/components/topbar/Topbar";
 import Home2Activities from "@/components/components/activities/Home2Activities";
 import Home2Team from "@/components/components/team/Home2Team";
@@ -28,7 +28,7 @@ const page = () => {
 
   return (
     <div className="" dir="ltr">
-      <Topbar />
+      {/* <Topbar /> */}
       <Header />
       <Breadcrumb pagename={language === 'en' ? "About Us" : "À propos de nous"} pagetitle={language === 'en' ? "About Us" : "À propos de nous"} />
      <AboutBlogs language={language} blogs={data?.books} />

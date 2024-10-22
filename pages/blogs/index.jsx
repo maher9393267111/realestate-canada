@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Topbar from "@/components/components/topbar/Topbar";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import useBlogs from "@/hooks/useBlogs";
 import { ImageEndpoint } from "../../utils/global";
 import { useState } from "react";
@@ -169,7 +169,7 @@ const BlogsMainpage = ({ search, country }) => {
 
   return (
     <div dir="ltr" className="">
-      <Topbar />
+      {/* <Topbar /> */}
       <Header />
       <Breadcrumb pagename={language === 'en' ? "Blog Grid" : "Grille de blog"} pagetitle={language === 'en' ? "Blog Grid" : "Grille de blog"} />
       <div className="blog-details-section pt-120 mb-120">

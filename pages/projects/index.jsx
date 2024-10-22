@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Topbar from "@/components/components/topbar/Topbar";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -139,7 +139,7 @@ const Projects = ({
 
 
     <div dir="ltr" className="">
-      <Topbar />
+      {/* <Topbar /> */}
       <Header />
       <Breadcrumb  pagename={language === "en" ? "Projects Grid" : "Grille des projets"} pagetitle={language === "en" ? "Projects Grid":"Grille des projets"}/>
       

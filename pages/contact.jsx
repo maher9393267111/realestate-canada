@@ -1,5 +1,5 @@
 import React ,{useState} from "react";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import { useLanguageContext } from "@/context/languageContext";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Footer from "../components/components/footer/Footer";

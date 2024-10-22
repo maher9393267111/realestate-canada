@@ -2,7 +2,7 @@ import Link from "next/link";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Topbar from "@/components/components/topbar/Topbar";
 import useBlog from "../../hooks/useBlog";
 import useBlogs from "../../hooks/useBlogs";
@@ -79,7 +79,7 @@ const page = () => {
 
   return (
     <div dir="ltr" className="">
-      <Topbar />
+      {/* <Topbar /> */}
       <Header />
       <Breadcrumb
         pagename={language === "en" ? "Blog Details" : "Détails du blog"}

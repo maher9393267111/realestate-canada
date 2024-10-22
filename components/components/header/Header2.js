@@ -120,6 +120,11 @@ const Header2 = () => {
 
   const projectslink = `/projects/?city=${""}&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${""}&rooms=${0}&beds=${0}`;
 
+  // const projectslink = (type = "") => 
+  //   `/projects/?city=${""}&country=${""}&baths=${0}&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${type}&rooms=${0}`;
+
+
+
   const handleScroll = () => {
     const { scrollY } = window;
     dispatch({ type: "setScrollY", payload: scrollY });
@@ -230,6 +235,18 @@ const Header2 = () => {
     };
   });
 
+
+  
+
+
+
+  const propertyTypes = [
+    { value: "house", label: language === "en" ? "Houses" : "Maisons" },
+    { value: "apartment", label: language === "en" ? "Apartment" : "Appartement" },
+    { value: "office", label: language === "en" ? "Offices" : "Bureaux" },
+    { value: "town", label: language === "en" ? "Townhome" : "Maison de ville" },
+    { value: "villa", label: language === "en" ? "Villa" : "Villa" },
+  ];
 
   return (
     <>
@@ -372,6 +389,29 @@ const Header2 = () => {
               )}
             </li>
 
+{/* -----PROPERTY TYPES HERE same groupedData structure parant is types then map types----- */} 
+      
+
+<li key={3} className={`${true ? "menu-item-has-children" : ""}`}>
+  <Link href={'/'} className="drop-down">
+    {language === "en" ? "Property Types" : "Types de propriété"}
+  </Link>
+  <i
+    onClick={() => toggleMenu("types")}
+    className={`bi bi-${state.activeMenu === "types" ? "dash" : "plus"} dropdown-icon`}
+  />
+  {propertyTypes.length > 0 && (
+    <ul className={`sub-menu ${state.activeMenu === "types" ? "d-block" : ""}`}>
+      {propertyTypes.map((type, index) => (
+        <li key={index}>
+             <Link legacyBehavior href={`/projects/?city=${""}&country=${""}&baths=${0}=&beds=${0}&minPrice=${0}&maxPrice=${10000000000000}&type=${type.value}&rooms=${0}&beds=${0}`}>
+            <a>{type.label}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )}
+</li>
 
             {navData.map((data) => {
               const { id, label, link, icon, subMenu, labelfr } = data;

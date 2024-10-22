@@ -8,7 +8,7 @@ import Link from "next/link";
 import DestinationActivitis from "@/components/components/destinationSlider/DestinationActivitis";
 import DestinationLocationGallery from "@//components/components/destinationSlider/DestinationLocationGallery";
 
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Topbar from "@/components/components/topbar/Topbar";
 import useProduct from "../../hooks/useProductDetails";
 import useBlogs from "../../hooks/useBlogs";

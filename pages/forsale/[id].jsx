@@ -7,7 +7,7 @@ import { useLanguageContext } from "@/context/languageContext";
 import Breadcrumb from "@/components/components/common/Breadcrumb";
 
 import Footer from "@/components/components/footer/Footer";
-import Header from "@/components/components/header/Header";
+import Header from "@/components/components/header/Header2";
 import Topbar from "@/components/components/topbar/Topbar";
 
 import { useRouter } from "next/router";
@@ -36,7 +36,7 @@ const [currentCountry , setCurrentCountry] = useState(id && id)
 
   return (
     <div dir="ltr">
-      <Topbar />
+      {/* <Topbar /> */}
       <Header />
       <Breadcrumb
         pagename={language === "en" ? "Country details" : "Détails du country"}
