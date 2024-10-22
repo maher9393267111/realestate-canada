@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useMemo } from "react";
 import Header from "../components/components/header/Header";
+import Header2 from "../components/components/header/Header2";
 import Footer from "../components/components/footer/Footer";
 import useBlogs from "../hooks/useBlogs";
 import { useLanguageContext } from "@/context/languageContext";
@@ -43,7 +44,7 @@ const page = () => {
 <div className="loader"></div>
           </div>
         }>
-          <Header />
+          <Header2 />
           <Home2Banner />
           <CountriesSlider />
           <ProjectsOfferSlider />

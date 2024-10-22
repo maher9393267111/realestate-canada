@@ -3431,10 +3431,12 @@ header.style-2 .main-menu .hotline-area .content h6 a:hover {
   header.style-2 .dropdown-icon {
     color: var(--white-color);
   }
+
+
   header.style-2 .main-menu {
     position: fixed;
     top: -1px;
-    left: -1px;
+    left: -1%;
     width: 280px;
     padding: 30px 20px !important;
     z-index: 99999;
@@ -3445,6 +3447,8 @@ header.style-2 .main-menu .hotline-area .content h6 a:hover {
     transition: transform 0.3s ease-in;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.03);
   }
+
+
   header.style-2 .main-menu.show-menu {
     transform: translateX(0);
   }

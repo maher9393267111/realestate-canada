@@ -1,136 +1,119 @@
-"use client";
+'use client'
 
-// ---------------------services at about-----------------------
+import React, { useMemo, useState, useEffect, useRef } from "react"
+import ModalVideo from "react-modal-video"
+import { Swiper, SwiperSlide } from "swiper/react"
+import useServices from "@/hooks/useServices"
+import { useLanguageContext } from "@/context/languageContext"
+import { ImageEndpoint } from "../../../utils/global"
+import SwiperCore, { Autoplay, EffectFade, Navigation, Pagination } from "swiper"
+import Link from "next/link"
 
-import React, { useMemo, useState } from "react";
-import ModalVideo from "react-modal-video";
-import { Swiper, SwiperSlide } from "swiper/react";
-import useServices from "@/hooks/useServices";
-import { useLanguageContext } from "@/context/languageContext";
-import { ImageEndpoint } from "../../../utils/global";
+SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination])
 
-import SwiperCore, {
-  Autoplay,
-  EffectFade,
-  Navigation,
-  Pagination,
-} from "swiper";
-import Link from "next/link";
-SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
-
-const Home2Activities = () => {
-  const [isOpen, setOpen] = useState(false);
-
-  const { language } = useLanguageContext();
-  const [page, setPage] = useState(1);
-
-  const { data, isLoading, error, mutate } = useServices({
+export default function Home2Activities() {
+  const [isOpen, setOpen] = useState(false)
+  const { language } = useLanguageContext()
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeImage, setActiveImage] = useState(0)
+  const swiperRef = useRef(null)
+  const { data, isLoading, error } = useServices({
     page: 1,
-
     search: "",
-  });
-
-  const [activeTab, setActiveTab] = useState(0);
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
+  })
 
   const settings = useMemo(() => {
     return {
-      slidesPerView: "auto",
+      slidesPerView: 1,
       speed: 1500,
       spaceBetween: 25,
-
-      effect: "fade", // Use the fade effect
+      effect: "fade",
       loop: true,
       fadeEffect: {
-        crossFade: true, // Enable cross-fade transition
+        crossFade: true,
       },
-      autoplay: {
-        delay: 2500, // Autoplay duration in milliseconds
-        disableOnInteraction: false,
-      },
+      autoplay: false, // Disable Swiper's built-in autoplay
       pagination: {
         el: ".swiper-pagination5",
         clickable: true,
       },
-    };
-  });
+      onSlideChange: (swiper) => {
+        setActiveIndex(swiper.realIndex)
+      },
+    }
+  }, [])
+
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.autoplay.stop() // Ensure Swiper's autoplay is stopped
+    }
+  }, [data])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (data?.books && data.books.length > 0) {
+        const currentService = data.books[activeIndex]
+        if (currentService.image && currentService.image.length > 0) {
+          setActiveImage((prevActiveImage) => (prevActiveImage + 1) % currentService.image.length)
+        }
+      }
+    }, 2000)
+
+    return () => clearInterval(interval)
+  }, [data, activeIndex])
+
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(activeImage)
+    }
+  }, [activeImage])
+
   return (
-    <>
-      <div className="slider-and-tab-section mb-120">
-        <div className="row g-0">
-          <div className="col-lg-5">
-            <ul className="activities-slider-group">
-              <li className="active">
+    <div className="slider-and-tab-section mb-120">
+      <div className="row g-0">
+        <div className="col-lg-5">
+          
+          <ul className="activities-slider-group">
+            {data?.books?.map((service, index) => (
+              <li key={index} className={index === activeImage ? "active" : ""}>
                 <div className="slider-area">
-                  <Swiper
-                    {...settings}
-                    className="swiper activities-img-slider"
-                  >
+                  <Swiper {...settings} ref={swiperRef} className="swiper activities-img-slider">
                     <div className="swiper-wrapper">
-
-                    {/* {data?.books?.map((service, index) => {
-                            return ( */}
-                      <SwiperSlide
-                      // key={index}
-                       className="swiper-slide">
-                        <div
-                          className="slide-img"
-                          // style={{
-                          //   backgroundImage:
-                          //   "linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(assets/img/home2/zip-lining-01.jpg)",
-                          //   }}
-                          style={{
-                            backgroundImage: `linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(${`${ImageEndpoint}/${data?.books[activeTab]?.image[0]}`})`, // Use dynamic URL here
-                          }}
-                        />
-                      </SwiperSlide>
-
-                        {/* )})} */}
-
-
+                      {service.image.map((img, imgIndex) => (
+                        <SwiperSlide key={imgIndex} className="swiper-slide">
+                          <div
+                            className="slide-img"
+                            style={{
+                              backgroundImage: `linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url(${ImageEndpoint}/${img})`,
+                            }}
+                          />
+                          {index} - {activeImage}
+                        </SwiperSlide>
+                      ))}
                     </div>
-
-
                   </Swiper>
                   <div className="swiper-pagination5 pagination1" />
                 </div>
-
-
-
-
               </li>
-
-
-
-
-
-
-            </ul>
-          </div>
-          <div className="col-lg-7">
-            <div className="tab-area">
+            ))}
+          </ul>
+        </div>
+        <div className="col-lg-7">
+          <div className="tab-area">
             <div className="section-title2 text-center mb-50">
-                <div className="eg-section-tag">
-                  <span>
-                    
-                  {language === "en"
-                                      ? "What We Do"
-                                      : "Ce que nous faisons" }</span>
-                </div>
-                <h2>     {language === "en"
-                                      ? "Our Services"
-                                      : "Nos prestations" }</h2>
+              <div className="eg-section-tag">
+                <span>{language === "en" ? "What We Do" : "Ce que nous faisons"}</span>
               </div>
+              <h2>{language === "en" ? "Our Services" : "Nos prestations"}</h2>
+            </div>
 
-              {data?.books?.length && (
+            {data?.books?.length && (
                 <div className="tab-content-area">
                   <div className="row g-xl-4 gy-5 ">
                     <div className="col-xl-5">
                       <div className="tab-sidebar">
                         <ul
-                          className="nav nav-pills"
+                          className="nav nav-pills !bg-transparent"
                           id="pills-tab3"
                           role="tablist"
                         >
@@ -197,8 +180,8 @@ const Home2Activities = () => {
                               <div className="tab-content-wrap">
                                 <h2>{language ==='en' ? service?.title : service?.titlefr}</h2>
                                 <p>
-                                {language === 'en'  ? service?.subdesc : service?.subdescfr}
-                   </p>
+                           {language === 'en'  ? service?.subdesc : service?.subdescfr}
+                                </p>
                                 <ul>
                                   {/* <li>
                                     <svg
@@ -252,7 +235,7 @@ const Home2Activities = () => {
                                     href={`/services/${service?._id}`}
                                     className="primary-btn3"
                                   >
-                                     {language === "en"
+                                    {language === "en"
                                       ? "Check Service details"
                                       : "Vérifier les détails du service" }
                                   </Link>
@@ -309,23 +292,18 @@ const Home2Activities = () => {
                   </div>
                 </div>
               )}
-            </div>
           </div>
         </div>
-        <React.Fragment>
-          <ModalVideo
-            channel="youtube"
-            onClick={() => setOpen(true)}
-            isOpen={isOpen}
-            animationSpeed="350"
-            videoId="r4KpWiK08vM"
-            ratio="16:9"
-            onClose={() => setOpen(false)}
-          />
-        </React.Fragment>
       </div>
-    </>
-  );
-};
-
-export default Home2Activities;
+      <ModalVideo
+        channel="youtube"
+        onClick={() => setOpen(true)}
+        isOpen={isOpen}
+        animationSpeed="350"
+        videoId="r4KpWiK08vM"
+        ratio="16:9"
+        onClose={() => setOpen(false)}
+      />
+    </div>
+  )
+}

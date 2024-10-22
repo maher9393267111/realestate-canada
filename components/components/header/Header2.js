@@ -233,10 +233,10 @@ const Header2 = () => {
 
   return (
     <>
-      <LoginModal />
+      
       <header
         ref={headerRef}
-        className={`header-area style-2 ${state.scrollY > 10 ? "sticky" : ""}`}
+        className={`header-area style-2 ${state.scrollY > 10 ? "" : ""}`}
       >
         <div className="header-logo">
           <Link href="/">

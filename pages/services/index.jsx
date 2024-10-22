@@ -5,6 +5,8 @@ import Newslatter from "@/components/components/common/Newslatter";
 import Footer from "@/components/components/footer/Footer";
 import Topbar from "@/components/components/topbar/Topbar";
 import Header from "@/components/components/header/Header";
+//header2
+import Header2 from "@/components/components/header/Header2";
 import useBlogs from "@/hooks/useServices";
 import { ImageEndpoint } from "../../utils/global";
 import { useState } from "react";
@@ -117,7 +119,7 @@ const BlogsMainpage = () => {
     }>
     <div dir="ltr" className="">
       <Topbar />
-      <Header />
+      <Header2 />
       <Breadcrumb pagename="Service Grid" pagetitle="Service Grid" />
       <div className="blod-grid-section pt-120 mb-120">
         <div className="container">

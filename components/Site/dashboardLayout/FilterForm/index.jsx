@@ -142,30 +142,20 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
     );
   };
 
+  const renderLabel = (text) => (
+    <label className="form-label fs-6 sm:mx-3 hidden sm:block">{text}</label>
+  );
+
+  const getPlaceholder = (text) => {
+    return window.innerWidth < 640 ? text : language === "en" ? "Select" : "Sélectionner";
+  };
+
   return (
     <div className={` ${isProjectsPage ? "mb-24 md:mb-4 -mt-20 !font-rubik" : "mb-24 mt-44 md:mb-4 !font-rubik"} `}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 mt-sm-0 pt-sm-0">
             <div className="features-absolute">
-              {/* <ul
-                className="nav nav-pills bg-white shadow border-bottom p-3 flex-row d-md-inline-flex nav-justified mb-0 rounded-top-3 position-relative overflow-hidden"
-                id="pills-tab"
-                role="tablist"
-              >
-                <li className="nav-item m-1">
-                  <div
-                    className={`${"active"} nav-link py-2 px-4 !bg-primary  rounded-3 fw-medium`}
-                    to="#"
-                    // onClick={() => setActiveIndex(0)}
-                  >
-                    Filter
-                  </div>
-                </li>
-
-           
-              </ul> */}
-
               <div className="tab-content bg-white 1rounded-bottom-3 1rounded-end-3  rounded-lg sm-rounded-0 shadow mt-32 sm:mt-80">
                 <div className="card border-0 active">
                   <form
@@ -177,20 +167,14 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                         {home !== true && (
                           <div className="col-lg-3 col-md-6 col-12 ">
                             <div className="mb-3">
-                              <label className="form-label fs-6 sm:mx-3 ">
-                                {language === "en" ? "Search:" : "Recherche:"}
-                              </label>
+                              {renderLabel(language === "en" ? "Search:" : "Recherche:")}
                               <div className="filter-search-form position-relative filter-border1 sm:mx-3">
                                 <input
                                   name="name"
                                   type="text"
                                   id="job-keyword"
                                   className="form-control filter-input-box1 bg-light border-0  px-1"
-                                  placeholder={
-                                    language === "en"
-                                      ? "Search your keywords"
-                                      : "Recherchez vos mots-clés"
-                                  }
+                                  placeholder={getPlaceholder(language === "en" ? "Search your keywords" : "Recherchez vos mots-clés")}
                                 />
                               </div>
                             </div>
@@ -199,11 +183,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3 w-full">
-                            <label className="form-label fs-6 sm:!mx-3 ">
-                              {language === "en"
-                                ? "Select Country:"
-                                : "Sélectionnez le pays:"}
-                            </label>
+                            {renderLabel(language === "en" ? "Select Country:" : "Sélectionnez le pays:")}
                             <div className="filter-search-form w-ful position-relative filter-border1 bg-light sm:mx-3 cursor-pointer ">
                               <Select
                                 onChange={(newValue) => {
@@ -214,9 +194,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                 }}
                                 className="form-input  hover:!border-none !w-full filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                 options={countries}
-                                placeholder={
-                                  language === "en" ? "Select" : "Sélectionner"
-                                }
+                                placeholder={getPlaceholder(language === "en" ? "Select Country" : "Sélectionnez le pays")}
                               />
                             </div>
                           </div>
@@ -225,11 +203,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                         {home !== true && (
                           <div className="col-lg-3 col-md-6 col-12 ">
                             <div className="mb-3">
-                              <label className="form-label fs-6 sm:mx-3">
-                                {language === "en"
-                                  ? "Select City:"
-                                  : "Sélectionnez la ville:"}
-                              </label>
+                              {renderLabel(language === "en" ? "Select City:" : "Sélectionnez la ville:")}
                               <div className="filter-search-form position-relative filter-border1 bg-light sm:mx-3 cursor-pointer">
                                 <Select
                                   onChange={(newValue) => {
@@ -240,11 +214,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                   }}
                                   className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                   options={cities}
-                                  placeholder={
-                                    language === "en"
-                                      ? "Select"
-                                      : "Sélectionner"
-                                  }
+                                  placeholder={getPlaceholder(language === "en" ? "Select City" : "Sélectionnez la ville")}
                                 />
                               </div>
                             </div>
@@ -253,11 +223,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         <div className="col-lg-3 col-md-6 col-12 ">
                           <div className="mb-3 ">
-                            <label className="form-label fs-6 sm:mx-3 ">
-                              {language === "en"
-                                ? "Select Type:"
-                                : "Sélectionnez le type:"}
-                            </label>
+                            {renderLabel(language === "en" ? "Select Type:" : "Sélectionnez le type:")}
                             <div className="filter-search-form position-relative filter-border1 bg-light sm:mx-3  ">
                               <Select
                                 onChange={(newValue) => {
@@ -268,9 +234,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                 }}
                                 className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                 options={categories}
-                                placeholder={
-                                  language === "en" ? "Select" : "Sélectionner"
-                                }
+                                placeholder={getPlaceholder(language === "en" ? "Select Type" : "Sélectionnez le type")}
                               />
                             </div>
                           </div>
@@ -278,11 +242,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
-                            <label className="form-label fs-6 sm:mx-3">
-                              {language === "en"
-                                ? "Select status:"
-                                : "sélectionner le statut:"}
-                            </label>
+                            {renderLabel(language === "en" ? "Select status:" : "sélectionner le statut:")}
                             <div className="filter-search-form position-relative filter-border1 bg-light sm:mx-3">
                               <Select
                                 onChange={(newValue) => {
@@ -293,9 +253,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                 }}
                                 className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                 options={conditions}
-                                placeholder={
-                                  language === "en" ? "Select" : "Sélectionner"
-                                }
+                                placeholder={getPlaceholder(language === "en" ? "Select status" : "sélectionner le statut")}
                               />
                             </div>
                           </div>
@@ -303,11 +261,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
-                            <label className="form-label fs-6 sm:mx-3">
-                              {language === "en"
-                                ? "Min Price:"
-                                : "Prix ​​minimum:"}
-                            </label>
+                            {renderLabel(language === "en" ? "Min Price:" : "Prix ​​minimum:")}
                             <div className="filter-search-form position-relative filter-border1 bg-light sm:mx-3">
                               <Select
                                 onChange={(newValue) => {
@@ -318,9 +272,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                 }}
                                 className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                 options={price}
-                                placeholder={
-                                  language === "en" ? "Select" : "Sélectionner"
-                                }
+                                placeholder={getPlaceholder(language === "en" ? "Min Price" : "Prix ​​minimum")}
                               />
                             </div>
                           </div>
@@ -328,11 +280,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
-                            <label className="form-label fs-6 sm:mx-3">
-                              {language === "en"
-                                ? "Max Price:"
-                                : "Prix maximum:"}
-                            </label>
+                            {renderLabel(language === "en" ? "Max Price:" : "Prix maximum:")}
                             <div className="filter-search-form position-relative filter-border1 bg-light sm:mx-3">
                               <Select
                                 onChange={(newValue) => {
@@ -343,9 +291,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                 }}
                                 className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                 options={price}
-                                placeholder={
-                                  language === "en" ? "Select" : "Sélectionner"
-                                }
+                                placeholder={getPlaceholder(language === "en" ? "Max Price" : "Prix maximum")}
                               />
                             </div>
                           </div>
@@ -353,13 +299,9 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         {home !== true && (
                           <div className="col-lg-3 col-md-6 col-12">
+                            
                             <div className="mb-3">
-                              <label className="form-label fs-6 sm:mx-3">
-                                {" "}
-                                {language === "en"
-                                  ? "Rooms:"
-                                  : "Chambres:"}{" "}
-                              </label>
+                              {renderLabel(language === "en" ? "Rooms:" : "Chambres:")}
                               <div className="filter-search-form position-relative filter-border1 bg-light sm:mx-3">
                                 <Select
                                   onChange={(newValue) => {
@@ -370,11 +312,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                   }}
                                   className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                   options={rooms}
-                                  placeholder={
-                                    language === "en"
-                                      ? "Select"
-                                      : "Sélectionner"
-                                  }
+                                  placeholder={getPlaceholder(language === "en" ? "Select Rooms" : "Sélectionner Chambres")}
                                 />
                               </div>
                             </div>
@@ -383,14 +321,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         <div className="col-lg-3 col-md-6 col-12">
                           <div>
-                            
-                              <label className="form-label fs-6 sm:mx-3">
-                                
-                                {language === "en"
-                                  ? "Bathrooms:"
-                                  : "Salles de bains:"}
-                              </label>
-                           
+                            {renderLabel(language === "en" ? "Bathrooms:" : "Salles de bains:")}
                             <div className="filter-search-form position-relative filter-border1 bg-light sm:mx-3">
                               <Select
                                 onChange={(newValue) => {
@@ -401,9 +332,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                 }}
                                 className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                 options={baths}
-                                placeholder={
-                                  language === "en" ? "Select" : "Sélectionner"
-                                }
+                                placeholder={getPlaceholder(language === "en" ? "Select Bathrooms" : "Sélectionner Salles de bains")}
                               />
                             </div>
                           </div>
@@ -411,9 +340,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
 
                         <div className="col-lg-3 col-md-6 col-12">
                           <div className="mb-3">
-                            <label className="form-label fs-6 sm:mx-3">
-                              {language === "en" ? "Beds:" : "Lits:"}{" "}
-                            </label>
+                            {renderLabel(language === "en" ? "Beds:" : "Lits:")}
                             <div className="filter-search-form position-relative filter-border11 bg-light sm:mx-3">
                               <Select
                                 onChange={(newValue) => {
@@ -424,30 +351,15 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                 }}
                                 className="form-input filter-input-box1 bg-gray-50 dark:bg-slate-800 border-0"
                                 options={beds}
-                                placeholder={
-                                  language === "en" ? "Select" : "Sélectionner"
-                                }
+                                placeholder={getPlaceholder(language === "en" ? "Select Beds" : "Sélectionner Lits")}
                               />
                             </div>
                           </div>
                         </div>
 
-                        {/* CHECKBOXES */}
-
                         {home !== true && (
                           <div className="flex gap-4 pb-3 mt-3 ml-4">
                             <div className="custom-control custom-radio custom-control-inline">
-                              {/* <div className="form-check mb-0">
-                                                <input
-                                               
-                                                   type="checkbox" name="Furnished" id="" checked={formData.Furnished} onChange={handleCheckboxChange}
-                                                
-                                                className="form-check-input border-primary"  />
-                                                <label className="form-check-label" htmlFor="rent">Furnitured</label>
-                                                
-
-                                            </div> */}
-
                               <div className="form-check mb-0 mr-4 ">
                                 <input
                                   type="checkbox"
@@ -461,9 +373,7 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                   className="form-check-labe form-label fs-6 mt-1"
                                   htmlFor="rent"
                                 >
-                                  
                                   {language === "en" ? "For Sale" : "À vendre"}
-                                
                                 </label>
                               </div>
                             </div>
@@ -482,34 +392,10 @@ export default function FilterForm({ home = false , isProjectsPage = false }) {
                                   className="form-check-label form-label fs-6 mt-1 "
                                   htmlFor="rent"
                                 >
-                                    {language === "en" ? "Lockoff" : "Verrouillage"}
+                                  {language === "en" ? "Lockoff" : "Verrouillage"}
                                 </label>
                               </div>
                             </div>
-
-                            {/* <div className="custom-control custom-radio custom-control-inline">
-                                            <div className="form-check mb-0">
-                                                <input
-                                                   type="checkbox" name="Furnished" id="" checked={formData.Furnished} onChange={handleCheckboxChange}
-                                                
-                                                className="form-check-input"  />
-                                                <label className="form-check-label" htmlFor="rent">Furnitured</label>
-                                                
-
-                                            </div>
-                                        </div>
-
-                                        <div className="custom-control custom-radio custom-control-inline">
-                                            <div className="form-check mb-0">
-                                                <input
-                                                   type="checkbox" name="Furnished" id="" checked={formData.Furnished} onChange={handleCheckboxChange}
-                                                
-                                                className="form-check-input"  />
-                                                <label className="form-check-label" htmlFor="rent">Furnitured</label>
-                                                
-
-                                            </div>
-                                        </div> */}
                           </div>
                         )}
 
