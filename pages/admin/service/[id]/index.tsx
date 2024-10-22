@@ -1,5 +1,3 @@
-
-
 import Head from "next/head";
 import useAuth from "@/hooks/useAuth";
 import NotFound from "@/pages/404";
@@ -41,19 +39,15 @@ import AdminMainLayout from "@/components/Site/dashboardLayout";
 
 const modules = {
   toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ direction: "rtl" }],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["link", "image", "video"],
-    ["clean"],
-  ],
+    [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
+    [{ 'font': ['sans-serif', 'serif', 'monospace', 'roboto'] }], // Add more fonts
+    [{ 'size': ['small', false, 'large', 'huge'] }], // Add font sizes
+    ['bold', 'italic', 'underline'], // Text formatting options
+    [{ 'color': [] }, { 'background': [] }], // Text color and background
+    [{ 'align': [] }], // Text alignment
+    ['link', 'image', 'video'], // Media options
+    ['clean'] // Remove formatting button
+  ]
 };
 
 
@@ -295,6 +289,7 @@ export default function BookUpdatePage() {
 English Description
 
 <ReactQuill
+  modules={modules}
 
 
                                     value={propertyDetails.story}

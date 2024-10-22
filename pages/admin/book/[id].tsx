@@ -32,6 +32,20 @@ import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
+const modules = {
+  toolbar: [
+    [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
+    [{ 'font': ['sans-serif', 'serif', 'monospace', 'roboto'] }], // Add more fonts
+    [{ 'size': ['small', false, 'large', 'huge'] }], // Add font sizes
+    ['bold', 'italic', 'underline'], // Text formatting options
+    [{ 'color': [] }, { 'background': [] }], // Text color and background
+    [{ 'align': [] }], // Text alignment
+    ['link', 'image', 'video'], // Media options
+    ['clean'] // Remove formatting button
+  ]
+};
+
+
 const types = [
   { id: 1, label: "Villa", value: "villa" },
   { id: 2, label: "House", value: "house" },
@@ -588,6 +602,7 @@ export default function BookUpdatePage() {
               <Grid item xs={12} md={12}>
                 English Description
                 <ReactQuill
+                  modules={modules}
                   value={propertyDetails.story}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({
@@ -602,6 +617,7 @@ export default function BookUpdatePage() {
               <Grid item xs={12} md={12}>
                 French Description
                 <ReactQuill
+                  modules={modules}
                   value={propertyDetails.storyfr}
                   onChange={(value) =>
                     setPropertyDetails((prevState) => ({

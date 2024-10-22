@@ -54,23 +54,43 @@ const colorList = [
   "#1C00ff00",
 ];
 
+// const modules = {
+//   toolbar: [
+//     [{ header: "1" }, { header: "2" }, { font: [] }],
+//     [{ size: [] }],
+//     ["bold", "italic", "underline", "strike", "blockquote"],
+//     [{ direction: "rtl" }],
+//     [{ color: [...colorList] }, { background: [...colorList] }],
+//     [
+//       { list: "ordered" },
+//       { list: "bullet" },
+//       { indent: "-1" },
+//       { indent: "+1" },
+//     ],
+//     ["link", "image", "video"],
+//     [{ 'color': [] }, { 'background': [] }],
+//     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+//     [{ 'align': [] }],
+//     ['link', 'image', 'video'],
+//     ['clean']
+   
+//   ],
+// };
+
+
 const modules = {
   toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ direction: "rtl" }],
-    [{ color: [...colorList] }, { background: [...colorList] }],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["link", "image", "video"],
-    ["clean"],
-  ],
+    [{ 'header': [1, 2, 3, 4, 5, false] }], // Add heading levels
+    [{ 'font': ['sans-serif', 'serif', 'monospace', 'roboto'] }], // Add more fonts
+    [{ 'size': ['small', false, 'large', 'huge'] }], // Add font sizes
+    ['bold', 'italic', 'underline'], // Text formatting options
+    [{ 'color': [] }, { 'background': [] }], // Text color and background
+    [{ 'align': [] }], // Text alignment
+    ['link', 'image', 'video'], // Media options
+    ['clean'] // Remove formatting button
+  ]
 };
+
 
 export default function BookCreatePage() {
   const countries = [
