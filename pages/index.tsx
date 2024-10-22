@@ -1,8 +1,9 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useMemo } from "react";
 import Header from "../components/components/header/Header";
 import Footer from "../components/components/footer/Footer";
 import useBlogs from "../hooks/useBlogs";
 import { useLanguageContext } from "@/context/languageContext";
+import { SWRConfig } from 'swr';
 
 // Lazy load components
 const Home2Banner = lazy(() => import("../components/components/banner/Home2Banner"));
@@ -30,24 +31,29 @@ const page = () => {
   const { data, isLoading, error, mutate } = useBlogs({page:1});
   const { language } = useLanguageContext();
 
+  // Memoize props to avoid unnecessary re-renders
+  const memoizedBlogs = useMemo(() => data?.books, [data]);
+
   return (
-    <div dir="ltr">
-      <Suspense fallback={<div>Loading...</div>}>
-        <Header />
-        <Home2Banner />
-        <CountriesSlider />
-        <ProjectsOfferSlider />
-        <AboutBlogs language={language} blogs={data?.books} />
-        <ServicesTabs />
-        <Home2About />
-        <Home2WhyChoose />
-        <Home2Testimonial />
-        <Home2Team />
-        <Home2VideoSection />
-        <Home2Banner2 />
-        <Footer style="style-2" />
-      </Suspense>
-    </div>
+    <SWRConfig value={{ shouldRetryOnError: false, revalidateOnFocus: false }}>
+      <div dir="ltr">
+        <Suspense fallback={<div>Loading...</div>}>
+          <Header />
+          <Home2Banner />
+          <CountriesSlider />
+          <ProjectsOfferSlider />
+          <AboutBlogs language={language} blogs={memoizedBlogs} />
+          <ServicesTabs />
+          <Home2About />
+          <Home2WhyChoose />
+          <Home2Testimonial />
+          <Home2Team />
+          <Home2VideoSection />
+          <Home2Banner2 />
+          <Footer style="style-2" />
+        </Suspense>
+      </div>
+    </SWRConfig>
   );
 };
 

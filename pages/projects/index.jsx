@@ -5,6 +5,7 @@ import Header from "@/components/components/header/Header";
 import Topbar from "@/components/components/topbar/Topbar";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Suspense, lazy } from "react";
 
 import Link from "next/link";
 import React from "react";
@@ -129,6 +130,9 @@ const Projects = ({
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
+
+
     <div dir="ltr" className="">
       <Topbar />
       <Header />
@@ -161,6 +165,7 @@ const Projects = ({
       <Newslatter />
       <Footer />
     </div>
+    </Suspense>
   );
 };
 
