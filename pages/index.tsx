@@ -6,7 +6,7 @@ import useBlogs from "../hooks/useBlogs";
 import { useLanguageContext } from "@/context/languageContext";
 import { SWRConfig } from 'swr';
 
-const BannerSlider = lazy(() => import('@/components/Site/BannerSlider'));
+// const BannerSlider = lazy(() => import('@/components/Site/BannerSlider'));
 
 // Lazy load components
 const Home2Banner = lazy(() => import("../components/components/banner/Home2Banner"));
@@ -58,7 +58,7 @@ const page = () => {
           <Home2Team />
           <Home2VideoSection />
           <Home2Banner2 />
-          <BannerSlider />
+          {/* <BannerSlider /> */}
          
           <Footer style="style-2" />
         </Suspense>
