@@ -443,7 +443,7 @@ const Home4Banner = () => {
                                     </div>
                                     <div className="searchbox-input">
                                       <label>Room</label>
-                                      <QuantityCounter />
+                                      {/* <QuantityCounter /> */}
                                     </div>
                                   </div>
                                 </div>
@@ -480,14 +480,14 @@ const Home4Banner = () => {
                                                 <h6>Adult</h6>
                                                 <span>17 years+</span>
                                               </div>
-                                              <QuantityCounter />
+                                              {/* <QuantityCounter /> */}
                                             </li>
                                             <li className="single-item">
                                               <div className="title">
                                                 <h6>Children</h6>
                                                 <span>0-17 years</span>
                                               </div>
-                                              <QuantityCounter />
+                                              {/* <QuantityCounter /> */}
                                             </li>
                                           </ul>
                                         </div>
@@ -746,7 +746,7 @@ const Home4Banner = () => {
                                     </div>
                                     <div className="searchbox-input">
                                       <label>Traveler</label>
-                                      <QuantityCounter />
+                                      {/* <QuantityCounter /> */}
                                     </div>
                                   </div>
                                 </div>
@@ -859,7 +859,7 @@ const Home4Banner = () => {
                                     </div>
                                     <div className="searchbox-input">
                                       <label>Traveler</label>
-                                      <QuantityCounter />
+                                      {/* <QuantityCounter /> */}
                                     </div>
                                   </div>
                                 </div>

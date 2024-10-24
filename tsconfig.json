@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "layouts/langSwitcer.jsx", "pages/api/upload.js", "components/icons/Telgram.jsx" ,],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "layouts/langSwitcer.jsx", "pages/api/upload.js", "components/icons/Telgram.jsx", "components/Site/BannerSlider.jsx" ,],
   "exclude": ["node_modules"]
 }
