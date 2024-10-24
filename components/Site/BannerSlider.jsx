@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectCreative } from 'swiper';
 
@@ -39,16 +39,35 @@ const BannerSlider = () => {
     }
   }, []);
 
-  // Function to handle synchronized sliding
+  // Update the handleSlideChange function to be more defensive
   const handleSlideChange = (swiper) => {
-    if (!leftSwiper || !rightSwiper) return;
+    try {
+      if (!leftSwiper?.slideTo || !rightSwiper?.slideTo) return;
 
-    if (swiper === leftSwiper) {
-      rightSwiper.slideTo(swiper.activeIndex);
-    } else {
-      leftSwiper.slideTo(swiper.activeIndex);
+      // Add a small delay to ensure both swipers are ready
+      setTimeout(() => {
+        if (swiper === leftSwiper) {
+          rightSwiper?.slideTo(swiper.activeIndex);
+        } else if (swiper === rightSwiper) {
+          leftSwiper?.slideTo(swiper.activeIndex);
+        }
+      }, 0);
+    } catch (error) {
+      console.log('Slider sync error:', error);
     }
   };
+
+  // Add cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (leftSwiper) {
+        leftSwiper.destroy();
+      }
+      if (rightSwiper) {
+        rightSwiper.destroy();
+      }
+    };
+  }, [leftSwiper, rightSwiper]);
 
   const leftSliderImages = [
     'https://demo-egenslab.b-cdn.net/html/triprex/preview/assets/img/home2/banner4-card-img2.png',
@@ -68,8 +87,10 @@ const BannerSlider = () => {
         <div className="col-xl-5">
           <Swiper
             {...settings}
-            onSwiper={setLeftSwiper}
-            onSlideChange={(swiper) => handleSlideChange(swiper)}
+            onSwiper={(swiper) => {
+              if (swiper) setLeftSwiper(swiper);
+            }}
+            onSlideChange={(swiper) => swiper && handleSlideChange(swiper)}
             className="banner4-card-slide"
           >
             {leftSliderImages.map((image, index) => (
@@ -102,8 +123,10 @@ const BannerSlider = () => {
         <div className="col-xl-7">
           <Swiper
             {...settings}
-            onSwiper={setRightSwiper}
-            onSlideChange={(swiper) => handleSlideChange(swiper)}
+            onSwiper={(swiper) => {
+              if (swiper) setRightSwiper(swiper);
+            }}
+            onSlideChange={(swiper) => swiper && handleSlideChange(swiper)}
             className="package-card3-slide"
           >
             {rightSliderImages.map((image, index) => (
