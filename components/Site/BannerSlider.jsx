@@ -57,6 +57,7 @@ const BannerSlider = () => {
   }, [isAnimating]);
 
   const handleSlideChange = useCallback((swiper) => {
+    if (!swiper) return; // Add this check
     if (swiper === leftSwiper && rightSwiper) {
       syncSlides(swiper, rightSwiper);
     } else if (swiper === rightSwiper && leftSwiper) {
