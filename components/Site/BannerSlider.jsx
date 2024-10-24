@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useMemo, useState, useCallback, useEffect } from 'react';
+import React, { useMemo, useState, useCallback, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, EffectCreative } from 'swiper';
-
+// Import Swiper core and required modules
+import SwiperCore, { Navigation, EffectCreative } from 'swiper';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,14 +13,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
 
+// Install Swiper modules
+SwiperCore.use([Navigation, EffectCreative]);
+
 const BannerSlider = () => {
   const [leftSwiper, setLeftSwiper] = useState(null);
   const [rightSwiper, setRightSwiper] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const bothSwipersReady = useRef(false);
 
   const settings = useMemo(() => ({
-    modules: [Navigation, EffectCreative],
     slidesPerView: 1,
     speed: 1000,
     spaceBetween: 30,
@@ -42,11 +44,10 @@ const BannerSlider = () => {
   }), []);
 
   const syncSlides = useCallback((sourceSwiper, targetSwiper) => {
-    if (!sourceSwiper || !targetSwiper || isAnimating) return;
+    if (!sourceSwiper || !targetSwiper || isAnimating || !bothSwipersReady.current) return;
 
     setIsAnimating(true);
     const newIndex = sourceSwiper.realIndex;
-    setActiveIndex(newIndex);
 
     targetSwiper.slideToLoop(newIndex, 1000, false);
     
@@ -55,22 +56,23 @@ const BannerSlider = () => {
     }, 1000);
   }, [isAnimating]);
 
-  const handleLeftSlideChange = useCallback((swiper) => {
-    if (rightSwiper) {
+  const handleSlideChange = useCallback((swiper) => {
+    if (swiper === leftSwiper && rightSwiper) {
       syncSlides(swiper, rightSwiper);
-    }
-  }, [rightSwiper, syncSlides]);
-
-  const handleRightSlideChange = useCallback((swiper) => {
-    if (leftSwiper) {
+    } else if (swiper === rightSwiper && leftSwiper) {
       syncSlides(swiper, leftSwiper);
     }
-  }, [leftSwiper, syncSlides]);
+  }, [leftSwiper, rightSwiper, syncSlides]);
 
   useEffect(() => {
+    if (leftSwiper && rightSwiper) {
+      bothSwipersReady.current = true;
+    }
+
     return () => {
-      if (leftSwiper?.destroy) leftSwiper.destroy(true, true);
-      if (rightSwiper?.destroy) rightSwiper.destroy(true, true);
+      if (leftSwiper && leftSwiper.destroy) leftSwiper.destroy(true, true);
+      if (rightSwiper && rightSwiper.destroy) rightSwiper.destroy(true, true);
+      bothSwipersReady.current = false;
     };
   }, [leftSwiper, rightSwiper]);
 
@@ -93,7 +95,7 @@ const BannerSlider = () => {
           <Swiper
             {...settings}
             onSwiper={setLeftSwiper}
-            onSlideChange={handleLeftSlideChange}
+            onSlideChange={handleSlideChange}
             className="banner4-card-slide"
           >
             {leftSliderImages.map((image, index) => (
@@ -101,7 +103,7 @@ const BannerSlider = () => {
                 <div className={`banner4-card ${index === 1 ? 'two' : index === 2 ? 'three' : ''} md:!h-[282px]`}>
                   <Image 
                     src={image}
-                    alt="banner image"
+                    alt={`banner image ${index + 1}`}
                     width={526}
                     height={300}
                   />
@@ -127,7 +129,7 @@ const BannerSlider = () => {
           <Swiper
             {...settings}
             onSwiper={setRightSwiper}
-            onSlideChange={handleRightSlideChange}
+            onSlideChange={handleSlideChange}
             className="package-card3-slide"
           >
             {rightSliderImages.map((image, index) => (
@@ -136,7 +138,7 @@ const BannerSlider = () => {
                   <Link href="/package-details" className="package-card-img">
                     <Image 
                       src={image}
-                      alt="package image"
+                      alt={`package image ${index + 1}`}
                       width={746}
                       height={400}
                     />
@@ -185,7 +187,6 @@ const BannerSlider = () => {
         </div>
       </div>
 
-      {/* Navigation Buttons */}
       <div className="row mb-12">
         <div className="col-lg-12">
           <div className="slide-and-view-btn-grp">
