@@ -17,8 +17,8 @@ import 'swiper/css/effect-creative';
 SwiperCore.use([Navigation, EffectCreative]);
 
 const BannerSlider = () => {
-  const [leftSwiper, setLeftSwiper] = useState(null);
-  const [rightSwiper, setRightSwiper] = useState(null);
+  const leftSwiperRef = useRef(null);
+  const rightSwiperRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const bothSwipersReady = useRef(false);
 
@@ -57,29 +57,29 @@ const BannerSlider = () => {
   }, [isAnimating]);
 
   const handleSlideChange = useCallback((swiper) => {
-    if (!swiper) return; // Add this check
-    if (swiper === leftSwiper && rightSwiper) {
-      syncSlides(swiper, rightSwiper);
-    } else if (swiper === rightSwiper && leftSwiper) {
-      syncSlides(swiper, leftSwiper);
+    if (leftSwiperRef.current && swiper === leftSwiperRef.current.swiper && rightSwiperRef.current) {
+      syncSlides(swiper, rightSwiperRef.current.swiper);
+    } else if (rightSwiperRef.current && swiper === rightSwiperRef.current.swiper && leftSwiperRef.current) {
+      syncSlides(swiper, leftSwiperRef.current.swiper);
     }
-  }, [leftSwiper, rightSwiper, syncSlides]);
+  }, [syncSlides]);
 
   useEffect(() => {
-    const initializeSwipers = () => {
-      if (leftSwiper && rightSwiper) {
-        bothSwipersReady.current = true;
-      }
-    };
-
-    initializeSwipers();
+    if (leftSwiperRef.current && rightSwiperRef.current) {
+      bothSwipersReady.current = true;
+    }
 
     return () => {
-      if (leftSwiper && leftSwiper.destroy) leftSwiper.destroy(true, true);
-      if (rightSwiper && rightSwiper.destroy) rightSwiper.destroy(true, true);
+      // Ensure swiper instance exists and has a destroy method before calling it
+      if (leftSwiperRef.current?.swiper?.destroy) {
+        leftSwiperRef.current.swiper.destroy(true, true);
+      }
+      if (rightSwiperRef.current?.swiper?.destroy) {
+        rightSwiperRef.current.swiper.destroy(true, true);
+      }
       bothSwipersReady.current = false;
     };
-  }, [leftSwiper, rightSwiper]);
+  }, []);
 
   const leftSliderImages = [
     'https://demo-egenslab.b-cdn.net/html/triprex/preview/assets/img/home2/banner4-card-img2.png',
@@ -99,7 +99,7 @@ const BannerSlider = () => {
         <div className="col-xl-5">
           <Swiper
             {...settings}
-            onSwiper={setLeftSwiper}
+            onSwiper={(swiper) => { leftSwiperRef.current = swiper }}
             onSlideChange={handleSlideChange}
             className="banner4-card-slide"
           >
@@ -133,7 +133,7 @@ const BannerSlider = () => {
         <div className="col-xl-7">
           <Swiper
             {...settings}
-            onSwiper={setRightSwiper}
+            onSwiper={(swiper) => { rightSwiperRef.current = swiper }}
             onSlideChange={handleSlideChange}
             className="package-card3-slide"
           >
