@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectCreative } from 'swiper';
 
@@ -15,56 +15,60 @@ import 'swiper/css/effect-creative';
 const BannerSlider = () => {
   const [leftSwiper, setLeftSwiper] = useState(null);
   const [rightSwiper, setRightSwiper] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const settings = useMemo(() => {
-    return {
-      modules: [Navigation, EffectCreative],
-      slidesPerView: 1,
-      speed: 1000,
-      spaceBetween: 30,
-      loop: true,
-      navigation: {
-        nextEl: '.banner4-slider-next',
-        prevEl: '.banner4-slider-prev',
+  const settings = useMemo(() => ({
+    modules: [Navigation, EffectCreative],
+    slidesPerView: 1,
+    speed: 1000,
+    spaceBetween: 30,
+    loop: true,
+    navigation: {
+      nextEl: '.banner4-slider-next',
+      prevEl: '.banner4-slider-prev',
+    },
+    effect: "creative",
+    creativeEffect: {
+      prev: {
+        translate: [0, 0, -400],
       },
-      effect: "creative",
-      creativeEffect: {
-        prev: {
-          translate: [0, 0, -400],
-        },
-        next: {
-          translate: ["100%", 0, 0],
-        },
+      next: {
+        translate: ["100%", 0, 0],
       },
-    }
-  }, []);
+    },
+    allowTouchMove: true,
+  }), []);
 
-  // Update the handleSlideChange function to be more defensive
-  const handleSlideChange = (swiper) => {
-    try {
-      if (!leftSwiper?.slideTo || !rightSwiper?.slideTo) return;
+  const syncSlides = React.useCallback((sourceSwiper, targetSwiper) => {
+    if (!sourceSwiper || !targetSwiper || isAnimating) return;
 
-      // Add a small delay to ensure both swipers are ready
-      setTimeout(() => {
-        if (swiper === leftSwiper) {
-          rightSwiper?.slideTo(swiper.activeIndex);
-        } else if (swiper === rightSwiper) {
-          leftSwiper?.slideTo(swiper.activeIndex);
-        }
-      }, 0);
-    } catch (error) {
-      console.log('Slider sync error:', error);
-    }
+    setIsAnimating(true);
+    const newIndex = sourceSwiper.realIndex;
+    setActiveIndex(newIndex);
+
+    targetSwiper.slideToLoop(newIndex, 1000, false);
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 1000);
+  }, [isAnimating]);
+
+  const handleLeftSlideChange = (swiper) => {
+    syncSlides(swiper, rightSwiper);
   };
 
-  // Add cleanup on unmount
-  useEffect(() => {
+  const handleRightSlideChange = (swiper) => {
+    syncSlides(swiper, leftSwiper);
+  };
+
+  React.useEffect(() => {
     return () => {
-      if (leftSwiper) {
-        leftSwiper.destroy();
-      }
-      if (rightSwiper) {
-        rightSwiper.destroy();
+      try {
+        leftSwiper?.destroy?.(true, true);
+        rightSwiper?.destroy?.(true, true);
+      } catch (error) {
+        console.error('Cleanup error:', error);
       }
     };
   }, [leftSwiper, rightSwiper]);
@@ -87,10 +91,8 @@ const BannerSlider = () => {
         <div className="col-xl-5">
           <Swiper
             {...settings}
-            onSwiper={(swiper) => {
-              if (swiper) setLeftSwiper(swiper);
-            }}
-            onSlideChange={(swiper) => swiper && handleSlideChange(swiper)}
+            onSwiper={setLeftSwiper}
+            onSlideChange={handleLeftSlideChange}
             className="banner4-card-slide"
           >
             {leftSliderImages.map((image, index) => (
@@ -123,10 +125,8 @@ const BannerSlider = () => {
         <div className="col-xl-7">
           <Swiper
             {...settings}
-            onSwiper={(swiper) => {
-              if (swiper) setRightSwiper(swiper);
-            }}
-            onSlideChange={(swiper) => swiper && handleSlideChange(swiper)}
+            onSwiper={setRightSwiper}
+            onSlideChange={handleRightSlideChange}
             className="package-card3-slide"
           >
             {rightSliderImages.map((image, index) => (
