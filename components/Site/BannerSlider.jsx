@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectCreative } from 'swiper';
+
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -40,7 +41,7 @@ const BannerSlider = () => {
     allowTouchMove: true,
   }), []);
 
-  const syncSlides = React.useCallback((sourceSwiper, targetSwiper) => {
+  const syncSlides = useCallback((sourceSwiper, targetSwiper) => {
     if (!sourceSwiper || !targetSwiper || isAnimating) return;
 
     setIsAnimating(true);
@@ -54,22 +55,22 @@ const BannerSlider = () => {
     }, 1000);
   }, [isAnimating]);
 
-  const handleLeftSlideChange = (swiper) => {
-    syncSlides(swiper, rightSwiper);
-  };
+  const handleLeftSlideChange = useCallback((swiper) => {
+    if (rightSwiper) {
+      syncSlides(swiper, rightSwiper);
+    }
+  }, [rightSwiper, syncSlides]);
 
-  const handleRightSlideChange = (swiper) => {
-    syncSlides(swiper, leftSwiper);
-  };
+  const handleRightSlideChange = useCallback((swiper) => {
+    if (leftSwiper) {
+      syncSlides(swiper, leftSwiper);
+    }
+  }, [leftSwiper, syncSlides]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
-      try {
-        leftSwiper?.destroy?.(true, true);
-        rightSwiper?.destroy?.(true, true);
-      } catch (error) {
-        console.error('Cleanup error:', error);
-      }
+      if (leftSwiper?.destroy) leftSwiper.destroy(true, true);
+      if (rightSwiper?.destroy) rightSwiper.destroy(true, true);
     };
   }, [leftSwiper, rightSwiper]);
 
