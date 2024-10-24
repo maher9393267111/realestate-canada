@@ -253,7 +253,7 @@ const Header2 = () => {
       
       <header
         ref={headerRef}
-        className={`header-area style-2 ${state.scrollY > 10 ? "" : ""}`}
+        className={`header-area style-2 ${state.scrollY > 10 ? "!m !bg-black" : ""}`}
       >
         <div className="header-logo">
           <Link href="/">

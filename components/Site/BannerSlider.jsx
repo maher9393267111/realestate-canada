@@ -116,10 +116,10 @@ const BannerSlider = () => {
                     <div className="banner4-content">
                       <span>Savings worldwide</span>
                       <h3>20% Off</h3>
-                      <Link href="/package-grid" className="text">
+                      <Link href="/contact" className="text">
                         Discover Great Deal
                       </Link>
-                      <Link href="/package-grid" className="primary-btn1">
+                      <Link href="/contact" className="primary-btn1">
                         View This Trip
                       </Link>
                     </div>
@@ -162,7 +162,7 @@ const BannerSlider = () => {
                         <span>(28 Review)</span>
                       </div>
                       <h5><Link href="/package-details">A Journey through Historical and Culture.</Link></h5>
-                      <ul className="feature-list">
+                      <ul className="flex gap-2">
                         <li>
                           <i className="bi bi-calendar3"></i> 4 Days
                         </li>
@@ -179,7 +179,7 @@ const BannerSlider = () => {
                         <span>Starting Form:</span>
                         <h6><sub>$</sub>70.00 <span>Per Person</span></h6>
                       </div>
-                      <Link href="/package-details" className="primary-btn2">
+                      <Link href="/contact" className="primary-btn2">
                         Book a Trip
                         <i className="bi bi-arrow-right"></i>
                       </Link>
