@@ -5,7 +5,8 @@ import Footer from "../components/components/footer/Footer";
 import useBlogs from "../hooks/useBlogs";
 import { useLanguageContext } from "@/context/languageContext";
 import { SWRConfig } from 'swr';
-import BannerSlider from '@/components/Site/BannerSlider';
+
+const BannerSlider = lazy(() => import('@/components/Site/BannerSlider'));
 
 // Lazy load components
 const Home2Banner = lazy(() => import("../components/components/banner/Home2Banner"));
