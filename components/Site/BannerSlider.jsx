@@ -66,9 +66,13 @@ const BannerSlider = () => {
   }, [leftSwiper, rightSwiper, syncSlides]);
 
   useEffect(() => {
-    if (leftSwiper && rightSwiper) {
-      bothSwipersReady.current = true;
-    }
+    const initializeSwipers = () => {
+      if (leftSwiper && rightSwiper) {
+        bothSwipersReady.current = true;
+      }
+    };
+
+    initializeSwipers();
 
     return () => {
       if (leftSwiper && leftSwiper.destroy) leftSwiper.destroy(true, true);
